@@ -1,4 +1,19 @@
 <section id="home">
-    <fullstack-logo></fullstack-logo>
-    <rando-greeting></rando-greeting>
+  <div id="toolbox">
+    <p>TOOLS</p>
+    <button ng-click=addLogo()>New Logo</button>
+    <button ng-click=addButton()>New button</button>
+    <button ng-click=addDiv()>New Box</button>
+
+    <p>*****************************************</p>
+  </div>
+
+
+  <div ng-repeat="element in elements">
+    <fullstack-logo ng-show="element.type === 'logo'"></fullstack-logo>
+    <button ng-show="element.type === 'button'">Button!</button>
+    <our-div ng-show="element.type === 'div'"></our-div>
+  </div>
+
+ <button ng-click="finished()">button</button>
 </section>
