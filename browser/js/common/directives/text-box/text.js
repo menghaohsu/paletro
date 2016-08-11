@@ -11,8 +11,4 @@ app.controller('BoxController', function ($scope) {
       $(".draggable").draggable();
       $(".resizable").resizable();
     } );
-
-    $scope.user = {
-      name: 'enter text here'
-    }
 });
