@@ -38,6 +38,7 @@ app.controller('HomeController', function ($scope) {
 
     $scope.addText = function () {
       $scope.elements.push({type: 'textbox'});
+       $('.button-collapse').sideNav('hide');
     }
 
     $scope.finished = function () {
@@ -47,4 +48,10 @@ app.controller('HomeController', function ($scope) {
       console.log(p.innerHTML);
 
     }
+
+    var change = document.getElementById("color-fill");
+    var 
+
+
+
 });
