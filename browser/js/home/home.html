@@ -9,11 +9,12 @@
     <li><a class="waves-effect" ng-click=addImage()>New Image</a></li>
     <li><a class="waves-effect" ng-click=addText()>New Text Box</a></li>
     <li><button class="btn" id="finish-button" ng-click="finished()">finished</button></li>
+    <li><button ng-click ="setColor('red')">red</button></li>
 
   </ul>
   <a data-activates="slide-out" class="button-collapse btn-floating btn-large waves-effect waves-light teal" id="edit-button"><i class="material-icons">label_outline</i></a>
   
-  <i class="material-icons color-fill">&#xE23A;</i>  
+ 
 
   <div id="canvas">
     <div ng-repeat="element in elements">
@@ -26,4 +27,7 @@
     </div>
   </div>
 
+
 </section>
+
+
