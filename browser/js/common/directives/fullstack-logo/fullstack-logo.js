@@ -1,15 +1,15 @@
 app.directive('fullstackLogo', function () {
     return {
         restrict: 'E',
-        controller: 'ImgController',
+        controller: 'LogoController',
         templateUrl: 'js/common/directives/fullstack-logo/fullstack-logo.html'
     };
 });
 
-app.controller('ImgController', function ($scope) {
+app.controller('LogoController', function ($scope) {
     $( function() {
       $( ".draggable" ).draggable();
-      $(".resizable").resizable({
+      $("img").resizable({
         stop: function(event, ui) {
           //
         }

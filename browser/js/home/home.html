@@ -1,23 +1,23 @@
 <section id="home">
-  <div id="toolbox">
-    <p>TOOLS</p>
-    <button ng-click=addLogo()>New Logo</button>
-    <button ng-click=addButton()>New button</button>
-    <button ng-click=addDiv()>New Box</button>
-    <button ng-click=addText()>New Text</button>
 
-    <p>*****************************************</p>
-  </div>
+  <ul id="slide-out" class="side-nav">
+    <br><br><br><br>
+    <li><a class="waves-effect" ng-click=addLogo()>New Logo</a></li>
+    <li><a class="waves-effect" ng-click=addButton()>New Button</a></li>
+    <li><a class="waves-effect" ng-click=addDiv()>New Div</a></li>
+    <li><a class="waves-effect" ng-click=addImage()>New Image</a></li>
+    <li><a class="waves-effect" ng-click=addText()>New Text Box</a></li>
+    <li><button class="btn" id="finish-button" ng-click="finished()">finished</button></li>
 
+  </ul>
+  <a data-activates="slide-out" class="button-collapse btn-floating btn-large waves-effect waves-light teal" id="edit-button"><i class="material-icons">label_outline</i></a>
 
   <div ng-repeat="element in elements">
     <fullstack-logo ng-show="element.type === 'logo'"></fullstack-logo>
     <new-button ng-show="element.type === 'button'"></new-button>
     <our-div ng-show="element.type === 'div'"></our-div>
+    <user-image ng-show="element.type === 'image'"></user-image>
     <text-box ng-show="element.type === 'textbox'"></text-box>
   </div>
-
- <button ng-click="finished()">finished</button>
-
 
 </section>
