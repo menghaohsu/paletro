@@ -1,0 +1,28 @@
+html {
+  overflow-x: hidden;
+}
+
+.resizable-img {
+  width: 200px; height: 200px;
+}
+
+.resizable-img img {
+  width: 100%;
+  height: 100%;
+}
+
+#edit-button {
+  top: 50%;
+  left: 8px;
+  position: fixed;
+}
+
+#finish-button {
+  margin-left: 30px;
+}
+
+#user-navbar {
+  top: 65px;
+  position: fixed;
+  width: 100%;
+}
