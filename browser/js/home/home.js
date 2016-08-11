@@ -11,13 +11,18 @@ app.controller('HomeController', function ($scope) {
 
     $scope.elements = [];
 
-    $scope.addButton = function () {
-      $scope.elements.push({type: 'button'});
+    $scope.addNavbar = function () {
+      $scope.elements.push({type: 'navbar'});
       $('.button-collapse').sideNav('hide');
     }
 
     $scope.addLogo = function () {
       $scope.elements.push({type: 'logo'});
+      $('.button-collapse').sideNav('hide');
+    }
+
+    $scope.addButton = function () {
+      $scope.elements.push({type: 'button'});
       $('.button-collapse').sideNav('hide');
     }
 
@@ -36,8 +41,10 @@ app.controller('HomeController', function ($scope) {
     }
 
     $scope.finished = function () {
-      console.log($('#home'));
-      var p = document.getElementById("home");
+      var p = document.getElementById("canvas");
       var pClone = p.cloneNode(true);
+      console.log(pClone);
+      console.log(p.innerHTML);
+
     }
 });

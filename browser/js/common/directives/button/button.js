@@ -8,7 +8,7 @@ app.directive('newButton', function () {
 
 app.controller('BtnController', function ($scope) {
     $( function() {
-      $('.draggable').draggable({cancel:false});
-      $(".resizable").resizable({cancel:false});
+      $('.draggable').draggable({cancel: false});
+      $('.resizable').resizable({cancel:false});
     } );
 });
