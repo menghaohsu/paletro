@@ -7,9 +7,9 @@ app.directive('userImage', function () {
         templateUrl: 'js/common/directives/user-image/user-image.html',
         link: function(scope,element){
             $(element).draggable();
-            angular.element(document).ready(function() {
-                 $(element).find('img').resizable();
-            });
+            $(element).find('img').on('load', function(event){
+                $(element).find('img').resizable();
+            })
         }
     };
 });

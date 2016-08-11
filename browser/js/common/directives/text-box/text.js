@@ -7,8 +7,5 @@ app.directive('textBox', function () {
 });
 
 app.controller('BoxController', function ($scope) {
-    $( function() {
-      $(".draggable").draggable();
-      $(".resizable").resizable();
-    } );
+   
 });

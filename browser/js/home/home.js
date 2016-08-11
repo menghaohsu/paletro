@@ -10,6 +10,11 @@ app.controller('HomeController', function ($scope) {
     $(".button-collapse").sideNav();
     $('.collapsible').collapsible();
 
+    $( function() {
+      $('.draggable').draggable({cancel:false});
+      $('.resizable').resizable({cancel:false});
+    } );
+
     $scope.elements = [];
 
     $scope.addNavbar = function () {
@@ -33,6 +38,7 @@ app.controller('HomeController', function ($scope) {
     }
 
     $scope.addImage = function () {
+      console.log($scope.image.url)
       $scope.elements.push({type: 'image', url: $scope.image.url});
       $('.button-collapse').sideNav('hide');
     }
