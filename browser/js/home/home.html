@@ -12,10 +12,12 @@
 
   <div ng-repeat="element in elements">
     <fullstack-logo ng-show="element.type === 'logo'"></fullstack-logo>
-    <button ng-show="element.type === 'button'">Button!</button>
+    <new-button ng-show="element.type === 'button'"></new-button>
     <our-div ng-show="element.type === 'div'"></our-div>
     <text-box ng-show="element.type === 'textbox'"></text-box>
   </div>
 
  <button ng-click="finished()">finished</button>
+
+
 </section>
