@@ -7,5 +7,12 @@ app.directive('fullstackLogo', function () {
 });
 
 app.controller('LogoController', function ($scope) {
-    
+    $( function() {
+      $( ".draggable" ).draggable();
+      $(".logo").resizable({
+        stop: function(event, ui) {
+          //
+        }
+      });
+    } );
 });
