@@ -11,13 +11,18 @@ app.controller('HomeController', function ($scope) {
 
     $scope.elements = [];
 
-    $scope.addButton = function () {
-      $scope.elements.push({type: 'button'});
+    $scope.addNavbar = function () {
+      $scope.elements.push({type: 'navbar'});
       $('.button-collapse').sideNav('hide');
     }
 
     $scope.addLogo = function () {
       $scope.elements.push({type: 'logo'});
+      $('.button-collapse').sideNav('hide');
+    }
+
+    $scope.addButton = function () {
+      $scope.elements.push({type: 'button'});
       $('.button-collapse').sideNav('hide');
     }
 

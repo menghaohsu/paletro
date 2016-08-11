@@ -1,15 +1,17 @@
-<nav>
-<div class="nav-wrapper orange lighten-3">
-  <a ui-sref="home" class="brand-logo">BPS</a>
-  <ul id="nav-mobile" class="right hide-on-med-and-down">
-    <li><a ui-sref="home">Home</a></li>
-    <li><a >About</a></li>
-    <li><a >Documentation</a></li>
-    <li><a ng-show="!user" ui-sref="login" class="waves-effect waves-light btn">Login</a></li>
-    <div ng-show="user" class="welcome">
-        <span>Welcome, {{ user.email }}!</span>
-        <a ng-click="logout()">Logout</a>
+<div class="navbar-fixed">
+  <nav class="orange lighten-3">
+    <div class="nav-wrapper container">
+      <a ui-sref="home" class="brand-logo">BPS</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a >About</a></li>
+        <li><a >Documentation</a></li>
+        <li><a ng-show="!user" ui-sref="login" class="waves-effect waves-light btn">Login</a></li>
+        <div ng-show="user" class="welcome">
+            <span>Welcome, {{ user.email }}!</span>
+            <a ng-click="logout()">Logout</a>
+        </div>
+      </ul>
     </div>
-  </ul>
+  </nav>
 </div>
-</nav>
