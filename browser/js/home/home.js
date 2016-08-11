@@ -31,6 +31,10 @@ app.controller('HomeController', function ($scope) {
       $('.button-collapse').sideNav('hide');
     }
 
+    $scope.addText = function () {
+      $scope.elements.push({type: 'textbox'});
+    }
+
     $scope.finished = function () {
       console.log($('#home'));
       var p = document.getElementById("home");

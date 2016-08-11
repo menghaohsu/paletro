@@ -9,7 +9,7 @@ app.directive('fullstackLogo', function () {
 app.controller('LogoController', function ($scope) {
     $( function() {
       $( ".draggable" ).draggable();
-      $(".resizable").resizable({
+      $("img").resizable({
         stop: function(event, ui) {
           //
         }
