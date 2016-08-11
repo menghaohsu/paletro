@@ -8,6 +8,7 @@ app.config(function ($stateProvider) {
 
 app.controller('HomeController', function ($scope) {
     $(".button-collapse").sideNav();
+    $('.collapsible').collapsible();
 
     $scope.elements = [];
 
@@ -32,8 +33,7 @@ app.controller('HomeController', function ($scope) {
     }
 
     $scope.addImage = function () {
-      $scope.url = 'https://pbs.twimg.com/profile_images/555533496676925440/9GmtXem_.jpeg';
-      $scope.elements.push({type: 'image'});
+      $scope.elements.push({type: 'image', url: $scope.image.url});
       $('.button-collapse').sideNav('hide');
     }
 
