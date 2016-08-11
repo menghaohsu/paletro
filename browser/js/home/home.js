@@ -38,7 +38,6 @@ app.controller('HomeController', function ($scope) {
     }
 
     $scope.addImage = function () {
-      console.log($scope.image.url)
       $scope.elements.push({type: 'image', url: $scope.image.url});
       $('.button-collapse').sideNav('hide');
     }
