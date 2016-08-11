@@ -9,12 +9,6 @@ app.config(function ($stateProvider) {
 app.controller('HomeController', function ($scope) {
     $(".button-collapse").sideNav();
     $('.collapsible').collapsible();
-
-    $( function() {
-      $('.draggable').draggable({cancel:false});
-      $('.resizable').resizable({cancel:false});
-    } );
-
     $scope.elements = [];
 
     $scope.addNavbar = function () {
