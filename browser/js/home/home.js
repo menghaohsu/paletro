@@ -11,7 +11,6 @@ app.controller('HomeController', function ($scope) {
 
     $scope.addButton = function () {
       $scope.elements.push({type: 'button'});
-      console.log($scope.elements)
     }
 
     $scope.addLogo = function () {
