@@ -7,8 +7,5 @@ app.directive('ourDiv', function () {
 });
 
 app.controller('DivController', function ($scope) {
-    $( function() {
-      $(".draggable").draggable();
-      $(".resizable").resizable();
-    } );
+    
 });
