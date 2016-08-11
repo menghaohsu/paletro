@@ -6,7 +6,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('HomeController', function ($scope) {
+app.controller('HomeController', function ($scope, $rootScope) {
     $(".button-collapse").sideNav();
     $('.collapsible').collapsible();
     $scope.elements = [];
@@ -38,7 +38,9 @@ app.controller('HomeController', function ($scope) {
 
     $scope.addText = function () {
       $scope.elements.push({type: 'textbox'});
+
       $('.button-collapse').sideNav('hide');
+
     }
 
     $scope.finished = function () {
@@ -48,4 +50,18 @@ app.controller('HomeController', function ($scope) {
       console.log(p.innerHTML);
 
     }
+
+    $scope.setColor = function (color) {
+      $scope.selectedColor = color;
+      console.log($scope.selectedColor, "here")
+      $rootScope.$broadcast('colorChange', $scope.selectedColor)
+    }
+    
+  
+    
+
+    
+
+
+
 });

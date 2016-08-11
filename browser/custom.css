@@ -26,3 +26,8 @@ html {
   position: fixed;
   width: 100%;
 }
+
+.selected {
+  border: 1px solid blue;
+
+}
