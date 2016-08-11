@@ -13,13 +13,15 @@
   </ul>
   <a data-activates="slide-out" class="button-collapse btn-floating btn-large waves-effect waves-light teal" id="edit-button"><i class="material-icons">label_outline</i></a>
 
-  <div id="canvas" ng-repeat="element in elements">
-    <user-navbar ng-show="element.type === 'navbar'"></user-navbar>
-    <fullstack-logo ng-show="element.type === 'logo'"></fullstack-logo>
-    <new-button ng-show="element.type === 'button'"></new-button>
-    <our-div ng-show="element.type === 'div'"></our-div>
-    <user-image ng-show="element.type === 'image'"></user-image>
-    <text-box ng-show="element.type === 'textbox'"></text-box>
+  <div id="canvas">
+    <div ng-repeat="element in elements">
+      <user-navbar ng-show="element.type === 'navbar'"></user-navbar>
+      <fullstack-logo ng-show="element.type === 'logo'"></fullstack-logo>
+      <new-button ng-show="element.type === 'button'"></new-button>
+      <our-div ng-show="element.type === 'div'"></our-div>
+      <user-image ng-show="element.type === 'image'"></user-image>
+      <text-box ng-show="element.type === 'textbox'"></text-box>
+    </div>
   </div>
 
 </section>

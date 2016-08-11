@@ -41,8 +41,10 @@ app.controller('HomeController', function ($scope) {
     }
 
     $scope.finished = function () {
-      console.log($('#home'));
-      var p = document.getElementById("home");
+      var p = document.getElementById("canvas");
       var pClone = p.cloneNode(true);
+      console.log(pClone);
+      console.log(p.innerHTML);
+
     }
 });
