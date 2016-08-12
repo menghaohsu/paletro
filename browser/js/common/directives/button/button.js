@@ -40,19 +40,23 @@ app.directive('newButton', function () {
 
 app.controller('BtnController', function ($scope) {
     $( function() {
-      $('.draggable').draggable({
-        cancel:false,
-        stop: function(event, obj) {      
-            $scope.$parent.elements[$scope.$index].left = obj.position.left;
-            $scope.$parent.elements[$scope.$index].top = obj.position.top;
+      $('.draggable.btn-1').draggable({
+        cancel: false,
+        stop: function (event, obj) {
+            let ind = $scope.$parent.$index;
+            console.log('stopped dragging button', $scope, $scope.$parent.$index);
+            $scope.$parent.elements[ind].left = obj.position.left;
+            $scope.$parent.elements[ind].top = obj.position.top;
         }
-    });
-      $('.resizable').resizable({
-            cancel:false,
-            stop: function(event, obj) {
-                $scope.$parent.elements[$scope.$index].width = obj.size.width;
-                $scope.$parent.elements[$scope.$index].height = obj.size.height;
-            }
-        });
+      });
+      $('.resizable.btn').resizable({
+        cancel:false,
+        stop: function (event, obj) {
+          let ind = $scope.$parent.$index;
+          console.log('stopped resizing', $scope, ind);
+          $scope.$parent.elements[ind].width = obj.size.width;
+          $scope.$parent.elements[ind].height = obj.size.height;
+        }
+      });
     });
 });

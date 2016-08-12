@@ -8,16 +8,20 @@ app.directive('fullstackLogo', function () {
 
 app.controller('LogoController', function ($scope) {
     $( function() {
-      $( ".draggable" ).draggable({
-        stop: function(event, obj) {      
-          $scope.$parent.elements[$scope.$index].left = obj.position.left;
-          $scope.$parent.elements[$scope.$index].top = obj.position.top;
+      $( ".draggable.logo" ).draggable({
+        stop: function(event, obj) {
+          console.log('stopped dragging logo');
+          let ind = $scope.$index;
+          $scope.$parent.elements[ind].left = obj.position.left;
+          $scope.$parent.elements[ind].top = obj.position.top;
         }
       });
       $(".logo").resizable({
         stop: function(event, obj) {
-          $scope.$parent.elements[$scope.$index].width = obj.size.width;
-          $scope.$parent.elements[$scope.$index].height = obj.size.height;
+          console.log('stopped resizing logo');
+          let ind = $scope.$index;
+          $scope.$parent.elements[ind].width = obj.size.width;
+          $scope.$parent.elements[ind].height = obj.size.height;
         }
       });
     } );

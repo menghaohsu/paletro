@@ -5,18 +5,23 @@ app.directive('userImage', function () {
             image: '='
         },
         templateUrl: 'js/common/directives/user-image/user-image.html',
-        link: function(scope,element){
+        link: function(scope, element){
             $(element).draggable({
-                stop: function(event, obj) {      
-                    $scope.$parent.elements[$scope.$index].left = obj.position.left;
-                    $scope.$parent.elements[$scope.$index].top = obj.position.top;
+                stop: function(event, obj) {
+                    console.log("image dragging", scope.$parent);
+                    let ind = scope.$parent.$index;
+                    scope.$parent.$parent.elements[ind].left = obj.position.left;
+                    scope.$parent.$parent.elements[ind].top = obj.position.top;
                 }
             });
+
             $(element).find('.image').on('load', function(event){
                 $(element).find('.image').resizable({
                     stop: function(event, obj) {
-                        $scope.$parent.elements[$scope.$index].width = obj.size.width;
-                        $scope.$parent.elements[$scope.$index].height = obj.size.height;
+                        console.log('Image resizing')
+                        let ind = scope.$parent.$index;
+                        scope.$parent.$parent.elements[ind].width = obj.size.width;
+                        scope.$parent.$parent.elements[ind].height = obj.size.height;
                     }
                 });
             })

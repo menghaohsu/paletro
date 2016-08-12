@@ -8,16 +8,19 @@ app.directive('textBox', function () {
 
 app.controller('BoxController', function ($scope) {
     $( function() {
-      $(".draggable").draggable({
-      	stop: function(event, obj) {      
-            $scope.$parent.elements[$scope.$index].left = obj.position.left;
-            $scope.$parent.elements[$scope.$index].top = obj.position.top;
+      $(".draggable.textbox").draggable({
+      	stop: function (event, obj) {
+          console.log('stopped dragging textbox', $scope.$index);
+          $scope.$parent.elements[$scope.$index].left = obj.position.left;
+          $scope.$parent.elements[$scope.$index].top = obj.position.top;
         }
       });
-      $(".resizable").resizable({
-      	stop: function(event, obj) {
-            $scope.$parent.elements[$scope.$index].width = obj.size.width;
-            $scope.$parent.elements[$scope.$index].height = obj.size.height;
+      $(".resizable.textbox").resizable({
+      	stop: function (event, obj) {
+          console.log('stopped resizing textbox', $scope.$index);
+          console.log($scope.$parent);
+          $scope.$parent.elements[$scope.$index].width = obj.size.width;
+          $scope.$parent.elements[$scope.$index].height = obj.size.height;
         }
       });
     } );
