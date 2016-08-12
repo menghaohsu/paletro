@@ -6,7 +6,8 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('HomeController', function ($scope, Home) {
+
+app.controller('HomeController', function ($scope, $rootScope, Home) {
     $(".button-collapse").sideNav();
     $('.collapsible').collapsible();
     $scope.elements = [];
@@ -49,6 +50,19 @@ app.controller('HomeController', function ($scope, Home) {
       $scope.elements.map(Home.create(element)
         .then(function(){
           console.log('create success!!')
-        }))
-    } 
+        })) 
+    }
+
+    $scope.selectedColor = 'blue';
+    $scope.setColor = function (color) {
+      $scope.selectedColor = color;
+      $rootScope.$broadcast('colorChange', $scope.selectedColor)
+    }
+
+    $scope.setShade = function (shade) {
+      $scope.selectedShade = shade;
+      $rootScope.$broadcast('shadeChange', $scope.selectedShade)
+    }
+
 });
+
