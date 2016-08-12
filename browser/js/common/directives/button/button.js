@@ -17,7 +17,7 @@ app.directive('newButton', function () {
 	        	else theButton.removeClass("selected");
           });
 
-        	scope.currentColor = 'light-blue'
+        	scope.currentColor = 'blue'
           scope.$on('colorChange', function(event, color){
             if (scope.isSelected) {
               theButton.removeClass(scope.currentColor);

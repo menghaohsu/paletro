@@ -14,7 +14,7 @@ app.directive('userNavbar', function () {
 
             if (scope.isSelected) theNavbar.addClass("selected");
             else theNavbar.removeClass("selected");
-          })
+          });
 
           scope.currentColor = 'blue'
           scope.$on('colorChange', function(event, color){
