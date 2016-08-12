@@ -38,9 +38,7 @@ app.controller('HomeController', function ($scope, $rootScope) {
 
     $scope.addText = function () {
       $scope.elements.push({type: 'textbox'});
-
       $('.button-collapse').sideNav('hide');
-
     }
 
     $scope.finished = function () {
@@ -51,17 +49,15 @@ app.controller('HomeController', function ($scope, $rootScope) {
 
     }
 
+    $scope.selectedColor = 'blue';
     $scope.setColor = function (color) {
       $scope.selectedColor = color;
-      console.log($scope.selectedColor, "here")
       $rootScope.$broadcast('colorChange', $scope.selectedColor)
     }
-    
-  
-    
 
-    
-
-
+    $scope.setShade = function (shade) {
+      $scope.selectedShade = shade;
+      $rootScope.$broadcast('shadeChange', $scope.selectedShade)
+    }
 
 });

@@ -2,32 +2,85 @@
 
   <ul id="slide-out" class="side-nav">
     <br><br><br><br>
-     <li><a class="waves-effect" ng-click=addNavbar()>New Navbar</a></li>
-    <li><a class="waves-effect" ng-click=addLogo()>New Logo</a></li>
-    <li><a class="waves-effect" ng-click=addButton()>New Button</a></li>
-    <li><a class="waves-effect" ng-click=addDiv()>New Div</a></li>
     <li class="no-padding">
       <ul class="collapsible collapsible-accordion">
-        <li class="bold"><a class="collapsible-header  waves-effect waves-teal">New Image</a>
+        <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">add_to_photos</i>New Component</a>
           <div class="collapsible-body">
             <ul>
-              <li><form class="image" novalidate>
-                Image Url: <input type='text' ng-model='image.url'>
-                <input type='submit' ng-click='addImage()' required>
+              <li><a class="waves-effect" ng-click=addNavbar()>New Navbar</a></li>
+              <li><a class="waves-effect" ng-click=addLogo()>New Logo</a></li>
+              <li><a class="waves-effect" ng-click=addButton()>New Button</a></li>
+              <li><a class="waves-effect" ng-click=addDiv()>New Div</a></li>
+              <li><a class="waves-effect" ng-click=addText()>New Text Box</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </li>
+
+    <li class="no-padding">
+      <ul class="collapsible collapsible-accordion">
+        <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">insert_photo</i>New Image</a>
+          <div class="collapsible-body">
+            <ul>
+              <li><form class="image container input-field" novalidate>
+                <input placeholder="Enter Img Url" type='text' ng-model='image.url'>
+                <button class="btn btn-submit" type='submit' ng-click='addImage()' required>Add Image <i class="material-icons right">send</i></button>
               </form></li>
             </ul>
           </div>
         </li>
       </ul>
     </li>
-    <li><a class="waves-effect" ng-click=addText()>New Text Box</a></li>
+
     <li><button class="btn" id="finish-button" ng-click="finished()">finished</button></li>
-    <li><button ng-click ="setColor('red')">red</button></li>
 
   </ul>
   <a data-activates="slide-out" class="button-collapse btn-floating btn-large waves-effect waves-light teal" id="edit-button"><i class="material-icons">label_outline</i></a>
-  
- 
+
+  <div class="fixed-action-btn horizontal" id="color-picker">
+    <a class="btn-floating btn-large red">
+      <i class="material-icons">color_lens</i>
+    </a>
+    <ul>
+      <li><a ng-click="setColor('black')" class="btn-floating black {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('brown')" class="btn-floating brown {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('red')" class="btn-floating red {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('deep-orange')" class="btn-floating deep-orange {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('yellow')" class="btn-floating yellow {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('green')" class="btn-floating green {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('light-blue')" class="btn-floating light-blue {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('indigo')" class="btn-floating indigo {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('purple')" class="btn-floating purple {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+
+      <li><a ng-click="setColor('white')" class="btn-floating white {{selectedShade}}"><i class="material-icons black-text">brush</i></a></li>
+      <li><a ng-click="setColor('grey')" class="btn-floating grey {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('pink')" class="btn-floating pink {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('orange')" class="btn-floating orange {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('lime')" class="btn-floating lime {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('light-green')" class="btn-floating light-green {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('teal')" class="btn-floating teal {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('blue')" class="btn-floating blue {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('deep-purple')" class="btn-floating deep-purple {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+    </ul>
+  </div>
+
+  <div class="fixed-action-btn horizontal" id="shade-picker">
+    <a class="btn-floating btn-large {{selectedColor}}">
+      <i class="material-icons">iso</i>
+    </a>
+    <ul>
+      <li><a ng-click="setShade('darken-4')" class="btn-floating {{selectedColor}} darken-4"><i class="material-icons">crop_square</i></a></li>
+      <li><a ng-click="setShade('darken-2')" class="btn-floating {{selectedColor}} darken-2"><i class="material-icons">crop_square</i></a></li>
+      <li><a ng-click="setShade('darken-1')" class="btn-floating {{selectedColor}} darken-1"><i class="material-icons">crop_square</i></a></li>
+      <li><a ng-click="setShade('original')" class="btn-floating {{selectedColor}}"><i class="material-icons">crop_square</i></a></li>
+      <li><a ng-click="setShade('lighten-1')" class="btn-floating {{selectedColor}} lighten-1"><i class="material-icons">crop_square</i></a></li>
+      <li><a ng-click="setShade('lighten-2')" class="btn-floating {{selectedColor}} lighten-2"><i class="material-icons">crop_square</i></a></li>
+      <li><a ng-click="setShade('lighten-3')" class="btn-floating {{selectedColor}} lighten-3"><i class="material-icons">crop_square</i></a></li>
+      <li><a ng-click="setShade('lighten-4')" class="btn-floating {{selectedColor}} lighten-4"><i class="material-icons">crop_square</i></a></li>
+      <li><a ng-click="setShade('lighten-5')" class="btn-floating {{selectedColor}} lighten-5"><i class="material-icons">crop_square</i></a></li>
+    </ul>
+  </div>
 
   <div id="canvas">
     <div ng-repeat="element in elements">
