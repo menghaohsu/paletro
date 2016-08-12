@@ -4,6 +4,7 @@ var Element = require('../../../db/models/project')
 module.exports = router;
 
 router.get('/', function(req,res,next){
+	
 	return Project.findAll({
 		where:{
 			userId: req.params.userId
