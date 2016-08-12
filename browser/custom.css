@@ -12,15 +12,28 @@ html {
 }
 
 #edit-button {
-  top: 50%;
+  top: 40%;
   left: 8px;
   position: fixed;
 }
 
+
+/*Sidebar Elements CSS*/
 #finish-button {
   margin-left: 30px;
 }
 
+/*Color Picker CSS*/
+#color-picker {
+  top: 20%;
+  right: 24px;
+}
+#shade-picker {
+  top: 40%;
+  right: 24px;
+}
+
+/*Components CSS*/
 #user-navbar {
   top: 65px;
   position: fixed;
@@ -29,5 +42,4 @@ html {
 
 .selected {
   border: 1px solid blue;
-
 }
