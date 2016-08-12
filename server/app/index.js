@@ -30,6 +30,10 @@ module.exports = function (db) {
 
     });
 
+    app.get('/testing', function (req, res) {
+        res.sendFile(path.join(__dirname, '/views/testing.html'));
+    })
+
     app.get('/*', function (req, res) {
         res.sendFile(app.get('indexHTMLPath'));
     });

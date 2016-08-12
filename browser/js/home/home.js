@@ -47,10 +47,11 @@ app.controller('HomeController', function ($scope, $rootScope, Home) {
       // var pClone = p.cloneNode(true);
       // console.log(pClone);
       // console.log(p.innerHTML);
+      console.log($scope.elements);
       $scope.elements.map(Home.create(element)
         .then(function(){
           console.log('create success!!')
-        })) 
+        }))
     }
 
     $scope.selectedColor = 'blue';
