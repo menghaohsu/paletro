@@ -7,8 +7,5 @@ app.directive('userNavbar', function () {
 });
 
 app.controller('UserNavbarController', function ($scope) {
-	$( function() {
-      $('.draggable').draggable();
-      $('.resizable').resizable();
-    } );
+
 });

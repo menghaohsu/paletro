@@ -6,7 +6,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('HomeController', function ($scope) {
+app.controller('HomeController', function ($scope, Home) {
     $(".button-collapse").sideNav();
     $('.collapsible').collapsible();
     $scope.elements = [];
@@ -42,10 +42,13 @@ app.controller('HomeController', function ($scope) {
     }
 
     $scope.finished = function () {
-      var p = document.getElementById("canvas");
-      var pClone = p.cloneNode(true);
-      console.log(pClone);
-      console.log(p.innerHTML);
-
-    }
+      // var p = document.getElementById("canvas");
+      // var pClone = p.cloneNode(true);
+      // console.log(pClone);
+      // console.log(p.innerHTML);
+      $scope.elements.map(Home.create(element)
+        .then(function(){
+          console.log('create success!!')
+        }))
+    } 
 });
