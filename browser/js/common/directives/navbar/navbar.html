@@ -7,11 +7,10 @@
         <li><a >About</a></li>
         <li><a ui-sref='Projects'>Projects</a></li>
         <li><a ng-show="!user" ui-sref="login" class="waves-effect waves-light btn">Login</a></li>
-        <button ng-show="!user" ui-sref="register" class="btn login-button btn-space">Sign Up</button>
-        <div ng-show="user" class="welcome">
-            <span>Welcome, {{ user.email }}!</span>
-            <a ng-click="logout()" class="user">Logout</a>
-        </div>
+        <li><a ng-show="!user" ui-sref="register" class="waves-effect waves-light btn">Sign Up</a></li>
+        <li><a ng-show="user" style="color:blue">Welcome, {{ user.email }}!</a></li>
+        <li><a ng-show="user" ng-click="logout()" class="user">Logout </a></li>
+
       </ul>
     </div>
   </nav>

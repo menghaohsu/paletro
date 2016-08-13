@@ -4,14 +4,14 @@ app.factory('ProjectFactory', function($http) {
 
 
   project.getProjects = function() {
-    return $http.get('/projects')
+    return $http.get('/api/projects')
     .then(function(res){
       return res.data
     })
   }
 
   project.deleteById = function(id){
-    return $http.delete('/projects/' + id)
+    return $http.delete('/api/projects/' + id)
       .then(function(response){
         return response.data
       })
@@ -19,7 +19,7 @@ app.factory('ProjectFactory', function($http) {
 
 
   project.addProject = function(){
-    return $http.create('/projects')
+    return $http.create('/api/projects')
     .then(function(response){
       return response.data
     })

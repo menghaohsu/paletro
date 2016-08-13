@@ -1,7 +1,8 @@
+'use strict';
 var router = require('express').Router();
-var Project = require('../../../db/models/project')
-var Element = require('../../../db/models/project')
 module.exports = router;
+var db = require('../../../db')
+var Project = db.model('project')
 
 router.get('/', function(req,res,next){
 	

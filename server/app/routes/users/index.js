@@ -1,7 +1,7 @@
 'use strict';
 var router = require('express').Router();
 module.exports = router;
-var db = require('../../db')
+var db = require('../../../db')
 var User = db.model('user')
 
 // GET Routes
@@ -90,6 +90,7 @@ router.put('/:id', function (req, res, next){
 // POST Routes
 router.post('/', function (req, res, next){
   // check that user is current user or Admin
+ 
   if ( req.user && req.user.status !== 'admin' ){
     res.status(403).send('Forbidden');
     return

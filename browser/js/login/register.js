@@ -1,3 +1,4 @@
+
 app.config(function($stateProvider){
 	$stateProvider.state('register', {
 		url:'/register',
@@ -13,9 +14,10 @@ app.controller('RegisterCtrl', function($scope, $state, RegisterFactory, AuthSer
         RegisterFactory.create($scope.register)
         .then(function(){
             let obj = {email: $scope.register.email, password: $scope.register.password}
+            console.log(obj)
 
             AuthService.login(obj).then(function () {
-                $state.go('ourhome');
+                $state.go('home');
             }).catch(function () {
                 $scope.error = 'Invalid login credentials.';
             });
