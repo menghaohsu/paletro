@@ -49,6 +49,15 @@ html {
 }
 
 /*Misc*/
+.error {
+  border: 1px solid;
+  margin: 10px 0px;
+  padding:15px 10px 15px 50px;
+  max-width: 300px;
+  color: #D8000C;
+  background-color: #FFD1D1;
+}
+
 #deleteProj {
   margin-left: 5px;
 }

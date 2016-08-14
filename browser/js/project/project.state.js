@@ -1,5 +1,5 @@
 app.config(function ($stateProvider) {
-    $stateProvider.state('Projects', {
+    $stateProvider.state('projects', {
         url: '/projects',
         controller: 'ProjectController',
         templateUrl: 'js/project/projects.html',

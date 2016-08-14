@@ -14,16 +14,15 @@ app.controller('RegisterCtrl', function($scope, $state, RegisterFactory, AuthSer
         RegisterFactory.create($scope.register)
         .then(function(){
             let obj = {email: $scope.register.email, password: $scope.register.password}
-            console.log(obj)
 
             AuthService.login(obj).then(function () {
                 $state.go('home');
             }).catch(function () {
-                $scope.error = 'Invalid login credentials.';
+                $scope.error = 'Invalid login credentials!';
             });
         })
         .catch(function(){
-            $scope.error = 'Email is already registered!'
+            $scope.error = 'Email is invalid or already registered!'
             $scope.register.email = ''
             $scope.register.password = ''
         })
