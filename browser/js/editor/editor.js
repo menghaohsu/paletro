@@ -23,8 +23,6 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     $scope.elements = theProject.elements;
     $scope.projectName = theProject.name;
 
-    var obj = {}
-
     $scope.colors = ['black', 'brown', 'red', 'deep-orange', 'yellow', 'light-green', 'light-blue', 'indigo', 'purple', 'white', 'grey', 'pink', 'orange', 'lime', 'green', 'teal', 'blue', 'deep-purple'];
 
     $scope.shades = ['darken-4', 'darken-3', 'darken-2', 'original', 'lighten-1', 'lighten-2', 'lighten-3', 'lighten-4', 'lighten-5']
@@ -44,14 +42,6 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     }
 
     $scope.finished = function () {
-
-      /*var stringedElements =JSON.stringify($scope.elements)
-      obj.contents = stringedElements*/
-
-      // var p = document.getElementById("canvas");
-      // var pClone = p.cloneNode(true);
-      // console.log(pClone);
-      // console.log(p.innerHTML);
       EditorFactory.deleteElements(theProject.id)
       .then(function(){
         $scope.elements.map(element => EditorFactory.createElement(element))
