@@ -22,33 +22,13 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     $scope.elements = theProject.elements;
     var obj = {}
 
-    $scope.addNavbar = function () {
-      $scope.elements.push({type: 'navbar'});
-      $('.button-collapse').sideNav('hide');
-    }
-
-    $scope.addLogo = function () {
-      $scope.elements.push({type: 'logo'});
-      $('.button-collapse').sideNav('hide');
-    }
-
-    $scope.addButton = function () {
-      $scope.elements.push({type: 'button'});
-      $('.button-collapse').sideNav('hide');
-    }
-
-    $scope.addDiv = function () {
-      $scope.elements.push({type: 'div'});
+    $scope.addComponent = function (type) {
+      $scope.elements.push({type: type});
       $('.button-collapse').sideNav('hide');
     }
 
     $scope.addImage = function () {
       $scope.elements.push({type: 'image', url: $scope.image.url});
-      $('.button-collapse').sideNav('hide');
-    }
-
-    $scope.addText = function () {
-      $scope.elements.push({type: 'textbox'});
       $('.button-collapse').sideNav('hide');
     }
 
