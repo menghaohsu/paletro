@@ -20,6 +20,8 @@ name in the environment files.
 var chalk = require('chalk');
 var db = require('./server/db');
 var User = db.model('user');
+var Project = db.model('project');
+var Element = db.model('element');
 var Promise = require('sequelize').Promise;
 
 var seedUsers = function () {
@@ -42,9 +44,85 @@ var seedUsers = function () {
     return Promise.all(creatingUsers);
 };
 
+var seedProjects = function(){
+    var projects = [
+        {
+            userId: '2',
+            name: 'Obama\'s 1st Project'
+        },
+        {
+            userId: '2',
+            name: 'Obama\'s 2nd Project'
+        }
+    ]
+   var creatingProjects = projects.map(function (projectObj) {
+        return Project.create(projectObj);
+    });
+
+    return Promise.all(creatingProjects);
+};
+
+var seedElements = function(){
+    var elements = [
+        {
+            type: 'navbar',
+            color: 'red',
+            shade: 'lighten-1',
+            projectId: '1'
+        },
+        {
+            type: 'logo',
+            top: '100',
+            left: '300',
+            width: '50',
+            height: '50',
+            projectId: '1'
+        },
+        {
+            type: 'div',
+            top: '300',
+            left: '100',
+            width: '200',
+            height: '200',
+            projectId: '1'
+        },
+        {
+            type: 'button',
+            top: '400',
+            left: '100',
+            width: '200',
+            height: '50',
+            color: 'green',
+            shade: 'darken-1',
+            projectId: '1'
+        },
+        {
+            type: 'image',
+            top: '320',
+            left: '120',
+            width: '150',
+            height: '150',
+            url: 'https://pbs.twimg.com/profile_images/682333466218774529/R6xUsIqq.jpg',
+            projectId: '1'
+        },
+
+    ]
+    var creatingElements = elements.map(function (elementObj) {
+        return Element.create(elementObj);
+    });
+
+    return Promise.all(creatingElements);
+};
+
 db.sync({ force: true })
     .then(function () {
         return seedUsers();
+    })
+    .then(function () {
+        return seedProjects();
+    })
+    .then(function () {
+        return seedElements();
     })
     .then(function () {
         console.log(chalk.green('Seed successful!'));

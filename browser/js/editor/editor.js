@@ -1,9 +1,14 @@
 
 app.config(function ($stateProvider) {
     $stateProvider.state('editor', {
-        url: '/',
+        url: '/editor/:id',
         controller: 'EditorController',
-        templateUrl: 'js/editor/editor.html'
+        templateUrl: 'js/editor/editor.html',
+        resolve: {
+          theProject: function (ProjectFactory, $stateParams) {
+            return ProjectFactory.fetchAllElements($stateParams.id);
+          }
+        }
     });
 });
 

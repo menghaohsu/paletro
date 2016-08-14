@@ -6,6 +6,7 @@ module.exports = db.define('project',{
       type: Sequelize.STRING
     },
     name: {
-    	type: Sequelize.STRING
+    	type: Sequelize.STRING,
+      defaultValue: 'Untitled Project'
     }
 });
