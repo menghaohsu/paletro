@@ -17,15 +17,8 @@ module.exports = db.define('user', {
     salt: {
         type: Sequelize.STRING
     },
-    // twitter_id: {
-    //     type: Sequelize.STRING
-    // },
-    // facebook_id: {
-    //     type: Sequelize.STRING
-    // },
     firstName: Sequelize.STRING,
     lastName: Sequelize.STRING,
-
     status: {
         type: Sequelize.STRING,
          defaultValue: 'guest'
@@ -35,10 +28,10 @@ module.exports = db.define('user', {
     },
     google_id: {
         type: Sequelize.STRING
-    },
-    cart: {
-        type: Sequelize.ARRAY(Sequelize.JSON)
     }
+    // facebook_id: {
+    //     type: Sequelize.STRING
+    // }
 }, {
     instanceMethods: {
         sanitize: function () {
