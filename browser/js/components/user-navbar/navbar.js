@@ -3,7 +3,7 @@ app.directive('userNavbar', function () {
         restrict: 'E',
         scope: {},
         controller: 'UserNavbarController',
-        templateUrl: 'js/common/directives/our-navbar/navbar.html',
+        templateUrl: 'js/components/user-navbar/navbar.html',
         link: function(scope, elem, attr) {
 
           var theNavbar = $(elem).find('nav');

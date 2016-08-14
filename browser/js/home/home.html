@@ -50,7 +50,7 @@
       <li><a ng-click="setColor('red')" class="btn-floating red {{selectedShade}}"><i class="material-icons">brush</i></a></li>
       <li><a ng-click="setColor('deep-orange')" class="btn-floating deep-orange {{selectedShade}}"><i class="material-icons">brush</i></a></li>
       <li><a ng-click="setColor('yellow')" class="btn-floating yellow {{selectedShade}}"><i class="material-icons">brush</i></a></li>
-      <li><a ng-click="setColor('green')" class="btn-floating green {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('light-green')" class="btn-floating light-green {{selectedShade}}"><i class="material-icons">brush</i></a></li>
       <li><a ng-click="setColor('light-blue')" class="btn-floating light-blue {{selectedShade}}"><i class="material-icons">brush</i></a></li>
       <li><a ng-click="setColor('indigo')" class="btn-floating indigo {{selectedShade}}"><i class="material-icons">brush</i></a></li>
       <li><a ng-click="setColor('purple')" class="btn-floating purple {{selectedShade}}"><i class="material-icons">brush</i></a></li>
@@ -60,7 +60,7 @@
       <li><a ng-click="setColor('pink')" class="btn-floating pink {{selectedShade}}"><i class="material-icons">brush</i></a></li>
       <li><a ng-click="setColor('orange')" class="btn-floating orange {{selectedShade}}"><i class="material-icons">brush</i></a></li>
       <li><a ng-click="setColor('lime')" class="btn-floating lime {{selectedShade}}"><i class="material-icons">brush</i></a></li>
-      <li><a ng-click="setColor('light-green')" class="btn-floating light-green {{selectedShade}}"><i class="material-icons">brush</i></a></li>
+      <li><a ng-click="setColor('green')" class="btn-floating green {{selectedShade}}"><i class="material-icons">brush</i></a></li>
       <li><a ng-click="setColor('teal')" class="btn-floating teal {{selectedShade}}"><i class="material-icons">brush</i></a></li>
       <li><a ng-click="setColor('blue')" class="btn-floating blue {{selectedShade}}"><i class="material-icons">brush</i></a></li>
       <li><a ng-click="setColor('deep-purple')" class="btn-floating deep-purple {{selectedShade}}"><i class="material-icons">brush</i></a></li>
@@ -89,9 +89,8 @@
       <user-navbar ng-show="element.type === 'navbar'"></user-navbar>
       <fullstack-logo ng-show="element.type === 'logo'"></fullstack-logo>
       <new-button ng-show="element.type === 'button'"></new-button>
-      <our-div ng-show="element.type === 'div'"></our-div>
+      <user-div ng-show="element.type === 'div'"></user-div>
       <user-image ng-show="element.type === 'image'" image='element.url'></user-image>
-
       <text-box ng-show="element.type === 'textbox'"></text-box>
     </div>
   </div>
