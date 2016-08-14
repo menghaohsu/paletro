@@ -30,5 +30,12 @@ app.factory('ProjectFactory', function($http) {
     })
   }
 
+  project.updateName = function (projectId, name) {
+    return $http.put('/api/projects/' + projectId, {name: name})
+    .then(function (res) {
+      return res.data;
+    })
+  }
+
   return project;
 })

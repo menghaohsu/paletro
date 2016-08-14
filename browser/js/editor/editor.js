@@ -5,9 +5,10 @@ app.config(function ($stateProvider) {
         controller: 'EditorController',
         templateUrl: 'js/editor/editor.html',
         resolve: {
-          theProject: function (ProjectFactory, $stateParams) {
+          theProject: function (ProjectFactory, $stateParams, $state) {
             return ProjectFactory.getAllElements($stateParams.id)
             .then(function(res){
+              if (!res.length) return $state.go('home'); //redirect if the projectId does not belong to user
               return res[0];
             })
           }
@@ -20,6 +21,8 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     $(".button-collapse").sideNav();
     $('.collapsible').collapsible();
     $scope.elements = theProject.elements;
+    $scope.projectName = theProject.name;
+
     var obj = {}
 
     $scope.colors = ['black', 'brown', 'red', 'deep-orange', 'yellow', 'light-green', 'light-blue', 'indigo', 'purple', 'white', 'grey', 'pink', 'orange', 'lime', 'green', 'teal', 'blue', 'deep-purple'];
@@ -36,8 +39,8 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
       $('.button-collapse').sideNav('hide');
     }
 
-    $scope.addProjectName = function () {
-      obj.name = $scope.projectName;
+    $scope.changeProjectName = function () {
+      return ProjectFactory.updateName(theProject.id, $scope.projectName);
     }
 
     $scope.finished = function () {

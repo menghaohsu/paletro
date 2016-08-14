@@ -3,7 +3,21 @@
   <ul id="slide-out" class="side-nav">
     <br><br><br><br>
     <li class="no-padding">
-      <ul class="collapsible collapsible-accordion">
+      <ul class="collapsible" data-collapsible="accordion">
+
+        <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">toc</i>Project Details</a>
+          <div class="collapsible-body">
+            <ul>
+              <li>
+                <form class="container">
+                <strong>Name:</strong> {{projectName}}
+                <input placeholder="Enter Project Name" type='text' ng-model='projectName'>
+                <button class="btn btn-submit" type='submit' ng-click='changeProjectName()' required>Update <i class="material-icons right">send</i></button>
+              </form></li>
+            </ul>
+          </div>
+        </li>
+
         <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">add_to_photos</i>New Component</a>
           <div class="collapsible-body">
             <ul>
@@ -15,12 +29,8 @@
             </ul>
           </div>
         </li>
-      </ul>
-    </li>
 
-    <li class="no-padding">
-      <ul class="collapsible collapsible-accordion">
-        <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">insert_photo</i>New Image</a>
+       <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">insert_photo</i>New Image</a>
           <div class="collapsible-body">
             <ul>
               <li><form class="image container input-field" novalidate>
@@ -30,12 +40,11 @@
             </ul>
           </div>
         </li>
+
+        <li><button class="btn" id="finish-button" ng-click="finished()">Save Project <i class="material-icons right">send</i></button></li>
+
       </ul>
     </li>
-    <li><form class = "project name">
-      <input placeholder= "Enter Project Name" type='text' ng-model='projectName'>
-      <button class="btn btn-submit" type='submit' ng-click='addProjectName()' required>Submit <i class="material-icons right">send</i></button>
-    <li><button class="btn" id="finish-button" ng-click="finished()">finished</button></li>
 
   </ul>
   <a data-activates="slide-out" class="button-collapse btn-floating btn-large waves-effect waves-light teal" id="edit-button"><i class="material-icons">label_outline</i></a>
@@ -55,14 +64,6 @@
     </a>
     <ul>
       <li ng-repeat="shade in shades"><a ng-click="setShade(shade)" class="btn-floating {{selectedColor}} {{shade}}"><i class="material-icons">crop_square</i></a></li>
-  <!--     <li><a ng-click="setShade('darken-2')" class="btn-floating {{selectedColor}} darken-2"><i class="material-icons">crop_square</i></a></li>
-      <li><a ng-click="setShade('darken-1')" class="btn-floating {{selectedColor}} darken-1"><i class="material-icons">crop_square</i></a></li>
-      <li><a ng-click="setShade('original')" class="btn-floating {{selectedColor}}"><i class="material-icons">crop_square</i></a></li>
-      <li><a ng-click="setShade('lighten-1')" class="btn-floating {{selectedColor}} lighten-1"><i class="material-icons">crop_square</i></a></li>
-      <li><a ng-click="setShade('lighten-2')" class="btn-floating {{selectedColor}} lighten-2"><i class="material-icons">crop_square</i></a></li>
-      <li><a ng-click="setShade('lighten-3')" class="btn-floating {{selectedColor}} lighten-3"><i class="material-icons">crop_square</i></a></li>
-      <li><a ng-click="setShade('lighten-4')" class="btn-floating {{selectedColor}} lighten-4"><i class="material-icons">crop_square</i></a></li>
-      <li><a ng-click="setShade('lighten-5')" class="btn-floating {{selectedColor}} lighten-5"><i class="material-icons">crop_square</i></a></li> -->
     </ul>
   </div>
 
