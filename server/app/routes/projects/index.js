@@ -9,7 +9,8 @@ router.get('/', function(req,res,next){
 	Project.findAll({
 		where: {
 			userId: req.user.id
-		}
+		},
+		order: '"updatedAt" DESC'
 	})
 	.then(function(projects){
 		res.send(projects);
@@ -44,6 +45,16 @@ router.put('/:id', function(req,res,next){
 	return Project.update(req.body)
 	.then(function(project){
 		res.json(project);
+	})
+	.catch(next)
+})
+
+router.delete('/:id', function(req,res,next){
+	Project.destroy({
+		where: { id: req.params.id }
+	})
+	.then(function(){
+		res.sendStatus(200);
 	})
 	.catch(next)
 })
