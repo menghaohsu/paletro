@@ -6,8 +6,16 @@ var Sequelize = require('sequelize');
 var db = require('../_db');
 
 module.exports = db.define('user', {
-    email: {
+    firstName: {
         type: Sequelize.STRING
+    },
+    lastName: {
+        type: Sequelize.STRING
+    },
+    email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
     },
     password: {
         type: Sequelize.STRING
@@ -15,15 +23,19 @@ module.exports = db.define('user', {
     salt: {
         type: Sequelize.STRING
     },
+/*    status: {
+        type: Sequelize.STRING,
+         defaultValue: 'guest'
+    },*/
     twitter_id: {
-        type: Sequelize.STRING
-    },
-    facebook_id: {
         type: Sequelize.STRING
     },
     google_id: {
         type: Sequelize.STRING
     }
+    // facebook_id: {
+    //     type: Sequelize.STRING
+    // }
 }, {
     instanceMethods: {
         sanitize: function () {
@@ -31,7 +43,13 @@ module.exports = db.define('user', {
         },
         correctPassword: function (candidatePassword) {
             return this.Model.encryptPassword(candidatePassword, this.salt) === this.password;
-        }
+        }/*,
+        changeStatus: function (newStatus) {
+            newStatus = newStatus.toLowerCase();
+            if (newStatus === 'guest') return;
+
+            return this.update({ status: newStatus});
+        }*/
     },
     classMethods: {
         generateSalt: function () {
@@ -45,9 +63,13 @@ module.exports = db.define('user', {
         }
     },
     hooks: {
-        beforeValidate: function (user) {
-            if (user.changed('password')) {
+        beforeCreate: function (user) {
+                if (!user.password) return
                 user.salt = user.Model.generateSalt();
+                user.password = user.Model.encryptPassword(user.password, user.salt);
+        },
+        beforeUpdate: function (user) {
+            if (user.changed('password')) {
                 user.password = user.Model.encryptPassword(user.password, user.salt);
             }
         }
