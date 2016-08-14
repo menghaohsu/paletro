@@ -17,7 +17,7 @@ app.config(function ($stateProvider) {
 
 app.controller('ProjectController', function ($scope, Home, AllProjects, ProjectFactory) {
 	
-	$scope.projectNames = AllProjects; //the AllProjects gives us the name of the project
+	$scope.projects = AllProjects; //the AllProjects gives us the name of the project
 	
 	var arr =[]	//decode the stringified AllProjects so we can access orginal content
 	for (var i = 0; i<AllProjects.length; i++) {
