@@ -3,9 +3,9 @@
   <div class="row">
     <h3>Log in</h3>
     <form name="loginForm" class="col s12 m8 l7" ng-submit="loginForm.$valid && sendLogin(login)">
-      <alert class="error" type="danger" ng-show="error">
+      <div class="error" type="danger" ng-show="error">
         {{ error }}
-      </alert>
+      </div>
       <div class="row">
         <div class="input-field col s12">
           <input ng-model="login.email" type="email" class="validate" required>
