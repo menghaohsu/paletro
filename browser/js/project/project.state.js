@@ -36,4 +36,8 @@ app.controller('ProjectController', function ($scope, AllProjects, ProjectFactor
 			$state.reload()
 		});
 	}
+
+  $scope.loadProject = function(input) {
+    $state.go('editor', { id: input });
+  }
 })

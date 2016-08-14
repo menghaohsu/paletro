@@ -6,17 +6,20 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/editor/editor.html',
         resolve: {
           theProject: function (ProjectFactory, $stateParams) {
-            return ProjectFactory.fetchAllElements($stateParams.id);
+            return ProjectFactory.getAllElements($stateParams.id)
+            .then(function(res){
+              return res[0];
+            })
           }
         }
     });
 });
 
 
-app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory) {
+app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject) {
     $(".button-collapse").sideNav();
     $('.collapsible').collapsible();
-    $scope.elements = [];
+    $scope.elements = theProject.elements;
     var obj = {}
 
     $scope.addNavbar = function () {
