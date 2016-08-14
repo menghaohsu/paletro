@@ -5,7 +5,6 @@ app.factory('ProjectFactory', function($http) {
   project.getProjects = function() {
     return $http.get('/api/projects')
     .then(function(res){
-      console.log(res.data);
       return res.data;
     })
   }
