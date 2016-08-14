@@ -4,7 +4,7 @@ app.directive('newButton', function () {
         restrict: 'E',
         scope: {},
         controller: 'BtnController',
-        templateUrl: 'js/common/directives/button/button.html',
+        templateUrl: 'js/components/button/button.html',
         link: function(scope, elem, attr) {
 
         	var theButton = $(elem.find('button')[0]);
@@ -40,20 +40,19 @@ app.directive('newButton', function () {
 
 app.controller('BtnController', function ($scope) {
     $( function() {
+      let ind = $scope.$parent.$index;
       $('.draggable.btn-1').draggable({
         cancel: false,
         stop: function (event, obj) {
-            let ind = $scope.$parent.$index;
-            console.log('stopped dragging button', $scope, $scope.$parent.$index);
-            $scope.$parent.elements[ind].left = obj.position.left;
-            $scope.$parent.elements[ind].top = obj.position.top;
+          console.log('stopped dragging button', ind);
+          $scope.$parent.elements[ind].left = obj.position.left;
+          $scope.$parent.elements[ind].top = obj.position.top;
         }
       });
       $('.resizable.btn').resizable({
         cancel:false,
         stop: function (event, obj) {
-          let ind = $scope.$parent.$index;
-          console.log('stopped resizing', $scope, ind);
+          console.log('stopped resizing button', ind);
           $scope.$parent.elements[ind].width = obj.size.width;
           $scope.$parent.elements[ind].height = obj.size.height;
         }

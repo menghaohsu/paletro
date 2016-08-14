@@ -6,28 +6,25 @@ module.exports = db.define('element', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    left: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },
     top: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        type: Sequelize.INTEGER
+    },
+    left: {
+        type: Sequelize.INTEGER
     },
     width: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        type: Sequelize.INTEGER
     },
     height: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        type: Sequelize.INTEGER
     },
     color: {
-        type: Sequelize.STRING,
-        allowNull: true
+        type: Sequelize.STRING
     },
     shade: {
-        type: Sequelize.STRING,
-        allowNull: true
+        type: Sequelize.STRING
+    },
+    url: {
+        type: Sequelize.STRING
     }
 });

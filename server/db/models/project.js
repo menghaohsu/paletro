@@ -6,6 +6,14 @@ module.exports = db.define('project',{
       type: Sequelize.STRING
     },
     name: {
-    	type: Sequelize.STRING
+    	type: Sequelize.STRING,
+      defaultValue: 'Untitled Project'
     }
+}, {
+  getterMethods: {
+    lastUpdated: function () {
+      let dateStr = this.updatedAt.toString();
+      return dateStr.slice(0,3) + ',' + dateStr.slice(3, 15);
+    }
+  }
 });

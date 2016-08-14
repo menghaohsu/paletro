@@ -4,12 +4,12 @@ app.directive('userImage', function () {
         scope: {
             image: '='
         },
-        templateUrl: 'js/common/directives/user-image/user-image.html',
+        templateUrl: 'js/components/user-image/user-image.html',
         link: function(scope, element){
+            let ind = scope.$parent.$index;
             $(element).draggable({
                 stop: function(event, obj) {
-                    console.log("image dragging", scope.$parent);
-                    let ind = scope.$parent.$index;
+                    console.log("image dragging", ind);
                     scope.$parent.$parent.elements[ind].left = obj.position.left;
                     scope.$parent.$parent.elements[ind].top = obj.position.top;
                 }
@@ -18,8 +18,7 @@ app.directive('userImage', function () {
             $(element).find('.image').on('load', function(event){
                 $(element).find('.image').resizable({
                     stop: function(event, obj) {
-                        console.log('Image resizing')
-                        let ind = scope.$parent.$index;
+                        console.log('Image resizing', ind)
                         scope.$parent.$parent.elements[ind].width = obj.size.width;
                         scope.$parent.$parent.elements[ind].height = obj.size.height;
                     }

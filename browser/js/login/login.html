@@ -1,28 +1,31 @@
-<form id="login-form" name="loginForm" ng-submit="loginForm.$valid && sendLogin(login)">
-    <alert type="danger" ng-show="error">
+<div class="container">
+  <br><br>
+  <div class="row">
+    <h3>Log in</h3>
+    <form name="loginForm" class="col s12 m8 l7" ng-submit="loginForm.$valid && sendLogin(login)">
+      <alert class="error" type="danger" ng-show="error">
         {{ error }}
-    </alert>
-    <h3>Log in </h3>
-    <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="text" ng-model="login.email" class="form-control" id="email" placeholder="Enter email">
+      </alert>
+      <div class="row">
+        <div class="input-field col s12">
+          <input ng-model="login.email" type="email" class="validate" required>
+          <label for="email" data-error="Invalid Email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input ng-model="login.password" type="password" class="validate" required>
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <button type="submit" class="btn waves-effect waves-light">Submit</button>
+    </form>
+    <div class="col s12 m1 l1"></div>
+    <div class="col s12 m3 l4">
+      <br><br>
+      <button class="btn red waves-effect waves-light " href="/auth/google/"><i class="fa fa-google left"></i> Login with Google</button>
+      <br><br>
+      <button class="btn light-blue waves-effect waves-light " href="/auth/twitter/"><i class="fa fa-twitter left"></i> Login with Twitter</button>
     </div>
-    <div class="form-group">
-        <label for="login-password">Password</label>
-        <input type="password" ng-model="login.password" class="form-control" id="login-password" placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-    <a
-    class='btn btn-primary btn-google'
-    href="/auth/google/">
-        <span>Login with Google</span>
-    </a>
-
-    <a
-    class='btn btn-primary btn-twitter'
-    href="/auth/twitter">
-        <span>Login with Twitter</span>
-    </a>
-</form>
-
-
+  </div>
+</div>

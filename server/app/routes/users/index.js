@@ -95,9 +95,6 @@ router.post('/', function (req, res, next){
   //   return
   // }
   User.create(req.body)
-/*  .then(function (user){
-    return user.changeStatus('registered');
-  })*/
   .then(function(user) {
     res.status(200).send(user);
   })

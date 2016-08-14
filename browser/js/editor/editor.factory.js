@@ -1,29 +1,29 @@
-app.factory('Home', function($http){
-	var HomeFactory = {};
+app.factory('EditorFactory', function($http){
+	var EditorFactory = {};
 
-	HomeFactory.create = function(element){
+	EditorFactory.createElement = function(element){
 		return 	$http.post('/api/elements', element)
 		.then(function(res){
 			return res.data;
 		})
 	}
 
-	HomeFactory.getWebpage = function(id){
+	EditorFactory.getWebpage = function(id){
 		return $http.get('/api/elements/'+ id)
 		.then(function(res){
 			return res.data;
 		})
 	}
 
-	HomeFactory.update = function(id,element){
+	EditorFactory.update = function(id,element){
 		return $http.put('/api/elements/' + id, element)
 		.then(function(res){
 			return res.data;
 		})
 	}
 
-	HomeFactory.delete = function(id){
+	EditorFactory.delete = function(id){
 		return $http.delete('/api/elements/'+id)
 	}
-	return HomeFactory;
+	return EditorFactory;
 })
