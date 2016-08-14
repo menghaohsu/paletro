@@ -30,12 +30,12 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     $scope.shades = ['darken-4', 'darken-3', 'darken-2', 'original', 'lighten-1', 'lighten-2', 'lighten-3', 'lighten-4', 'lighten-5']
 
     $scope.addComponent = function (type) {
-      $scope.elements.push({type: type});
+      $scope.elements.push({type: type, projectId: theProject.id});
       $('.button-collapse').sideNav('hide');
     }
 
     $scope.addImage = function () {
-      $scope.elements.push({type: 'image', url: $scope.image.url});
+      $scope.elements.push({type: 'image', url: $scope.image.url, projectId: theProject.id});
       $('.button-collapse').sideNav('hide');
     }
 
@@ -45,20 +45,19 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
 
     $scope.finished = function () {
 
-      var stringedElements =JSON.stringify($scope.elements)
-
-      obj.contents = stringedElements
+      /*var stringedElements =JSON.stringify($scope.elements)
+      obj.contents = stringedElements*/
 
       // var p = document.getElementById("canvas");
       // var pClone = p.cloneNode(true);
       // console.log(pClone);
       // console.log(p.innerHTML);
-      EditorFactory.delete(1)
+      EditorFactory.deleteElements(theProject.id)
       .then(function(){
         $scope.elements.map(element => EditorFactory.createElement(element))
       })
       .then(function(){
-        ProjectFactory.create(obj)
+        console.log('success!');
       })
     }
 

@@ -22,8 +22,9 @@ app.factory('EditorFactory', function($http){
 		})
 	}
 
-	EditorFactory.delete = function(id){
-		return $http.delete('/api/elements/'+id)
+	EditorFactory.deleteElements = function(projectId){
+		return $http.delete('/api/elements/'+projectId)
 	}
+
 	return EditorFactory;
 })
