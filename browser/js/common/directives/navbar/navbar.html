@@ -5,11 +5,11 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a ui-sref="home">Home</a></li>
         <li><a >About</a></li>
-        <li><a ui-sref='Projects'>Projects</a></li>
+        <li><a ng-show="user" ui-sref='Projects'>Projects</a></li>
         <li><a ng-show="!user" ui-sref="login" class="waves-effect waves-light btn">Login</a></li>
         <li><a ng-show="!user" ui-sref="register" class="waves-effect waves-light btn">Sign Up</a></li>
         <li><a ng-show="user" style="color:blue">Welcome, {{ user.email }}!</a></li>
-        <li><a ng-show="user" ng-click="logout()" class="user">Logout </a></li>
+        <li><a ng-show="user" ng-click="logout()" class="btn login-button btn-space">Logout </a></li>
 
       </ul>
     </div>

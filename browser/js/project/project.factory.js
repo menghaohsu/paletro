@@ -6,7 +6,7 @@ app.factory('ProjectFactory', function($http) {
   project.getProjects = function() {
     return $http.get('/api/projects')
     .then(function(res){
-      return res.data
+    return res.data
     })
   }
 
@@ -17,9 +17,8 @@ app.factory('ProjectFactory', function($http) {
       })
   }
 
-
-  project.addProject = function(){
-    return $http.create('/api/projects')
+  project.create = function(elements){
+    return $http.post('/api/projects/create', elements)
     .then(function(response){
       return response.data
     })
