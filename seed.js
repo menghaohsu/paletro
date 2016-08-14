@@ -40,18 +40,17 @@ var seedUsers = function () {
     });
 
     return Promise.all(creatingUsers);
-
 };
 
 db.sync({ force: true })
-.then(function () {
-    console.log('resync successful')
-})
-    // .then(function () {
-    //     console.log(chalk.green('Seed successful!'));
-    //     process.exit(0);
-    // })
-    // .catch(function (err) {
-    //     console.error(err);
-    //     process.exit(1);
-    // });
+    .then(function () {
+        return seedUsers();
+    })
+    .then(function () {
+        console.log(chalk.green('Seed successful!'));
+        process.exit(0);
+    })
+    .catch(function (err) {
+        console.error(err);
+        process.exit(1);
+    });

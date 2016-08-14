@@ -81,7 +81,6 @@ router.put('/:id', function (req, res, next){
     else return user.update(req.body);
   })
   .then(function(user){
-    console.log("yayy", req.body)
     res.status(200).send(user);
   }).catch(next);
 })
@@ -90,15 +89,15 @@ router.put('/:id', function (req, res, next){
 // POST Routes
 router.post('/', function (req, res, next){
   // check that user is current user or Admin
- 
+
   // if ( req.user && req.user.status !== 'admin' ){
   //   res.status(403).send('Forbidden');
   //   return
   // }
   User.create(req.body)
-  .then(function (user){
+/*  .then(function (user){
     return user.changeStatus('registered');
-  })
+  })*/
   .then(function(user) {
     res.status(200).send(user);
   })
@@ -106,13 +105,13 @@ router.post('/', function (req, res, next){
 })
 
 
-router.post('/create', function (req, res, next){
+/*router.post('/create', function (req, res, next){
   // check that product doesnt already exist
-  
+
   User.create(req.body)
 
   .then(function(user) {
     res.status(200).send(user);
   })
   .catch(next);
-})
+})*/

@@ -3,18 +3,31 @@ var db = require('../_db');
 
 module.exports = db.define('element', {
     type: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     left: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
     },
     top: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
     },
     width: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
     },
     height: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    color: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    shade: {
+        type: Sequelize.STRING,
+        allowNull: true
     }
 });
