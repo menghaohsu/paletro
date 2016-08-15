@@ -16,7 +16,30 @@ html {
   left: 8px;
   position: fixed;
 }
+/*Homepage CSS*/
+.block {
+  height: 600px;
+  margin: 0;
+}
 
+.centered {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.block h1 {
+  margin: 0;
+  padding-top: 20%;
+  padding-bottom: 20px;
+}
+
+.block button {
+  border-radius: 40px;
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+  border: 2px solid #008080;
+  margin: 0 4px;
+}
 
 /*Sidebar Elements CSS*/
 #finish-button {
@@ -46,6 +69,10 @@ html {
   -webkit-box-shadow: 0px 0px 4px blue;
      -moz-box-shadow: 0px 0px 4px blue;
           box-shadow: 0px 0px 4px blue;
+}
+
+.absolute {
+  position: absolute;
 }
 
 /*Misc*/
