@@ -2,9 +2,10 @@ module.exports = {
   "DATABASE_URI": "postgres://localhost:5432/bps",
   "SESSION_SECRET": "Optimus Prime is my real dad",
   "TWITTER": {
-    "consumerKey": "oZFm5vMUG0PlZbBTaUyDvin4B",
-    "consumerSecret": "psi5Qr8Y2Isa3Il9K2lnaxti9ahrZmw1ifXgI8dNEJQq2NqXoT",
-    "callbackUrl": "http://127.0.0.1:1337/auth/twitter/callback"
+    "consumerKey": "jYkRXXrRC8u2pOOUrUD7AXi3J",
+    "consumerSecret": "6cGaQg5WCK9L65wflTDNjNDr4QmoCxga4yVKKbpOcVTk31fwo2",
+    "callbackUrl": "http://192.168.4.175:1337/auth/twitter/callback"
+
   },
   "FACEBOOK": {
     "clientID": "INSERT_FACEBOOK_CLIENTID_HERE",
