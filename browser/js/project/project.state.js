@@ -16,13 +16,8 @@ app.config(function ($stateProvider) {
 
 app.controller('ProjectController', function ($scope, AllProjects, ProjectFactory, $state) {
 
-	$scope.projects = AllProjects; //the AllProjects gives us the name of the project
+	$scope.projects = AllProjects;
 
-	/*var arr = [];	//decode the stringified AllProjects so we can access orginal content
-	for (var i = 0; i<AllProjects.length; i++) {
-		arr.push(JSON.parse(AllProjects[i].contents))
-	}
-	$scope.contents = arr;*/
   $scope.addProject = function(){
     ProjectFactory.create()
     .then(function(){
