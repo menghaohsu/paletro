@@ -27,8 +27,14 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
 
     $scope.shades = ['darken-4', 'darken-3', 'darken-2', 'original', 'lighten-1', 'lighten-2', 'lighten-3', 'lighten-4', 'lighten-5']
 
-    $scope.addComponent = function (type) {
-      $scope.elements.push({type: type, projectId: theProject.id});
+    var duplicateNavbar = false;
+    $scope.addComponent = function (type) {     
+      if(type==='navbar' && !duplicateNavbar) {
+        $scope.elements.push({type: type, projectId: theProject.id});
+        duplicateNavbar = true;
+      }
+      else if(type==='navbar' && duplicateNavbar) alert('Navbar already existed!')
+      else $scope.elements.push({type: type, projectId: theProject.id});
       $('.button-collapse').sideNav('hide');
     }
 
