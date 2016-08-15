@@ -9,6 +9,9 @@ app.config(function ($stateProvider) {
             return ProjectFactory.getAllElements($stateParams.id)
             .then(function(res){
               if (!res.length) return $state.go('home'); //redirect if the projectId does not belong to user
+              res[0].elements.forEach(function (element) {
+                delete element['id'];
+              });
               return res[0];
             })
           }
@@ -27,13 +30,22 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
 
     $scope.shades = ['darken-4', 'darken-3', 'darken-2', 'original', 'lighten-1', 'lighten-2', 'lighten-3', 'lighten-4', 'lighten-5']
 
+    var duplicateNavbar = false;
     $scope.addComponent = function (type) {
-      $scope.elements.push({type: type, projectId: theProject.id});
+      if(type==='button'){
+        $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original', top: 100, left: 400});
+      }
+      else if(type==='navbar' && duplicateNavbar===false) {
+        $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original'});
+        duplicateNavbar=true;
+      }
+      else if(type==='navbar' && duplicateNavbar) alert('Navbar already exists!')
+      else $scope.elements.push({type: type, projectId: theProject.id, top:100, left: 400, width: 200, height: 150});
       $('.button-collapse').sideNav('hide');
     }
 
     $scope.addImage = function () {
-      $scope.elements.push({type: 'image', url: $scope.image.url, projectId: theProject.id});
+      $scope.elements.push({type: 'image', url: $scope.image.url, projectId: theProject.id, top: 0, left: 0});
       $('.button-collapse').sideNav('hide');
     }
 
@@ -63,4 +75,3 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     }
 
 });
-

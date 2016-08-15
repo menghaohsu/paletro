@@ -2,10 +2,28 @@
 app.directive('newButton', function () {
     return {
         restrict: 'E',
-        scope: {},
-        controller: 'BtnController',
+        scope: {},/*
+        controller: 'BtnController',*/
         templateUrl: 'js/components/button/button.html',
         link: function(scope, elem, attr) {
+          let ind = scope.$parent.$index;
+          elem.draggable({
+            cancel:false,
+            stop: function (event, obj) {
+              console.log('stopped dragging button', ind);
+              scope.$parent.$parent.elements[ind].left = obj.position.left;
+              scope.$parent.$parent.elements[ind].top = obj.position.top;
+            }
+          });
+          angular.element(elem.find('button')[0]).resizable({
+            cancel:false,
+            stop: function (event, obj) {
+              console.log('stopped resizing button', ind);
+              scope.$parent.$parent.elements[ind].width = obj.size.width;
+              scope.$parent.$parent.elements[ind].height = obj.size.height;
+            }
+          });
+
 
         	var theButton = $(elem.find('button')[0]);
 
@@ -20,6 +38,7 @@ app.directive('newButton', function () {
         	scope.currentColor = 'blue'
           scope.$on('colorChange', function(event, color){
             if (scope.isSelected) {
+              scope.$parent.elements[scope.$parent.$index].color = color;
               theButton.removeClass(scope.currentColor);
               theButton.addClass(color);
               scope.currentColor = color;
@@ -29,6 +48,7 @@ app.directive('newButton', function () {
           scope.currentShade = 'original'
           scope.$on('shadeChange', function(event, shade){
             if (scope.isSelected) {
+              scope.$parent.elements[scope.$parent.$index].shade = shade;
               theButton.removeClass(scope.currentShade);
               theButton.addClass(shade);
               scope.currentShade = shade;
@@ -36,26 +56,4 @@ app.directive('newButton', function () {
           });
         }
     };
-});
-
-app.controller('BtnController', function ($scope) {
-    $( function() {
-      let ind = $scope.$parent.$index;
-      $('.draggable.btn-1').draggable({
-        cancel: false,
-        stop: function (event, obj) {
-          console.log('stopped dragging button', ind);
-          $scope.$parent.elements[ind].left = obj.position.left;
-          $scope.$parent.elements[ind].top = obj.position.top;
-        }
-      });
-      $('.resizable.btn').resizable({
-        cancel:false,
-        stop: function (event, obj) {
-          console.log('stopped resizing button', ind);
-          $scope.$parent.elements[ind].width = obj.size.width;
-          $scope.$parent.elements[ind].height = obj.size.height;
-        }
-      });
-    });
 });

@@ -73,9 +73,10 @@
       <fullstack-logo ng-show="element.type === 'logo'"></fullstack-logo>
       <new-button ng-show="element.type === 'button'"></new-button>
       <user-div ng-show="element.type === 'div'"></user-div>
-      <user-image ng-show="element.type === 'image'" image='element.url'></user-image>
+      <user-image class="absolute" ng-show="element.type === 'image'" image='element.url'></user-image>
       <text-box ng-show="element.type === 'textbox'"></text-box>
     </div>
+    
   </div>
 
 
