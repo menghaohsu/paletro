@@ -40,4 +40,11 @@ app.controller('ProjectController', function ($scope, AllProjects, ProjectFactor
   $scope.loadProject = function(input) {
     $state.go('editor', { id: input });
   }
+
+  $scope.renderCode = function(id) {
+    ProjectFactory.getAllElements(id)
+    .then(function(allElements){
+      $state.go('renderCode', { elements: allElements[0].elements})
+    })
+  }
 })

@@ -68,5 +68,18 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
       $rootScope.$broadcast('shadeChange', $scope.selectedShade)
     }
 
+    $("#trash").droppable({
+        drop: function(ev, ui) {
+          console.log('123',ev.relatedTarget)
+          console.log($scope.elements)
+          console.log($(this))
+          console.log(ui)
+          ui.draggable.remove();
+        }
+    });
+    $('.selected').sortable({
+          connectWith: '#trash'
+    }).disableSelection();
+
 });
 
