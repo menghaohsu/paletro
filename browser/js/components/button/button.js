@@ -44,7 +44,7 @@ app.controller('BtnController', function ($scope) {
       $('.draggable.btn-1').draggable({
         cancel: false,
         stop: function (event, obj) {
-          console.log('stopped dragging button', ind);
+          console.log('stopped dragging button', ind, obj.position);
           $scope.$parent.elements[ind].left = obj.position.left;
           $scope.$parent.elements[ind].top = obj.position.top;
         }
@@ -52,9 +52,9 @@ app.controller('BtnController', function ($scope) {
       $('.resizable.btn').resizable({
         cancel:false,
         stop: function (event, obj) {
-          console.log('stopped resizing button', ind);
-          $scope.$parent.elements[ind].width = obj.size.width;
-          $scope.$parent.elements[ind].height = obj.size.height;
+          console.log(obj.element.context.clientHeight, obj.element.context.clientWidth);
+          $scope.$parent.elements[ind].width = obj.element.context.clientHeight;
+          $scope.$parent.elements[ind].height = obj.element.context.clientWidth;
         }
       });
     });

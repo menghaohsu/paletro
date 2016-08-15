@@ -71,6 +71,10 @@ html {
           box-shadow: 0px 0px 4px blue;
 }
 
+.absolute {
+  position: absolute;
+}
+
 /*Misc*/
 .error {
   border: 1px solid;
