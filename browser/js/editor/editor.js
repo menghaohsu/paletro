@@ -20,6 +20,7 @@ app.config(function ($stateProvider) {
 app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject) {
     $(".button-collapse").sideNav();
     $('.collapsible').collapsible();
+    var numElem = theProject.elements.size;
     $scope.elements = theProject.elements;
     $scope.projectName = theProject.name;
 
@@ -27,21 +28,21 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
 
     $scope.shades = ['darken-4', 'darken-3', 'darken-2', 'original', 'lighten-1', 'lighten-2', 'lighten-3', 'lighten-4', 'lighten-5']
     var duplicateNavbar = false;
-    $scope.addComponent = function (type) { 
+    $scope.addComponent = function (type) {
       if(type==='button'){
-        $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original'});
+        $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original', elemId: numElem++ });
       }
       else if(type==='navbar' && duplicateNavbar===false) {
-        $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original'});
+        $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original', elemId: numElem++});
         duplicateNavbar=true;
       }
       else if(type==='navbar' && duplicateNavbar) alert('Navbar already existed!')
-      else $scope.elements.push({type: type, projectId: theProject.id});
+      else $scope.elements.push({type: type, projectId: theProject.id, elemId: numElem++});
       $('.button-collapse').sideNav('hide');
     }
 
     $scope.addImage = function () {
-      $scope.elements.push({type: 'image', url: $scope.image.url, projectId: theProject.id});
+      $scope.elements.push({type: 'image', url: $scope.image.url, projectId: theProject.id, elemId: numElem++});
       $('.button-collapse').sideNav('hide');
     }
 
