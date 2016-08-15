@@ -28,9 +28,12 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
 
     $scope.shades = ['darken-4', 'darken-3', 'darken-2', 'original', 'lighten-1', 'lighten-2', 'lighten-3', 'lighten-4', 'lighten-5']
 
-    $scope.addComponent = function (type) {     
-      if(type==='navbar' && duplicateNavbar===false) {
-        $scope.elements.push({type: type, projectId: theProject.id});
+    $scope.addComponent = function (type) { 
+      if(type==='button'){
+        $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original'});
+      }
+      else if(type==='navbar' && duplicateNavbar===false) {
+        $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original'});
         duplicateNavbar=true;
       }
       else if(type==='navbar' && duplicateNavbar) alert('Navbar already existed!')
