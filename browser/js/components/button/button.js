@@ -41,6 +41,9 @@ app.directive('newButton', function () {
 app.controller('BtnController', function ($scope) {
     $( function() {
       let ind = $scope.$parent.$index;
+      $scope.height = $scope.$parent.elements[ind].height;
+      $scope.width = $scope.$parent.elements[ind].width;
+
       $('.draggable.btn-1').draggable({
         cancel: false,
         stop: function (event, obj) {
@@ -53,8 +56,8 @@ app.controller('BtnController', function ($scope) {
         cancel:false,
         stop: function (event, obj) {
           console.log(obj.element.context.clientHeight, obj.element.context.clientWidth);
-          $scope.$parent.elements[ind].width = obj.element.context.clientHeight;
-          $scope.$parent.elements[ind].height = obj.element.context.clientWidth;
+          $scope.$parent.elements[ind].width = obj.element.context.clientWidth;
+          $scope.$parent.elements[ind].height = obj.element.context.clientHeight;
         }
       });
     });

@@ -28,12 +28,12 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     $scope.shades = ['darken-4', 'darken-3', 'darken-2', 'original', 'lighten-1', 'lighten-2', 'lighten-3', 'lighten-4', 'lighten-5']
 
     $scope.addComponent = function (type) {
-      $scope.elements.push({type: type, projectId: theProject.id});
+      $scope.elements.push({type: type, projectId: theProject.id, top: 100, left: 400, width: 200, height: 150});
       $('.button-collapse').sideNav('hide');
     }
 
     $scope.addImage = function () {
-      $scope.elements.push({type: 'image', url: $scope.image.url, projectId: theProject.id});
+      $scope.elements.push({type: 'image', url: $scope.image.url, projectId: theProject.id, top: 0, left: 0});
       $('.button-collapse').sideNav('hide');
     }
 

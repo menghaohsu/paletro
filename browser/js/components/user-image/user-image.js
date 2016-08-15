@@ -7,11 +7,15 @@ app.directive('userImage', function () {
         templateUrl: 'js/components/user-image/user-image.html',
         link: function(scope, element){
             let ind = scope.$parent.$index;
+            scope.initialWidth = scope.$parent.$parent.elements[ind].width;
+            scope.initialHeight = scope.$parent.$parent.elements[ind].height;
+            scope.initialTop = scope.$parent.$parent.elements[ind].top;
+            scope.initialLeft = scope.$parent.$parent.elements[ind].left;
+
             $(element).draggable({
                 stop: function(event, obj) {
-                    console.log("image dragging", ind);
-                    scope.$parent.$parent.elements[ind].left = obj.position.left;
-                    scope.$parent.$parent.elements[ind].top = obj.position.top;
+                    scope.$parent.$parent.elements[ind].top = scope.initialTop + obj.position.top - 64;
+                    scope.$parent.$parent.elements[ind].left = scope.initialLeft + obj.position.left;
                 }
             });
 

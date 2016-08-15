@@ -9,6 +9,11 @@ app.directive('textBox', function () {
 app.controller('BoxController', function ($scope) {
     $( function() {
       let ind = $scope.$index;
+      $scope.initialWidth = $scope.$parent.elements[ind].width;
+      $scope.initialHeight = $scope.$parent.elements[ind].height;
+      $scope.initialTop = $scope.$parent.elements[ind].top;
+      $scope.initialLeft = $scope.$parent.elements[ind].left;
+
       $(".draggable.textbox").draggable({
       	stop: function (event, obj) {
           console.log('stopped dragging textbox', ind);
