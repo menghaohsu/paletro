@@ -19,6 +19,7 @@ app.controller('BoxController', function ($scope) {
           console.log('stopped dragging textbox', ind);
           $scope.$parent.elements[ind].left = obj.position.left;
           $scope.$parent.elements[ind].top = obj.position.top;
+          console.log('array:',  $scope.$parent.elements)
         }
       });
       $(".resizable.textbox").resizable({
