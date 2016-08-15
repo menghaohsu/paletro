@@ -18,7 +18,6 @@ app.config(function ($stateProvider) {
 
 
 app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject) {
-    var duplicateNavbar = false;
     $(".button-collapse").sideNav();
     $('.collapsible').collapsible();
     $scope.elements = theProject.elements;
@@ -27,7 +26,7 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     $scope.colors = ['black', 'brown', 'red', 'deep-orange', 'yellow', 'light-green', 'light-blue', 'indigo', 'purple', 'white', 'grey', 'pink', 'orange', 'lime', 'green', 'teal', 'blue', 'deep-purple'];
 
     $scope.shades = ['darken-4', 'darken-3', 'darken-2', 'original', 'lighten-1', 'lighten-2', 'lighten-3', 'lighten-4', 'lighten-5']
-
+    var duplicateNavbar = false;
     $scope.addComponent = function (type) { 
       if(type==='button'){
         $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original'});
