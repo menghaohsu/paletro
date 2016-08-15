@@ -35,9 +35,9 @@ app.controller('renderCodeController', function($scope,$stateParams){
                         ${element.heiht}px; width:${element.width}px; position: absolute; left: 
                         ${element.left}px; top: ${element.top}px;\">button</${element.type}></div>`;
         }else if(element.type==='texbox'){
-            templateCode+=`<div class=\"textbox\" contenteditable=\"false\" style=\"height:
+            templateCode+=`<textarea class=\"textbox\" contenteditable=\"false\" style=\"height:
                         ${element.height}px; width:${element.width}px; position: absolute; left: 
-                        ${element.left}px; top: ${element.top}px;\">Enter Text Here</div>`;
+                        ${element.left}px; top: ${element.top}px;\">Enter Text Here</textarea>`;
         }else if(element.type==='div'){
             templateCode+=`<div class=\"div-1\" style=\"height:
                         ${element.height}px; width:${element.width}px; position: absolute; left: 
