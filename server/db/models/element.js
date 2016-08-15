@@ -26,5 +26,8 @@ module.exports = db.define('element', {
     },
     url: {
         type: Sequelize.STRING
+    },
+    elemId: {
+        type: Sequelize.INTEGER
     }
 });

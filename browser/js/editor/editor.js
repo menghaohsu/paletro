@@ -23,6 +23,7 @@ app.config(function ($stateProvider) {
 app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject) {
     $(".button-collapse").sideNav();
     $('.collapsible').collapsible();
+    var numElem = theProject.elements.size;
     $scope.elements = theProject.elements;
     $scope.projectName = theProject.name;
 
@@ -36,10 +37,10 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
         $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original', top: 100, left: 400});
       }
       else if(type==='navbar' && duplicateNavbar===false) {
-        $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original'});
+        $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original', elemId: numElem++});
         duplicateNavbar=true;
       }
-      else if(type==='navbar' && duplicateNavbar) alert('Navbar already existed!')
+      else if(type==='navbar' && duplicateNavbar) alert('Navbar already exists!')
       else $scope.elements.push({type: type, projectId: theProject.id, top:100, left: 400, width: 200, height: 150});
       $('.button-collapse').sideNav('hide');
     }
