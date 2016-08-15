@@ -23,7 +23,7 @@ module.exports = function (app, db) {
     // };
 
     var verifyCallback = function (token, tokenSecret, profile, done) {
-        console.log(profile)
+    console.log("HIIII_________")
 
         User.findOne({
             where: {

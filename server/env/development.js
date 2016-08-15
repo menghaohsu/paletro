@@ -9,8 +9,8 @@ module.exports = {
   },
   "FACEBOOK": {
     "clientID": "804385426364514",
-    "clientSecret": "9d02855cdad8adcd4bbbf025acbc1f97q",
-    "callbackURL": "http://localhost:1337/auth/facebook/callback"
+    "clientSecret": "9d02855cdad8adcd4bbbf025acbc1f97",
+    "callbackURL": "/auth/facebook/callback"
   },
   "GOOGLE": {
     "clientID": "682775662196-mv4nc2gd6sbi6ors1kde38et838dticl.apps.googleusercontent.com",
