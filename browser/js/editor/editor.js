@@ -5,9 +5,10 @@ app.config(function ($stateProvider) {
         controller: 'EditorController',
         templateUrl: 'js/editor/editor.html',
         resolve: {
-          theProject: function (ProjectFactory, $stateParams) {
+          theProject: function (ProjectFactory, $stateParams, $state) {
             return ProjectFactory.getAllElements($stateParams.id)
             .then(function(res){
+              if (!res.length) return $state.go('home'); //redirect if the projectId does not belong to user
               return res[0];
             })
           }
@@ -20,58 +21,33 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     $(".button-collapse").sideNav();
     $('.collapsible').collapsible();
     $scope.elements = theProject.elements;
-    var obj = {}
+    $scope.projectName = theProject.name;
 
-    $scope.addNavbar = function () {
-      $scope.elements.push({type: 'navbar'});
-      $('.button-collapse').sideNav('hide');
-    }
+    $scope.colors = ['black', 'brown', 'red', 'deep-orange', 'yellow', 'light-green', 'light-blue', 'indigo', 'purple', 'white', 'grey', 'pink', 'orange', 'lime', 'green', 'teal', 'blue', 'deep-purple'];
 
-    $scope.addLogo = function () {
-      $scope.elements.push({type: 'logo'});
-      $('.button-collapse').sideNav('hide');
-    }
+    $scope.shades = ['darken-4', 'darken-3', 'darken-2', 'original', 'lighten-1', 'lighten-2', 'lighten-3', 'lighten-4', 'lighten-5']
 
-    $scope.addButton = function () {
-      $scope.elements.push({type: 'button'});
-      $('.button-collapse').sideNav('hide');
-    }
-
-    $scope.addDiv = function () {
-      $scope.elements.push({type: 'div'});
+    $scope.addComponent = function (type) {
+      $scope.elements.push({type: type, projectId: theProject.id});
       $('.button-collapse').sideNav('hide');
     }
 
     $scope.addImage = function () {
-      $scope.elements.push({type: 'image', url: $scope.image.url});
+      $scope.elements.push({type: 'image', url: $scope.image.url, projectId: theProject.id});
       $('.button-collapse').sideNav('hide');
     }
 
-    $scope.addText = function () {
-      $scope.elements.push({type: 'textbox'});
-      $('.button-collapse').sideNav('hide');
-    }
-
-    $scope.addProjectName = function () {
-      obj.name = $scope.projectName;
+    $scope.changeProjectName = function () {
+      return ProjectFactory.updateName(theProject.id, $scope.projectName);
     }
 
     $scope.finished = function () {
-
-      var stringedElements =JSON.stringify($scope.elements)
-
-      obj.contents = stringedElements
-
-      // var p = document.getElementById("canvas");
-      // var pClone = p.cloneNode(true);
-      // console.log(pClone);
-      // console.log(p.innerHTML);
-      EditorFactory.delete(1)
+      EditorFactory.deleteElements(theProject.id)
       .then(function(){
         $scope.elements.map(element => EditorFactory.createElement(element))
       })
       .then(function(){
-        ProjectFactory.create(obj)
+        console.log('success!');
       })
     }
 

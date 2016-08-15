@@ -4,13 +4,6 @@ var Project = require('../../../db/models/project')
 var Element = require('../../../db/models/element')
 module.exports = router;
 
-// router.get('/', function(req,res,next){
-// 	return Element.findAll()
-// 	.then(function(projects){
-// 		res.json(projects);
-// 	})
-// })
-
 router.get('/:id', function(req,res,next){
 	return Element.findAll({
 		where:{
@@ -20,6 +13,7 @@ router.get('/:id', function(req,res,next){
 	.then(function(elements){
 		res.json(elements);
 	})
+	.catch(next);
 })
 
 router.post('/', function(req,res,next){
@@ -27,6 +21,7 @@ router.post('/', function(req,res,next){
 	.then(function(element){
 		res.json(element);
 	})
+	.catch(next);
 })
 
 router.put('/:id', function(req,res,next){
@@ -34,6 +29,7 @@ router.put('/:id', function(req,res,next){
 	.then(function(element){
 		res.json(element);
 	})
+	.catch(next);
 })
 
 router.delete('/:id', function(req,res,next){
@@ -48,5 +44,5 @@ router.delete('/:id', function(req,res,next){
 	.then(function(){
 		res.sendStatus(200);
 	})
-
+	.catch(next);
 })

@@ -42,7 +42,7 @@ router.get('/:id', function(req,res,next){
 })
 
 router.put('/:id', function(req,res,next){
-	return Project.update(req.body)
+	return Project.update(req.body, { where: {id: req.params.id} })
 	.then(function(project){
 		res.json(project);
 	})
