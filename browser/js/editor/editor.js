@@ -26,24 +26,30 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     $scope.elements = theProject.elements;
     $scope.projectName = theProject.name;
 
+    var duplicateNavbar = false;
+    theProject.elements.forEach(function (element) {
+      if (element.type === 'navbar')  duplicateNavbar = true;
+    })
+
     $scope.colors = ['black', 'brown', 'red', 'deep-orange', 'yellow', 'light-green', 'light-blue', 'indigo', 'purple', 'white', 'grey', 'pink', 'orange', 'lime', 'green', 'teal', 'blue', 'deep-purple'];
 
     $scope.shades = ['darken-4', 'darken-3', 'darken-2', 'original', 'lighten-1', 'lighten-2', 'lighten-3', 'lighten-4', 'lighten-5']
 
-    var duplicateNavbar = false;
+
     $scope.addComponent = function (type) {
-      if(type==='button') {
+      if (type==='button') {
         $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original', top: 100, left: 400, width: 200, height: 100});
       }
       else if (type==='logo') {
         $scope.elements.push({type: type, projectId: theProject.id, top: 100, left: 400, width: 100, height: 100});
       }
-      else if(type==='navbar' && duplicateNavbar===false) {
+      else if (type==='navbar' && duplicateNavbar===false) {
         $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original'});
-        duplicateNavbar=true;
+        duplicateNavbar = true;
       }
       else if(type==='navbar' && duplicateNavbar) alert('Navbar already exists!')
       else $scope.elements.push({type: type, projectId: theProject.id, top:100, left: 400, width: 200, height: 150});
+
       $('.button-collapse').sideNav('hide');
     }
 
