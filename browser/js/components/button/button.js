@@ -29,7 +29,7 @@ app.directive('newButton', function () {
           });
 
 
-        	var theButton = $(elem.find('button')[0]);
+        	var theButton = $(elem.find('div')[0]);
 
         	scope.isSelected = false;
         	theButton.click(function() {
