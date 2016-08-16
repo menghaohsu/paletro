@@ -19,6 +19,7 @@ app.directive('userNavbar', function () {
           scope.currentColor = 'blue'
           scope.$on('colorChange', function(event, color){
             if (scope.isSelected) {
+              scope.$parent.elements[scope.$parent.$index].color = color;
               theNavbar.removeClass(scope.currentColor);
               theNavbar.addClass(color);
               scope.currentColor = color;
@@ -28,6 +29,7 @@ app.directive('userNavbar', function () {
           scope.currentShade = 'original'
           scope.$on('shadeChange', function(event, shade){
             if (scope.isSelected) {
+              scope.$parent.elements[scope.$parent.$index].shade = shade;
               theNavbar.removeClass(scope.currentShade);
               theNavbar.addClass(shade);
               scope.currentShade = shade;

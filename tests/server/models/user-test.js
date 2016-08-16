@@ -9,9 +9,35 @@ var User = db.model('user');
 
 describe('User model', function () {
 
+    var newUser;
     beforeEach('Sync DB', function () {
-       return db.sync({ force: true });
-    });
+       return User.create({
+           firstName: 'Paul',
+           lastName: 'Hsu',
+           email: 'foo@fsa.com',
+           password: '123guessme'
+       })
+       .then(function(user){
+           newUser = user;  
+       })
+       .then(function(){
+           return db.sync({force: true });
+       })
+    })
+
+    describe('Newly created user', function(){
+        describe('email attribute', function(){
+            it('should exist', function(){
+                expect(newUser.email).to.exist;
+            })
+        }) 
+        describe('password attribute', function(){
+            it('should exist', function(){
+                expect(newUser.password).to.exist;
+            })
+        })
+        
+    })    
 
     describe('password encryption', function () {
 
@@ -91,7 +117,12 @@ describe('User model', function () {
             var saltSpy;
 
             var createUser = function () {
-                return User.create({ email: 'obama@gmail.com', password: 'potus' });
+                return User.create({
+                    firstName: 'Paul',
+                    lastName: 'Hsu',
+                    email: 'foo@fsa.com',
+                    password: '123guessme'
+                })
             };
 
             beforeEach(function () {
@@ -107,14 +138,17 @@ describe('User model', function () {
             it('should call User.encryptPassword with the given password and generated salt', function (done) {
                 createUser().then(function () {
                     var generatedSalt = saltSpy.getCall(0).returnValue;
-                    expect(encryptSpy.calledWith('potus', generatedSalt)).to.be.ok;
+                    expect(encryptSpy.calledWith('123guessme', generatedSalt)).to.be.ok;
                     done();
                 });
             });
 
             it('should set user.salt to the generated salt', function (done) {
-               createUser().then(function (user) {
+                console.log('123')
+                createUser().then(function (user) {
+                   console.log('------------')
                    var generatedSalt = saltSpy.getCall(0).returnValue;
+                   
                    expect(user.salt).to.be.equal(generatedSalt);
                    done();
                });
@@ -133,7 +167,12 @@ describe('User model', function () {
         describe('sanitize method', function () {
 
             var createUser = function () {
-                return User.create({ email: 'obama@gmail.com', password: 'potus' });
+                return User.create({
+                    firstName: 'Paul',
+                    lastName: 'Hsu',
+                    email: 'foo@fsa.com',
+                    password: '123guessme'
+                })
             };
 
             it('should remove sensitive information from a user object', function () {
