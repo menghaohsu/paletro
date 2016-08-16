@@ -26,6 +26,7 @@
               <li><a class="waves-effect" ng-click=addComponent('button')>New Button</a></li>
               <li><a class="waves-effect" ng-click=addComponent('div')>New Div</a></li>
               <li><a class="waves-effect" ng-click=addComponent('textbox')>New Text Box</a></li>
+              <li><a class="waves-effect" ng-click=addComponent('header')>New Header</a></li>
             </ul>
           </div>
         </li>
@@ -75,6 +76,7 @@
       <user-div ng-show="element.type === 'div'"></user-div>
       <user-image class="absolute" ng-show="element.type === 'image'" image='element.url'></user-image>
       <text-box ng-show="element.type === 'textbox'"></text-box>
+      <header ng-show="element.type === 'header'"></header>
     </div>
     
   </div>

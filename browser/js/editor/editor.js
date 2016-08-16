@@ -49,6 +49,11 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
       $('.button-collapse').sideNav('hide');
     }
 
+     $scope.addHeader = function () {
+      $scope.elements.push({type: 'header', projectId: theProject.id, top: 0, left: 0});
+      $('.button-collapse').sideNav('hide');
+    }
+
     $scope.changeProjectName = function () {
       return ProjectFactory.updateName(theProject.id, $scope.projectName);
     }
