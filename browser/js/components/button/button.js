@@ -2,62 +2,56 @@
 app.directive('newButton', function () {
     return {
         restrict: 'E',
-        scope: {},/*
-        controller: 'BtnController',*/
+        scope: {},
         templateUrl: 'js/components/button/button.html',
         link: function(scope, elem, attr) {
           let ind = scope.$parent.$index;
-          scope.initialWidth = scope.$parent.$parent.elements[ind].width;
-          scope.initialHeight = scope.$parent.$parent.elements[ind].height;
-          scope.initialTop = scope.$parent.$parent.elements[ind].top;
-          scope.initialLeft = scope.$parent.$parent.elements[ind].left;
+          let elemObj = scope.$parent.$parent.elements[ind]
+          scope.initialWidth = elemObj.width;
+          scope.initialHeight = elemObj.height;
+          scope.initialTop = elemObj.top;
+          scope.initialLeft = elemObj.left;
+          scope.currentColor = elemObj.color;
+          scope.currentShade = elemObj.shade
 
           elem.draggable({
             stop: function (event, obj) {
               console.log('stopped dragging button', ind);
-              scope.$parent.$parent.elements[ind].top = scope.initialTop + obj.position.top;
-              scope.$parent.$parent.elements[ind].left = scope.initialLeft + obj.position.left;
+              elemObj.top = scope.initialTop + obj.position.top;
+              elemObj.left = scope.initialLeft + obj.position.left;
             }
           });
 
           angular.element(elem.find('div')[0]).resizable({
             stop: function(event, obj) {
               console.log('stopped resizing button', ind);
-              scope.$parent.$parent.elements[ind].width = obj.size.width;
-              scope.$parent.$parent.elements[ind].height = obj.size.height;
+              elemObj.width = obj.size.width;
+              elemObj.height = obj.size.height;
             }
           });
 
+          let isSelected = false;
+          scope.toggleSelected = function () {
+            isSelected = !isSelected;
+          }
 
-        	var theButton = $(elem.find('div')[0]);
-
-        	scope.isSelected = false;
-        	theButton.click(function() {
-	        	scope.isSelected = !scope.isSelected;
-
-	        	if (scope.isSelected) theButton.addClass("selected");
-	        	else theButton.removeClass("selected");
-          });
-
-        	scope.currentColor = 'blue'
           scope.$on('colorChange', function(event, color){
-            if (scope.isSelected) {
-              scope.$parent.elements[scope.$parent.$index].color = color;
-              theButton.removeClass(scope.currentColor);
-              theButton.addClass(color);
+            if (isSelected) {
+              elemObj.color = color;
               scope.currentColor = color;
             }
           });
 
-          scope.currentShade = 'original'
           scope.$on('shadeChange', function(event, shade){
-            if (scope.isSelected) {
-              scope.$parent.elements[scope.$parent.$index].shade = shade;
-              theButton.removeClass(scope.currentShade);
-              theButton.addClass(shade);
+            if (isSelected) {
+              elemObj.shade = shade;
               scope.currentShade = shade;
             }
           });
+
+          scope.getClasses = function () {
+            return `btn absolute ${scope.currentColor} ${scope.currentShade} ${isSelected ? 'selected' : ''}`;
+          }
         }
     };
 });
