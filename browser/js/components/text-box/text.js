@@ -5,11 +5,18 @@ app.directive('textBox', function () {
         templateUrl: 'js/components/text-box/text.html',
         link: function (scope, elem, attr) {
           let ind = scope.$index;
+          scope.initialWidth = scope.$parent.elements[ind].width;
+          scope.initialHeight = scope.$parent.elements[ind].height;
+          scope.initialTop = scope.$parent.elements[ind].top;
+          scope.initialLeft = scope.$parent.elements[ind].left;
+
+          console.log(scope.initialTop, scope.initialHeight, scope.initialWidth);
           elem.draggable({
             stop: function (event, obj) {
               console.log('stopped dragging textbox', ind);
-              scope.$parent.elements[ind].left = obj.position.left;
-              scope.$parent.elements[ind].top = obj.position.top;
+              scope.$parent.elements[ind].top = scope.initialTop + obj.position.top;
+              scope.$parent.elements[ind].left = scope.initialLeft + obj.position.left;
+
             }
           });
           angular.element(elem.find('textarea')[0]).resizable({
