@@ -13,9 +13,6 @@ app.directive('fullstackLogo', function () {
               console.log('stopped dragging logo', ind);
               scope.$parent.elements[ind].top = scope.initialTop + obj.position.top;
               scope.$parent.elements[ind].left = scope.initialLeft + obj.position.left;
-              console.log('initial', scope.initialTop, scope.initialLeft)
-              console.log('position', obj.position);
-              console.log(scope.$parent.elements[ind]);
             }
           });
           elem.find('img').on('load', function(event){
