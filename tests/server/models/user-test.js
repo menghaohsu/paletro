@@ -120,7 +120,7 @@ describe('User model', function () {
                 return User.create({
                     firstName: 'Paul',
                     lastName: 'Hsu',
-                    email: 'foo@fsa.com',
+                    email: '123@fsa.com',
                     password: '123guessme'
                 })
             };
@@ -144,14 +144,11 @@ describe('User model', function () {
             });
 
             it('should set user.salt to the generated salt', function (done) {
-                console.log('123')
-                createUser().then(function (user) {
-                   console.log('------------')
+                createUser().then(function (user) {        
                    var generatedSalt = saltSpy.getCall(0).returnValue;
-                   
                    expect(user.salt).to.be.equal(generatedSalt);
                    done();
-               });
+                })
             });
 
             it('should set user.password to the encrypted password', function (done) {
