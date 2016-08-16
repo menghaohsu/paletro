@@ -30,16 +30,15 @@ app.controller('renderCodeController', function($scope,$stateParams){
 
     function renderCode(element){ 
         if(element.type==='button'){
-            templateCode+=`<${element.type} class=\"btn 
-                        ${element.color} ${element.shade}\" style=\"height:
+            templateCode+=`<${element.type} class=\"btn ${element.color} ${element.shade}\" style=\"height:
                         ${element.heiht}px; width:${element.width}px; position: absolute; left: 
                         ${element.left}px; top: ${element.top}px;\">button</${element.type}>`;
         }else if(element.type==='texbox'){
-            templateCode+=`<textarea class=\"textbox\" contenteditable=\"false\" style=\"height:
+            templateCode+=`<textarea class=\"absolute\" contenteditable=\"false\" style=\"height:
                         ${element.height}px; width:${element.width}px; position: absolute; left: 
                         ${element.left}px; top: ${element.top}px;\">Enter Text Here</textarea>`;
         }else if(element.type==='div'){
-            templateCode+=`<div class=\"div-1\" style=\"height:
+            templateCode+=`<div class=\"absolute\" style=\"height:
                         ${element.height}px; width:${element.width}px; position: absolute; left: 
                         ${element.left}px; top: ${element.top}px; border: 1px solid black\"></div>`;
         }else if(element.type==='image'){
