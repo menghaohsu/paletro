@@ -13,27 +13,15 @@ app.directive('newButton', function () {
           scope.initialLeft = scope.$parent.$parent.elements[ind].left;
 
           elem.draggable({
-            cancel:false,
             stop: function (event, obj) {
               console.log('stopped dragging button', ind);
-              scope.$parent.$parent.elements[ind].left = obj.position.left;
-              scope.$parent.$parent.elements[ind].top = obj.position.top;
-
+              scope.$parent.$parent.elements[ind].top = scope.initialTop + obj.position.top;
+              scope.$parent.$parent.elements[ind].left = scope.initialLeft + obj.position.left;
             }
           });
-          elem.find('button').on('load', function(event){
-            elem.find('button')[0].resizable({
-              stop: function(event, obj) {
-                console.log('stopped resizing button', ind);
-                scope.$parent.$parent.elements[ind].width = obj.size.width;
-                scope.$parent.$parent.elements[ind].height = obj.size.height;
-              }
-            });
-          })
 
-          angular.element(elem.find('button')[0]).resizable({
-            cancel:false,
-            stop: function (event, obj) {
+          angular.element(elem.find('div')[0]).resizable({
+            stop: function(event, obj) {
               console.log('stopped resizing button', ind);
               scope.$parent.$parent.elements[ind].width = obj.size.width;
               scope.$parent.$parent.elements[ind].height = obj.size.height;

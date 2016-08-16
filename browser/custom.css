@@ -65,11 +65,12 @@ html {
 .absolute {
   position: absolute; !important
 }
+/*
+.vertical-align {
+  padding-top: 50%;
+  display: block;
+}*/
 
-#user-button {
-  width: 100%; !important
-  height: 100%; !important
-}
 
 /*Misc*/
 .error {

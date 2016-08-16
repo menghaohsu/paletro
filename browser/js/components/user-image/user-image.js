@@ -14,6 +14,7 @@ app.directive('userImage', function () {
 
             elem.draggable({
                 stop: function(event, obj) {
+                    console.log('Image dragging', ind);
                     scope.$parent.$parent.elements[ind].top = scope.initialTop + obj.position.top - 64;
                     scope.$parent.$parent.elements[ind].left = scope.initialLeft + obj.position.left;
                 }
