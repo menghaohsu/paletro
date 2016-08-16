@@ -24,7 +24,12 @@ module.exports = db.define('element', {
     shade: {
         type: Sequelize.STRING
     },
+    fontsize: {
+        type: Sequelize.STRING
+    },
     url: {
         type: Sequelize.STRING
     }
+
+
 });

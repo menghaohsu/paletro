@@ -84,3 +84,7 @@ html {
 #deleteProj {
   margin-left: 5px;
 }
+
+#header {
+  width: 100px;
+}

@@ -28,37 +28,37 @@ app.controller('renderCodeController', function($scope,$stateParams){
 
     $scope.template = templateCode;
 
-    function renderCode(element){ 
+function renderCode(element){
         if(element.type==='button'){
-            templateCode+=`<${element.type} class=\"btn 
-                        ${element.color} ${element.shade}\" style=\"height:
-                        ${element.heiht}px; width:${element.width}px; position: absolute; left: 
-                        ${element.left}px; top: ${element.top}px;\">button</${element.type}>`;
-        }else if(element.type==='texbox'){
-            templateCode+=`<textarea class=\"textbox\" contenteditable=\"false\" style=\"height:
-                        ${element.height}px; width:${element.width}px; position: absolute; left: 
-                        ${element.left}px; top: ${element.top}px;\">Enter Text Here</textarea>`;
-        }else if(element.type==='div'){
-            templateCode+=`<div class=\"div-1\" style=\"height:
-                        ${element.height}px; width:${element.width}px; position: absolute; left: 
-                        ${element.left}px; top: ${element.top}px; border: 1px solid black\"></div>`;
-        }else if(element.type==='image'){
-            templateCode+=`<img src=\"${element.url}\" class=\"image\" style=\"height:
-                        ${element.height}px; width:${element.width}px; position: absolute; left: 
-                        ${element.left}px; top: ${element.top}px;\">`;
-        }else if(element.type==='logo'){
-            templateCode+=`<img src=\"https://jlau-bucket-1.s3.amazonaws.com/uploads/topic/image/42/fullstack.png\" class=\"logo\" style=\"height:
-                        ${element.height}px; width:${element.width}px; position: absolute; left: 
-                        ${element.left}px; top: ${element.top}px;\">`;
-        }else if(element.type==='navbar'){
-            templateCode+=`<nav class=\"${element.color} ${element.shade}\"><div class=\"nav-wrapper container\"><a class=\"brand-logo\">Sample Navbar</a>
-                        <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">
-                        <li><a href=\"#\">Home</a></li>
-                        <li><a href=\"#\">About</a></li>
-                        <li><a href=\"#\">Contact</a></li>
-                        <li><a href=\"#\">Login</li></a></li>
+            templateCode+=`<button class="btn
+                        ${element.color} ${element.shade}" style="height:
+                        ${element.height}px; width:${element.width}px; position: absolute; left:
+                        ${element.left}px; top: ${element.top}px;">button</button>`;
+        } else if (element.type==='textbox'){
+            templateCode+=`<textarea class="textbox" contenteditable="false" style="height:
+                        ${element.height}px; width:${element.width}px; position: absolute; left:
+                        ${element.left}px; top: ${element.top}px;">Enter Text Here</textarea>`;
+        } else if (element.type==='div'){
+            templateCode+=`<div class="div-1" style="height:
+                        ${element.height}px; width:${element.width}px; position: absolute; left:
+                        ${element.left}px; top: ${element.top}px; border: 1px solid black"></div>`;
+        }else if (element.type==='image'){
+            templateCode+=`<img src="${element.url}" class="image" style="height:
+                        ${element.height}px; width:${element.width}px; position: absolute; left:
+                        ${element.left}px; top: ${element.top}px;">`;
+        } else if (element.type==='logo'){
+            templateCode+=`<img src="https://jlau-bucket-1.s3.amazonaws.com/uploads/topic/image/42/fullstack.png" class="logo" style="height:
+                        ${element.height}px; width:${element.width}px; position: absolute; left:
+                        ${element.left}px; top: ${element.top}px;">`;
+        } else if (element.type==='navbar'){
+            templateCode+=`<nav class="${element.color} ${element.shade}"><div class="nav-wrapper container"><a class="brand-logo">Sample Navbar</a>
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Login</li></a></li>
                         </ul></div></nav>`;
         }
-        
+
     }
 })
