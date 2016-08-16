@@ -6,13 +6,13 @@ app.directive('newButton', function () {
         templateUrl: 'js/components/button/button.html',
         link: function(scope, elem, attr) {
           let ind = scope.$parent.$index;
-          let elemObj = scope.$parent.$parent.elements[ind]
+          let elemObj = scope.$parent.$parent.elements[ind];
           scope.initialWidth = elemObj.width;
           scope.initialHeight = elemObj.height;
           scope.initialTop = elemObj.top;
           scope.initialLeft = elemObj.left;
           scope.currentColor = elemObj.color;
-          scope.currentShade = elemObj.shade
+          scope.currentShade = elemObj.shade;
 
           elem.draggable({
             stop: function (event, obj) {
