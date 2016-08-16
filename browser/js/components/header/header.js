@@ -14,6 +14,7 @@ app.directive('header', function () {
          
           elem.draggable({
             stop: function (event, obj) {
+              
               scope.$parent.elements[ind].top = scope.initialTop + obj.position.top;
               scope.$parent.elements[ind].left = scope.initialLeft + obj.position.left;
         
