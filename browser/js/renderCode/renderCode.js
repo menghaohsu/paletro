@@ -29,38 +29,39 @@ app.config(function ($compileProvider,$stateProvider) {
                     template+=`</body>
                     </html>`;
                     return template
-                })              
-                function renderCode(element){ 
-                    if(element.type==='button'){
+                })
+
+                function renderCode(element){
+                    if (element.type==='button') {
                         template+=`<button class="btn
                                     ${element.color} ${element.shade}" style="height:
                                     ${element.height}px; width:${element.width}px; position: absolute; left:
                                     ${element.left}px; top: ${element.top}px;">button</button>`;
-                    }else if(element.type==='textbox'){
-                        template+=`<textarea class=\"absolute\" readonly style=\"height:
-                                    ${element.height}px; width:${element.width}px; position: absolute; left: 
-                                    ${element.left}px; top: ${element.top}px; resize:none; border-color: white\">${element.content}</textarea>`;
-                    }else if(element.type==='div'){
-                        template+=`<div class=\"absolute\" style=\"height:
-                                    ${element.height}px; width:${element.width}px; position: absolute; left: 
-                                    ${element.left}px; top: ${element.top}px; border: 1px solid black\"></div>`;
-                    }else if(element.type==='image'){
-                        template+=`<img src=\"${element.url}\" class=\"image\" style=\"height:
-                                    ${element.height}px; width:${element.width}px; position: absolute; left: 
-                                    ${element.left}px; top: ${element.top}px;\">`;
-                    }else if(element.type==='logo'){
-                        template+=`<img src=\"https://jlau-bucket-1.s3.amazonaws.com/uploads/topic/image/42/fullstack.png\" class=\"logo\" style=\"height:
-                                    ${element.height}px; width:${element.width}px; position: absolute; left: 
-                                    ${element.left}px; top: ${element.top}px;\">`;
-                    }else if(element.type==='navbar'){
-                        template+=`<nav class=\"${element.color} ${element.shade}\"><div class=\"nav-wrapper container\"><a class=\"brand-logo\">Sample Navbar</a>
-                                    <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">
-                                    <li><a href=\"#\">Home</a></li>
-                                    <li><a href=\"#\">About</a></li>
-                                    <li><a href=\"#\">Contact</a></li>
-                                    <li><a href=\"#\">Login</li></a></li>
+                    } else if (element.type==='textbox') {
+                        template+=`<textarea readonly style="height:
+                                    ${element.height}px; width:${element.width}px; position: absolute; left:
+                                    ${element.left}px; top: ${element.top}px; resize:none; border-color: white">${element.content}</textarea>`;
+                    } else if (element.type==='div') {
+                        template+=`<div style="height:
+                                    ${element.height}px; width:${element.width}px; position: absolute; left:
+                                    ${element.left}px; top: ${element.top}px; border: 1px solid black"></div>`;
+                    } else if (element.type==='image') {
+                        template+=`<img src="${element.url}" style="height:
+                                    ${element.height}px; width:${element.width}px; position: absolute; left:
+                                    ${element.left}px; top: ${element.top}px;">`;
+                    } else if (element.type==='logo') {
+                        template+=`<img src="https://jlau-bucket-1.s3.amazonaws.com/uploads/topic/image/42/fullstack.png" style="height:
+                                    ${element.height}px; width:${element.width}px; position: absolute; left:
+                                    ${element.left}px; top: ${element.top}px;">`;
+                    } else if (element.type==='navbar') {
+                        template+=`<nav class="${element.color} ${element.shade}"><div class="nav-wrapper container"><a class="brand-logo">Sample Navbar</a>
+                                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#">Login</li></a></li>
                                     </ul></div></nav>`;
-                    }    
+                    }
                 }
             }
         }
