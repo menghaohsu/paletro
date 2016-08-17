@@ -22,8 +22,8 @@ module.exports = db.define('user', {
         }
     },
     password: {
-        type: Sequelize.STRING
-        
+        type: Sequelize.STRING,
+        allowNull: false
     },
     salt: {
         type: Sequelize.STRING
@@ -37,10 +37,10 @@ module.exports = db.define('user', {
     },
     google_id: {
         type: Sequelize.STRING
+    },
+    facebook_id: {
+        type: Sequelize.STRING
     }
-    // facebook_id: {
-    //     type: Sequelize.STRING
-    // }
 }, {
     instanceMethods: {
         sanitize: function () {
@@ -78,12 +78,7 @@ module.exports = db.define('user', {
             }
         },
         afterCreate: function (user) {
-            console.log(user, "flaka")
-            
             Project.create({userId: user.id})
-            
-            
-            
         }
     }
 });

@@ -20,8 +20,8 @@ app.controller('RegisterCtrl', function($scope, $state, RegisterFactory, Project
                 .then(function(projects){
                     $state.go('editor', {id: projects[0].id});
                 })
-                 
-        
+
+
             }).catch(function() {
                 $scope.error = 'Invalid login credentials!';
             });
@@ -33,4 +33,4 @@ app.controller('RegisterCtrl', function($scope, $state, RegisterFactory, Project
         })
     }
 
-    })
+})
