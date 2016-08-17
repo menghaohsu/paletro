@@ -1,6 +1,7 @@
 <section id="editor">
 
   <!-- Project Name Model -->
+
   <div id="myModal" class="modal float_center">
     <div class="modal-content">
       <span class="close">x</span>
@@ -60,6 +61,17 @@
           </div>
         </li>
 
+       <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">insert_photo</i>New Template</a>
+          <div class="collapsible-body">
+            <ul>
+              <li><form class="image container input-field" novalidate>
+                <input placeholder="Enter Template Url" type='text' ng-model='template.url'>
+                <button class="btn btn-submit" type='submit' ng-click='addTemplate()' required>Add Template <i class="material-icons right">send</i></button>
+              </form></li>
+            </ul>
+          </div>
+        </li>
+
         <li><button class="btn" id="finish-button" ng-click="finished()">Save Project <i class="material-icons right">send</i></button></li>
 
       </ul>
@@ -96,6 +108,7 @@
       <new-button ng-show="element.type === 'button'"></new-button>
       <user-div ng-show="element.type === 'div'"></user-div>
       <user-image class="absolute" ng-show="element.type === 'image'" image='element.url'></user-image>
+      <user-template ng-show="element.type === 'template'" template ='template.url'></user-template>
       <text-box ng-show="element.type === 'textbox'"></text-box>
       <header ng-show="element.type === 'header'"></header>
     </div>

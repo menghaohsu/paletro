@@ -93,6 +93,11 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     $('.button-collapse').sideNav('hide');
   }
 
+  $scope.addTemplate = function () {
+    $scope.elements.push({type: 'template', url: $scope.template.url, projectId: theProject.id, top: 0, left: 0});
+    $('.button-collapse').sideNav('hide');
+  }
+
    $scope.addHeader = function () {
     $scope.elements.push({type: 'header', projectId: theProject.id, top: 0, left: 0});
     $('.button-collapse').sideNav('hide');
@@ -103,6 +108,8 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   }
 
   $scope.finished = function () {
+    console.log("YOOOO")
+    console.log(elements)
     ProjectFactory.deleteAllElements(theProject.id)
     .then(function(){
       $scope.elements.map(element => EditorFactory.createElement(element))
