@@ -26,9 +26,12 @@ app.controller('ProjectController', function ($scope, AllProjects, ProjectFactor
   }
 
 	$scope.deleteProject = function(id){
-		ProjectFactory.deleteById(id)
-		.then(function(){
-			$state.reload()
+    ProjectFactory.deleteAllElements(id)
+    .then(function () {
+      return ProjectFactory.deleteById(id);
+    })
+		.then(function () {
+			$state.reload();
 		});
 	}
 

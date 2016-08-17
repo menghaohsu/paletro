@@ -4,8 +4,6 @@ app.factory('RegisterFactory', function($http){
 
 	register.create = function(data){
 		return $http.post('/api/users', data);
-	
-
 	}
 
 	return register;
