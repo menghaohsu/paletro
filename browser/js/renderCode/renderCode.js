@@ -1,9 +1,8 @@
 app.config(function ($compileProvider,$stateProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
-    $stateProvider.state('renderCode', {
-        url: '/renderCode/:id',
-        // params: {elements: []},
-        controller: 'renderCodeController',
+    $stateProvider.state('exportCode', {
+        url: '/exportcode/:id',
+        controller: 'RenderCodeCtrl',
         templateUrl: 'js/renderCode/renderCode.html',
         resolve: {
             templateCode: function(ProjectFactory,$stateParams){
@@ -68,7 +67,7 @@ app.config(function ($compileProvider,$stateProvider) {
     });
 });
 
-app.controller('renderCodeController', function($scope,$stateParams,$window,templateCode){
+app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCode){
     $scope.template = templateCode;
 
     //generate html file
