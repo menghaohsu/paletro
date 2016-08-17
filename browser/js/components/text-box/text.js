@@ -8,8 +8,9 @@ app.directive('textBox', function () {
           scope.initialWidth = elemObj.width;
           scope.initialHeight = elemObj.height;
           scope.initialTop = elemObj.top;
-          scope.renderTop = scope.initialTop + 64
+          scope.renderTop = scope.initialTop + 64;
           scope.initialLeft = elemObj.left;
+
 
           angular.element(elem.find('div')[0]).draggable({
             cancel: 'text',
