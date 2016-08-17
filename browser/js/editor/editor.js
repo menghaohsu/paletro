@@ -103,7 +103,6 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
         $scope.elements.map(element => EditorFactory.createElement(element))
       })
       .then(function(){
-        console.log('success!');
       })
     }
 
