@@ -32,9 +32,10 @@ app.config(function ($compileProvider,$stateProvider) {
                 })              
                 function renderCode(element){ 
                     if(element.type==='button'){
-                        template+=`<${element.type} class=\"btn ${element.color} ${element.shade}\" style=\"height:
-                                    ${element.heiht}px; width:${element.width}px; position: absolute; left: 
-                                    ${element.left}px; top: ${element.top}px;\">button</${element.type}>`;
+                        template+=`<button class="btn
+                                    ${element.color} ${element.shade}" style="height:
+                                    ${element.height}px; width:${element.width}px; position: absolute; left:
+                                    ${element.left}px; top: ${element.top}px;">button</button>`;
                     }else if(element.type==='texbox'){
                         template+=`<textarea class=\"absolute\" contenteditable=\"false\" style=\"height:
                                     ${element.height}px; width:${element.width}px; position: absolute; left: 
@@ -74,4 +75,3 @@ app.controller('renderCodeController', function($scope,$stateParams,$window,temp
     var url = $window.URL || $window.webkitURL;
     $scope.fileUrl = url.createObjectURL(blob);
 })
-
