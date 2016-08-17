@@ -2,7 +2,7 @@
 var crypto = require('crypto');
 var _ = require('lodash');
 var Sequelize = require('sequelize');
-
+var Project = require('./project')
 var db = require('../_db');
 
 module.exports = db.define('user', {
@@ -37,10 +37,10 @@ module.exports = db.define('user', {
     },
     google_id: {
         type: Sequelize.STRING
+    },
+    facebook_id: {
+        type: Sequelize.STRING
     }
-    // facebook_id: {
-    //     type: Sequelize.STRING
-    // }
 }, {
     instanceMethods: {
         sanitize: function () {
@@ -76,6 +76,9 @@ module.exports = db.define('user', {
             if (user.changed('password')) {
                 user.password = user.Model.encryptPassword(user.password, user.salt);
             }
+        },
+        afterCreate: function (user) {
+            Project.create({userId: user.id})
         }
     }
 });
