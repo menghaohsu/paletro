@@ -20,8 +20,8 @@ app.controller('ProjectController', function ($scope, AllProjects, ProjectFactor
 
   $scope.addProject = function(){
     ProjectFactory.create()
-    .then(function(){
-      $state.reload()
+    .then(function(project){
+      $scope.loadProject(project.id);
     });
   }
 
