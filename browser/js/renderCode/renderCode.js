@@ -74,7 +74,7 @@ app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCo
     var url = $window.URL || $window.webkitURL;
     $scope.fileUrl = url.createObjectURL(blob);
 
-    $scope.copyCode = function () {
-        templateCode.createTextNode().execCommand('copy');
-    }
+    (function(){
+        new Clipboard('#copy-button');
+    })();
 })
