@@ -37,7 +37,6 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
 
   function display() {  //displaying modal 
     modal.style.display = "block";
-    console.log($scope.firstTime)
   }
 
   ProjectFactory.getProjects()
