@@ -36,10 +36,10 @@ app.config(function ($compileProvider,$stateProvider) {
                                     ${element.color} ${element.shade}" style="height:
                                     ${element.height}px; width:${element.width}px; position: absolute; left:
                                     ${element.left}px; top: ${element.top}px;">button</button>`;
-                    }else if(element.type==='texbox'){
-                        template+=`<textarea class=\"absolute\" contenteditable=\"false\" style=\"height:
+                    }else if(element.type==='textbox'){
+                        template+=`<textarea class=\"absolute\" readonly style=\"height:
                                     ${element.height}px; width:${element.width}px; position: absolute; left: 
-                                    ${element.left}px; top: ${element.top}px;\">Enter Text Here</textarea>`;
+                                    ${element.left}px; top: ${element.top}px; resize:none; border-color: white\">${element.content}</textarea>`;
                     }else if(element.type==='div'){
                         template+=`<div class=\"absolute\" style=\"height:
                                     ${element.height}px; width:${element.width}px; position: absolute; left: 
