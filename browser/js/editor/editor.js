@@ -21,7 +21,7 @@ app.config(function ($stateProvider) {
 });
 
 
-app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject) {
+app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject, $state) {
   var modal = document.getElementById('myModal');
 
   // Get the button that opens the modal
@@ -37,7 +37,7 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
 
   function display() {  //displaying modal 
     modal.style.display = "block";
-    console.log($scope.firstTime)
+    
   }
 
   ProjectFactory.getProjects()
@@ -50,7 +50,9 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
  $scope.sendRegister = function() {
     ProjectFactory.updateName(theProject.id, $scope.inputTitle)
     .then(function(){
+      $state.reload()
       modal.style.display = "none"
+
     })
   }
    
