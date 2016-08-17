@@ -21,7 +21,7 @@ app.config(function ($stateProvider) {
 });
 
 
-app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject) {
+app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject, $state) {
   var modal = document.getElementById('myModal');
 
   // Get the button that opens the modal
@@ -49,7 +49,9 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
  $scope.sendProject = function() {
     ProjectFactory.updateName(theProject.id, $scope.inputTitle)
     .then(function(){
+      $state.reload()
       modal.style.display = "none"
+
     })
   }
 
