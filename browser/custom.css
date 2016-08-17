@@ -91,6 +91,16 @@
   width: 300px;
 }
 
+
+/*Export Code CSS*/
+
+.codeblock {
+  background-color: #e6e6e6;
+  margin-top: 30px;
+}
+
+
+/*Modal CSS*/
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */

@@ -1,2 +1,6 @@
-{{ template }}
-<a ng-href="{{ fileUrl }}" download="file.html">download</a>
+<div class="container">
+  <h4>Exporting Code Made Easy</h4>
+  <a class="btn blue" ng-href="{{ fileUrl }}" download="webpage.html">download html</a><a class="btn green" ng-click="copyCode()">Copy to clipboard</a>
+
+  <div class="codeblock"><pre>{{ template }}</pre></div>
+</div>
