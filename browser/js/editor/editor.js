@@ -35,19 +35,18 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     modal.style.display = "none";
   }
 
-  function display() {  //displaying modal 
+  function display() {  //displaying modal
     modal.style.display = "block";
-    
   }
 
   ProjectFactory.getProjects()
   .then(function(projects){
     for(var i =0; i<projects.length; i++){
-      if(projects[i].id === theProject.id && projects[i].name === "Untitled Project") display() 
-    }   
+      if(projects[i].id === theProject.id && projects[i].name === "Untitled Project") display()
+    }
   })
 
- $scope.sendRegister = function() {
+ $scope.sendProject = function() {
     ProjectFactory.updateName(theProject.id, $scope.inputTitle)
     .then(function(){
       $state.reload()
@@ -55,7 +54,7 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
 
     })
   }
-   
+
     //modal
 
 
@@ -111,7 +110,6 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
         $scope.elements.map(element => EditorFactory.createElement(element))
       })
       .then(function(){
-        console.log('success!');
       })
     }
 
