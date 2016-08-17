@@ -11,6 +11,9 @@ app.directive('textBox', function () {
           scope.renderTop = scope.initialTop + 64;
           scope.initialLeft = elemObj.left;
 
+          elem.bind('blur keyup change', function(){
+            elemObj.content = elem[0].innerText;
+          })
 
           angular.element(elem.find('div')[0]).draggable({
             cancel: 'text',
@@ -18,6 +21,7 @@ app.directive('textBox', function () {
               console.log('stopped dragging textbox', ind);
               elemObj.top = obj.position.top - 64;
               elemObj.left = obj.position.left;
+              
             }
           });
           angular.element(elem.find('div')[0]).resizable({
