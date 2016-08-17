@@ -5,36 +5,33 @@ app.directive('userNavbar', function () {
         controller: 'UserNavbarController',
         templateUrl: 'js/components/user-navbar/navbar.html',
         link: function(scope, elem, attr) {
+          let ind = scope.$parent.$index;
+          let elemObj = scope.$parent.elements[ind];
+          scope.currentColor = elemObj.color;
+          scope.currentShade = elemObj.shade;
 
-          var theNavbar = $(elem).find('nav');
+          let isSelected = false;
+          scope.toggleSelected = function() {
+            isSelected = !isSelected;
+          }
 
-          scope.isSelected = false;
-          theNavbar.click(function() {
-            scope.isSelected = !scope.isSelected;
-
-            if (scope.isSelected) theNavbar.addClass("selected");
-            else theNavbar.removeClass("selected");
-          });
-
-          scope.currentColor = 'blue'
           scope.$on('colorChange', function(event, color){
-            if (scope.isSelected) {
-              scope.$parent.elements[scope.$parent.$index].color = color;
-              theNavbar.removeClass(scope.currentColor);
-              theNavbar.addClass(color);
+            if (isSelected) {
+              elemObj.color = color;
               scope.currentColor = color;
             }
           });
 
-          scope.currentShade = 'original'
           scope.$on('shadeChange', function(event, shade){
-            if (scope.isSelected) {
-              scope.$parent.elements[scope.$parent.$index].shade = shade;
-              theNavbar.removeClass(scope.currentShade);
-              theNavbar.addClass(shade);
+            if (isSelected) {
+              elemObj.shade = shade;
               scope.currentShade = shade;
             }
           });
+
+          scope.getClasses = function () {
+            return `${scope.currentColor} ${scope.currentShade} ${isSelected ? 'selected' : ''}`;
+          }
         }
     };
 });

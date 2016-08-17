@@ -1,1 +1,3 @@
-<div ng-style="{'top': initialTop, 'left': initialLeft, 'width': initialWidth, 'height': initialHeight}" class="btn blue original absolute"><span class="vertical-align">button</span></div>
+<div ng-style="{'top': initialTop, 'left': initialLeft, 'width': initialWidth, 'height': initialHeight}" ng-class="getClasses()" ng-click="toggleSelected()">
+  <span class="vertical-align">button</span>
+</div>
