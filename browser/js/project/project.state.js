@@ -36,10 +36,7 @@ app.controller('ProjectController', function ($scope, AllProjects, ProjectFactor
     $state.go('editor', { id: input });
   }
 
-  $scope.renderCode = function(id) {
-    ProjectFactory.getAllElements(id)
-    .then(function(allElements){
-      $state.go('renderCode', { elements: allElements[0].elements})
-    })
+  $scope.renderCode = function(input) {
+    $state.go('renderCode', {id: input});
   }
 })
