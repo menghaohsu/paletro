@@ -14,7 +14,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('ProjectController', function ($scope, AllProjects, ProjectFactory, $state) {
+app.controller('ProjectController', function ($scope, AllProjects, ProjectFactory, $state, $sce) {
 
 	$scope.projects = AllProjects;
 

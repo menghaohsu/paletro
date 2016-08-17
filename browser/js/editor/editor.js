@@ -75,6 +75,7 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
       .then(function(){
         console.log('success!');
       })
+      $('.button-collapse').sideNav('hide');
     }
 
     $scope.selectedColor = 'blue';
@@ -87,5 +88,12 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
       $scope.selectedShade = shade;
       $rootScope.$broadcast('shadeChange', $scope.selectedShade)
     }
+
+     $('#trash').droppable({
+        drop: function(ev, ui) {
+          console.log(ui)
+          ui.draggable.remove();
+      }
+    });
 
 });
