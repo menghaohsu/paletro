@@ -2,12 +2,18 @@ app.directive('userTemplate', function ($sce) {
     return {
         restrict: 'E',
         scope: {
-            template: '=',
-            trustSrc = function (src) {
+            template: '='
+            },
+        templateUrl: 'js/components/user-template/user-template.html',
+        link: function(scope, elem){
+        	scope.trustSrc = function (src) {
             	return $sce.trustAsResourceUrl(src)
             }
-        },
-        templateUrl: 'js/components/user-template/user-template.html'
+        }
+       
+
+
+
         // link: function(scope, elem){
         //     let ind = scope.$parent.$index;
         //     let elemObj = scope.$parent.$parent.elements[ind];
