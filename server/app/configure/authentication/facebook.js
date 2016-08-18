@@ -12,6 +12,7 @@ module.exports = function (app, db) {
     var facebookCredentials = {
         clientID: facebookConfig.clientID,
         clientSecret: facebookConfig.clientSecret,
+        profileFields: ["id", "displayName", "emails", "name"],
         callbackURL: facebookConfig.callbackURL
     };
 
@@ -29,7 +30,10 @@ module.exports = function (app, db) {
                     return User.create({
                         facebook_id: profile.id,
                         name: profile.displayName || profile.emails[0].value.split("@").shift(),
-                        email: prile.emails[0].value
+                        firstName: profile.name.givenName,
+                        lastName: profile.name.familyName,
+                        email: profile.emails[0].value,
+                    
                     });
                 }
             })
@@ -45,7 +49,7 @@ module.exports = function (app, db) {
 
     passport.use(new FacebookStrategy(facebookCredentials, verifyCallback));
 
-    app.get('/auth/facebook', passport.authenticate('facebook'));
+    app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
 
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {failureRedirect: '/login'}),
