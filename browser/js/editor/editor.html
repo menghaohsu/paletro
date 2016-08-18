@@ -104,12 +104,12 @@
   <!-- Canvas -->
   <div id="canvas">
     <div ng-repeat="element in elements">
+      <user-template class = "absolute" ng-show="element.type === 'template'" template ='element.url'></user-template>
       <user-navbar ng-show="element.type === 'navbar'"></user-navbar>
       <fullstack-logo ng-show="element.type === 'logo'"></fullstack-logo>
       <new-button ng-show="element.type === 'button'"></new-button>
       <user-div ng-show="element.type === 'div'"></user-div>
       <user-image class="absolute" ng-show="element.type === 'image'" image='element.url'></user-image>
-      <user-template class = "absolute" ng-show="element.type === 'template'" template ='element.url'></user-template>
       <text-box ng-show="element.type === 'textbox'"></text-box>
       <header ng-show="element.type === 'header'"></header>
     </div>

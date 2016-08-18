@@ -6,8 +6,13 @@ app.directive('userTemplate', function ($sce) {
             },
         templateUrl: 'js/components/user-template/user-template.html',
         link: function(scope, elem){
+            let ind = scope.$parent.$index; //index of this element in parent
+            let elemObj = scope.$parent.$parent.elements[ind]; //the actual userTemplate 
+            elemObj.chemX = elem.find('iframe').contents()
+            
         	scope.trustSrc = function (src) {
             	return $sce.trustAsResourceUrl(src)
+
             }
         }
        

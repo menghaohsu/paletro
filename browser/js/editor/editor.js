@@ -94,9 +94,11 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   }
 
   $scope.addTemplate = function () {
-     console.log($scope.templateUrl)
+
     $scope.elements.push({type: 'template', url: $scope.template.url, projectId: theProject.id, top: 0, left: 0});
     $('.button-collapse').sideNav('hide');
+    // $("#myiframe").contents().find("#myContent")
+
   }
 
    $scope.addHeader = function () {
@@ -109,8 +111,6 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   }
 
   $scope.finished = function () {
-
-    console.log($scope.elements)
     ProjectFactory.deleteAllElements(theProject.id)
     .then(function(){
       $scope.elements.map(element => EditorFactory.createElement(element))
