@@ -23,8 +23,8 @@ app.directive('userTemplate', function ($sce, EditorFactory) {
 
             // EditorFactory.contents = "YO"
             
-            EditorFactory.contents = (elem.find('iframe').contents())
-            
+            EditorFactory.contents = (elem.find('iframe').contents()[0])
+
 
         	scope.trustSrc = function (src) {
             	return $sce.trustAsResourceUrl(src)

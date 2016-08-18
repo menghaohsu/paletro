@@ -114,10 +114,19 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   }
 
   $scope.finished = function () {
-     console.log(EditorFactory.contents, "HEYYYY")
+     document.getElementById("shit").contentEditable = true;
+  
+      $state.reload()
+  
+   
+
+
+
+
     ProjectFactory.deleteAllElements(theProject.id)
     .then(function(){
       $scope.elements.map(element => EditorFactory.createElement(element))
+
     })
     .then(function(){
     })
