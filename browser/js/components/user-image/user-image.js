@@ -1,4 +1,3 @@
-
 app.directive('userImage', function () {
     return {
         restrict: 'E',

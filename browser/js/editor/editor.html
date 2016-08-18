@@ -1,3 +1,4 @@
+
 <section id="editor">
 
   <!-- Project Name Model -->
@@ -108,7 +109,7 @@
       <new-button ng-show="element.type === 'button'"></new-button>
       <user-div ng-show="element.type === 'div'"></user-div>
       <user-image class="absolute" ng-show="element.type === 'image'" image='element.url'></user-image>
-      <user-template ng-show="element.type === 'template'" template ='template.url'></user-template>
+      <user-template class = "absolute" ng-show="element.type === 'template'" template ='element.url'></user-template>
       <text-box ng-show="element.type === 'textbox'"></text-box>
       <header ng-show="element.type === 'header'"></header>
     </div>
