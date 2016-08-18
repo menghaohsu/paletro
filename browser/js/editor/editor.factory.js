@@ -1,6 +1,8 @@
 app.factory('EditorFactory', function($http){
 	var EditorFactory = {};
 
+	EditorFactory.contents;
+
 	EditorFactory.createElement = function(element){
 		return 	$http.post('/api/elements', element)
 		.then(function(res){

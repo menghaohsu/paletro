@@ -1,5 +1,4 @@
 
-
 app.config(function ($stateProvider) {
     $stateProvider.state('editor', {
         url: '/editor/:id',
@@ -22,6 +21,10 @@ app.config(function ($stateProvider) {
 
 
 app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject, $state) {
+
+
+
+
   var modal = document.getElementById('myModal');
 
   // Get the button that opens the modal
@@ -54,6 +57,7 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
 
     })
   }
+
 
 
   $(".button-collapse").sideNav();
@@ -97,7 +101,6 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
 
     $scope.elements.push({type: 'template', url: $scope.template.url, projectId: theProject.id, top: 0, left: 0});
     $('.button-collapse').sideNav('hide');
-    // $("#myiframe").contents().find("#myContent")
 
   }
 
@@ -111,12 +114,14 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   }
 
   $scope.finished = function () {
+     console.log(EditorFactory.contents, "HEYYYY")
     ProjectFactory.deleteAllElements(theProject.id)
     .then(function(){
       $scope.elements.map(element => EditorFactory.createElement(element))
     })
     .then(function(){
     })
+
   }
 
   $scope.selectedColor = 'blue';
