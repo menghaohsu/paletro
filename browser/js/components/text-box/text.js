@@ -10,9 +10,7 @@ app.directive('textBox', function () {
           scope.initialTop = elemObj.top;
           scope.renderTop = scope.initialTop + 64;
           scope.initialLeft = elemObj.left;
-          if(elemObj.content) scope.content = elemObj.content;
-          else scope.content = 'Enter text here'
-
+          scope.content = elemObj.content;
 
           elem.bind('blur keyup change', function(){
             elemObj.content = elem[0].innerText;
