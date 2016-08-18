@@ -5,33 +5,53 @@ app.directive('header', function () {
         templateUrl: 'js/components/header/header.html',
         link: function (scope, elem, attr) {
           let ind = scope.$index;
-           scope.initialWidth = scope.$parent.elements[ind].width;
-           scope.initialHeight = scope.$parent.elements[ind].height;
-           scope.initialTop = scope.$parent.elements[ind].top;
-           scope.initialLeft = scope.$parent.elements[ind].left;
-           scope.initialFont = scope.$parent.elements[ind].fontsize;
+          let elemObj = scope.$parent.elements[ind];
+          scope.initialWidth = elemObj.width;
+          scope.initialHeight = elemObj.height;
+          scope.initialTop = elemObj.top;
+          scope.initialLeft = elemObj.left;
+          scope.initialFontsize = (elemObj.height/1.2) + 'px';
+          scope.initialLineHeight = elemObj.height + 'px';
+          if(elemObj.content) scope.content = elemObj.content;
+          else scope.content = 'Header'
 
+          elem.bind('blur keyup change', function(){
+            elemObj.content = elem[0].innerText;
+          });
 
           elem.draggable({
             stop: function (event, obj) {
-              scope.$parent.elements[ind].top = scope.initialTop + obj.position.top;
-              scope.$parent.elements[ind].left = scope.initialLeft + obj.position.left;
+              elemObj.top = scope.initialTop + obj.position.top;
+              elemObj.left = scope.initialLeft + obj.position.left;
              }
           });
-          angular.element(elem.find('h1')[0]).resizable({
+
+          let headerDiv = angular.element(elem.find('#my-header')[0]);
+
+          headerDiv.resizable({
+            ghost: true,
             stop: function (event, obj) {
 
-              var header = elem.find('h1');
-              var size = elem.css("height");
-
-              (header).css("font-size",size.toString()) //to make it bigger on the screen
-              scope.$parent.elements[ind].fontsize = size
-              scope.$parent.elements[ind].width = obj.size.width;
-              scope.$parent.elements[ind].height = obj.size.height;
-
+              angular.element(elem.find('#my-header')[0]).css({
+                'font-size': (Math.round(obj.size.height/1.2)) + 'px',
+                'line-height': obj.size.height + 'px'
+              })
+              elemObj.fontsize = (Math.round(obj.size.height/1.2))
+              elemObj.width = obj.size.width;
+              elemObj.height = obj.size.height;
             }
           });
 
+          //this prevents the contenteditable bug
+          let children = headerDiv.children();
+          for (var key in children) {
+            if (children[key].contentEditable) children[key].contentEditable = false;
+          }
+          headerDiv[0].contentEditable = true;
+
+          scope.focus = function () {
+            headerDiv.focus();
+          }
         }
     };
 });

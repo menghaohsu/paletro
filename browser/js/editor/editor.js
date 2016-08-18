@@ -81,7 +81,12 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
       $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original'});
       duplicateNavbar = true;
     }
-    else if (type==='navbar' && duplicateNavbar) alert('Navbar already exists!');
+    else if (type==='navbar' && duplicateNavbar) {
+      alert('Navbar already exists!');
+    }
+    else if (type==='header') {
+      $scope.elements.push({type: type, projectId: theProject.id, top: 100, left: 400, width: 275, height: 80});
+    }
     else $scope.elements.push({type: type, projectId: theProject.id, top:100, left: 400, width: 200, height: 150});
 
     $('.button-collapse').sideNav('hide');
@@ -89,11 +94,6 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
 
   $scope.addImage = function () {
     $scope.elements.push({type: 'image', url: $scope.image.url, projectId: theProject.id, top: 0, left: 0});
-    $('.button-collapse').sideNav('hide');
-  }
-
-   $scope.addHeader = function () {
-    $scope.elements.push({type: 'header', projectId: theProject.id, top: 0, left: 0});
     $('.button-collapse').sideNav('hide');
   }
 
