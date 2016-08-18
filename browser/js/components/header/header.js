@@ -12,8 +12,7 @@ app.directive('header', function () {
           scope.initialLeft = elemObj.left;
           scope.initialFontsize = (elemObj.height/1.2) + 'px';
           scope.initialLineHeight = elemObj.height + 'px';
-          if(elemObj.content) scope.content = elemObj.content;
-          else scope.content = 'Header'
+          scope.content = elemObj.content;
 
           elem.bind('blur keyup change', function(){
             elemObj.content = elem[0].innerText;

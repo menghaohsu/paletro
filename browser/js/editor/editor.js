@@ -84,8 +84,11 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     else if (type==='navbar' && duplicateNavbar) {
       alert('Navbar already exists!');
     }
+    else if (type==='textbox') {
+      $scope.elements.push({type: type, projectId: theProject.id, top: 100, left: 400, width: 200, height: 150, content: 'Enter Text Here...'});
+    }
     else if (type==='header') {
-      $scope.elements.push({type: type, projectId: theProject.id, top: 100, left: 400, width: 275, height: 80});
+      $scope.elements.push({type: type, projectId: theProject.id, top: 100, left: 400, width: 275, height: 80, content: 'Header'});
     }
     else $scope.elements.push({type: type, projectId: theProject.id, top:100, left: 400, width: 200, height: 150});
 
