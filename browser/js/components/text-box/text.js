@@ -10,15 +10,15 @@ app.directive('textBox', function () {
           scope.initialTop = elemObj.top;
           scope.renderTop = scope.initialTop + 64;
           scope.initialLeft = elemObj.left;
-          if(elemObj.content) scope.content = elemObj.content;
-          else scope.content = 'Enter text here'
-          
+          scope.content = elemObj.content;
 
           elem.bind('blur keyup change', function(){
             elemObj.content = elem[0].innerText;
           })
 
-          angular.element(elem.find('div')[0]).draggable({
+          let textDiv = angular.element(elem.find('div')[0]);
+
+          textDiv.draggable({
             cancel: 'text',
             stop: function (event, obj) {
               console.log('stopped dragging textbox', ind);
@@ -28,15 +28,23 @@ app.directive('textBox', function () {
                 if(confirm('Are you sure to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';          
               }
               scope.$apply();
+
             }
           });
-          angular.element(elem.find('div')[0]).resizable({
+          textDiv.resizable({
             stop: function (event, obj) {
               console.log('stopped resizing textbox', ind);
               elemObj.width = obj.size.width;
               elemObj.height = obj.size.height;
             }
           });
+
+          //this prevents the contenteditable bug
+          let children = textDiv.children();
+          for (var key in children) {
+            if (children[key].contentEditable) children[key].contentEditable = false;
+          }
+          textDiv[0].contentEditable = true;
         }
     };
 });
