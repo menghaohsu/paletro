@@ -22,14 +22,7 @@ module.exports = db.define('user', {
         }
     },
     password: {
-        type: Sequelize.STRING,
-        // validate: {
-        //     possiblyNull: function (value) {
-        //         if (!this.google_id && !this.facebook_id) {
-        //             if (!value) throw new Error();
-        //         }
-        //     }
-        // }
+        type: Sequelize.STRING
     },
     salt: {
         type: Sequelize.STRING
