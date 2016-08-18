@@ -21,28 +21,25 @@ app.config(function ($stateProvider) {
 });
 
 
-app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject, $state) {
+app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject, $state, toaster) {
   var modal = document.getElementById('myModal');
-
   // Get the button that opens the modal
   var btn = document.getElementById("myBtn");
-
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
-
   // When the user clicks on <span> (x), close the modal
   span.onclick = function() {
     modal.style.display = "none";
   }
 
-  function display() {  //displaying modal
+  function displayModal() {  //displaying modal
     modal.style.display = "block";
   }
 
   ProjectFactory.getProjects()
   .then(function(projects){
     for(var i =0; i<projects.length; i++){
-      if(projects[i].id === theProject.id && projects[i].name === "Untitled Project") display()
+      if(projects[i].id === theProject.id && projects[i].name === "Untitled Project") displayModal()
     }
   })
 
@@ -50,8 +47,7 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     ProjectFactory.updateName(theProject.id, $scope.inputTitle)
     .then(function(){
       $state.reload()
-      modal.style.display = "none"
-
+      modal.style.display = "none";
     })
   }
 
@@ -98,7 +94,13 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   }
 
   $scope.changeProjectName = function () {
-    return ProjectFactory.updateName(theProject.id, $scope.projectName);
+    ProjectFactory.updateName(theProject.id, $scope.projectName)
+    .then(function () {
+      toaster.pop('success', "Success!", "Project name saved.");
+    })
+    .catch(function () {
+      toaster.pop('error', "Uh oh!", "An error occured.");
+    })
   }
 
   $scope.finished = function () {
@@ -106,7 +108,11 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     .then(function(){
       $scope.elements.map(element => EditorFactory.createElement(element))
     })
-    .then(function(){
+    .then(function () {
+      toaster.pop('success', "Success!", "Project is saved.");
+    })
+    .catch(function () {
+      toaster.pop('error', "Uh oh!", "An error occured.");
     })
   }
 
