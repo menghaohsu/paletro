@@ -60,9 +60,9 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   $scope.elements = theProject.elements;
   $scope.projectName = theProject.name;
 
-  var duplicateNavbar = false;
+  $scope.duplicateNavbar = false;
   theProject.elements.forEach(function (element) {
-    if (element.type === 'navbar')  duplicateNavbar = true;
+    if (element.type === 'navbar')  $scope.duplicateNavbar = true;
   })
 
   $scope.colors = ['black', 'brown', 'red', 'deep-orange', 'yellow', 'light-green', 'light-blue', 'indigo', 'purple', 'white', 'grey', 'pink', 'orange', 'lime', 'green', 'teal', 'blue', 'deep-purple'];
@@ -77,11 +77,11 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     else if (type==='logo') {
       $scope.elements.push({type: type, projectId: theProject.id, top: 100, left: 400, width: 100, height: 100});
     }
-    else if (type==='navbar' && duplicateNavbar===false) {
+    else if (type==='navbar' && $scope.duplicateNavbar===false) {
       $scope.elements.push({type: type, projectId: theProject.id, color: 'blue', shade: 'original'});
-      duplicateNavbar = true;
+      $scope.duplicateNavbar = true;
     }
-    else if (type==='navbar' && duplicateNavbar) {
+    else if (type==='navbar' && $scope.duplicateNavbar) {
       alert('Navbar already exists!');
     }
     else if (type==='textbox') {
@@ -107,6 +107,9 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   $scope.finished = function () {
     ProjectFactory.deleteAllElements(theProject.id)
     .then(function(){
+      $scope.elements= $scope.elements.filter(function(element){
+        return element.type!=='deleted';
+      })
       $scope.elements.map(element => EditorFactory.createElement(element))
     })
     .then(function(){
@@ -124,11 +127,6 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     $rootScope.$broadcast('shadeChange', $scope.selectedShade)
   }
 
-     $('#trash').droppable({
-        drop: function(ev, ui) {
-          console.log(ui)
-          ui.draggable.remove();
-      }
-    });
+
 
 });

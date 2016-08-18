@@ -24,6 +24,10 @@ app.directive('textBox', function () {
               console.log('stopped dragging textbox', ind);
               elemObj.top = obj.position.top - 64;
               elemObj.left = obj.position.left;
+              if(elemObj.top<-45&&elemObj.left>1070){
+                if(confirm('Are you sure to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';          
+              }
+              scope.$apply();
 
             }
           });

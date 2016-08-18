@@ -14,6 +14,11 @@ app.directive('fullstackLogo', function () {
               console.log('stopped dragging logo', ind);
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
+              console.log(elemObj.top,elemObj.left)
+              if(elemObj.top<-45&&elemObj.left>1070){
+                if(confirm('Are you sure to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';          
+              }
+              scope.$apply();
             }
           });
           elem.find('img').on('load', function(event){
