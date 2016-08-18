@@ -80,13 +80,12 @@ app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCo
     })();
 
     clipboard.on('success', function (e) {
-        toaster.pop('success', "Copied!", "You can now ");
+        toaster.pop('success', "Ctrl+C!", "Paste it anywhere.");
+        $scope.$evalAsync();
     })
 
     clipboard.on('error', function (e) {
-        toaster.pop('error', "Sorry! :(", "Copy didn't work. ");
+        toaster.pop('error', "Uh Oh!", "Manual copy needed");
+        $scope.$evalAsync();
     })
 })
-
-//paste this code to your website using Ctrl+V/Command+V.
-//You'll have to manually highlight and copy the code yourself.
