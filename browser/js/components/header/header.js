@@ -12,6 +12,12 @@ app.directive('header', function () {
           scope.initialLeft = elemObj.left;
           scope.initialFontsize = (elemObj.height/1.2) + 'px';
           scope.initialLineHeight = elemObj.height + 'px';
+          if(elemObj.content) scope.content = elemObj.content;
+          else scope.content = 'Header'
+
+          elem.bind('blur keyup change', function(){
+            elemObj.content = elem[0].innerText;
+          });
 
           elem.draggable({
             stop: function (event, obj) {
@@ -20,14 +26,13 @@ app.directive('header', function () {
              }
           });
 
-          angular.element(elem.find('div')[0]).resizable({
+          let headerDiv = angular.element(elem.find('#my-header')[0]);
+
+          headerDiv.resizable({
             ghost: true,
             stop: function (event, obj) {
 
-              var header = elem.find('h1');
-              var size = elem.css("height");
-
-              angular.element(elem.find('div')[0]).css({
+              angular.element(elem.find('#my-header')[0]).css({
                 'font-size': (Math.round(obj.size.height/1.2)) + 'px',
                 'line-height': obj.size.height + 'px'
               })
@@ -37,9 +42,15 @@ app.directive('header', function () {
             }
           });
 
+          /*headerDiv.prop("contenteditable", true);*/
+
+/*        let children = angular.element(elem.find('#my-header')[0]).children();
+          for (var key in children) {
+            if (children[key].contentEditable) children[key].contentEditable = false;
+          }*/
+
           scope.focus = function () {
-            console.log('focusing')
-            angular.element(elem.find('div')[0]).focus();
+            headerDiv.focus();
           }
         }
     };

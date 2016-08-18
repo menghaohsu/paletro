@@ -69,15 +69,6 @@
   display: block;
 }*/
 
-/*.user-header {
-  border: 1px solid red;
-}*/
-
-/*.user-header[placeholder]:empty:before {
-    content: attr(placeholder);
-    color: #555;
-}*/
-
 
 /*Misc*/
 .error {
