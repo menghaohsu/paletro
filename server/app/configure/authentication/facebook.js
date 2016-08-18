@@ -17,7 +17,6 @@ module.exports = function (app, db) {
     };
 
     var verifyCallback = function (accessToken, refreshToken, profile, done) {
-        console.log(profile, "PRO")
         User.findOne({
                 where: {
                     facebook_id: profile.id
