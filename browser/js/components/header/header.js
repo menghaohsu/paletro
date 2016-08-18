@@ -42,12 +42,12 @@ app.directive('header', function () {
             }
           });
 
-          /*headerDiv.prop("contenteditable", true);*/
-
-/*        let children = angular.element(elem.find('#my-header')[0]).children();
+          //this prevents the contenteditable bug
+          let children = headerDiv.children();
           for (var key in children) {
             if (children[key].contentEditable) children[key].contentEditable = false;
-          }*/
+          }
+          headerDiv[0].contentEditable = true;
 
           scope.focus = function () {
             headerDiv.focus();
