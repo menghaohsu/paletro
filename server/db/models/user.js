@@ -23,7 +23,13 @@ module.exports = db.define('user', {
     },
     password: {
         type: Sequelize.STRING,
-        allowNull: false
+        // validate: {
+        //     possiblyNull: function (value) {
+        //         if (!this.google_id && !this.facebook_id) {
+        //             if (!value) throw new Error();
+        //         }
+        //     }
+        // }
     },
     salt: {
         type: Sequelize.STRING
@@ -69,11 +75,14 @@ module.exports = db.define('user', {
     },
     hooks: {
         beforeCreate: function (user) {
+            if (user.changed('password')) {
                 user.salt = user.Model.generateSalt();
                 user.password = user.Model.encryptPassword(user.password, user.salt);
+            }
         },
         beforeUpdate: function (user) {
             if (user.changed('password')) {
+                user.salt = user.Model.generateSalt();
                 user.password = user.Model.encryptPassword(user.password, user.salt);
             }
         },
