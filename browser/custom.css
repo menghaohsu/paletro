@@ -1,12 +1,4 @@
-html {
-  overflow-x: hidden;
-}
 
-#edit-button {
-  top: 40%;
-  left: 8px;
-  position: fixed;
-}
 /*Homepage CSS*/
 .block {
   height: 91.5vh;
@@ -32,9 +24,15 @@ html {
   margin: 0 4px;
 }
 
-/*Sidebar Elements CSS*/
+/*Editor Page CSS*/
 #finish-button {
   margin-left: 30px;
+}
+
+#edit-button {
+  top: 40%;
+  left: 8px;
+  position: fixed;
 }
 
 /*Color Picker CSS*/
@@ -71,6 +69,15 @@ html {
   display: block;
 }*/
 
+/*.user-header {
+  border: 1px solid red;
+}*/
+
+/*.user-header[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #555;
+}*/
+
 
 /*Misc*/
 .error {
@@ -88,3 +95,93 @@ html {
 #header {
   width: 100px;
 }
+
+#IframeWrapper {
+  width: 320px;
+  height: 192px;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+#preview {
+  width: 1280px;
+  height: 786px;
+  border: 0;
+  -ms-transform: scale(0.25);
+  -moz-transform: scale(0.25);
+  -o-transform: scale(0.25);
+  -webkit-transform: scale(0.25);
+  transform: scale(0.25);
+  -ms-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+#iframeBlocker {
+  position: absolute;
+  top:0;
+  left:0;
+  width:320px;
+  height:192px;
+}
+
+
+.oauth {
+  width: 300px;
+}
+
+
+/*Export Code CSS*/
+
+.codeblock {
+  background-color: #e6e6e6;
+  margin-top: 30px;
+}
+
+
+/*Modal CSS*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 45%; /* Could be more or less, depending on screen size */
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.4s;
+    animation-name: zoom;
+    animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+

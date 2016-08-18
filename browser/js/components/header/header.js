@@ -10,7 +10,7 @@ app.directive('header', function () {
           scope.initialHeight = elemObj.height;
           scope.initialTop = elemObj.top;
           scope.initialLeft = elemObj.left;
-          scope.initialFont = (elemObj.height/1.2) + 'px';
+          scope.initialFontsize = (elemObj.height/1.2) + 'px';
           scope.initialLineHeight = elemObj.height + 'px';
 
           elem.draggable({
@@ -27,14 +27,20 @@ app.directive('header', function () {
               var header = elem.find('h1');
               var size = elem.css("height");
 
-              (header).css("font-size",size.toString()) //to make it bigger on the screen
-              elemObj.fontsize = size
+              angular.element(elem.find('div')[0]).css({
+                'font-size': (Math.round(obj.size.height/1.2)) + 'px',
+                'line-height': obj.size.height + 'px'
+              })
+              elemObj.fontsize = (Math.round(obj.size.height/1.2))
               elemObj.width = obj.size.width;
               elemObj.height = obj.size.height;
-
             }
           });
 
+          scope.focus = function () {
+            console.log('focusing')
+            angular.element(elem.find('div')[0]).focus();
+          }
         }
     };
 });

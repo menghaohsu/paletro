@@ -20,15 +20,18 @@ app.controller('ProjectController', function ($scope, AllProjects, ProjectFactor
 
   $scope.addProject = function(){
     ProjectFactory.create()
-    .then(function(){
-      $state.reload()
+    .then(function(project){
+      $scope.loadProject(project.id);
     });
   }
 
 	$scope.deleteProject = function(id){
-		ProjectFactory.deleteById(id)
-		.then(function(){
-			$state.reload()
+    ProjectFactory.deleteAllElements(id)
+    .then(function () {
+      return ProjectFactory.deleteById(id);
+    })
+		.then(function () {
+			$state.reload();
 		});
 	}
 
@@ -36,7 +39,7 @@ app.controller('ProjectController', function ($scope, AllProjects, ProjectFactor
     $state.go('editor', { id: input });
   }
 
-  $scope.renderCode = function(input) {
-    $state.go('renderCode', {id: input});
+  $scope.exportCode = function(input) {
+    $state.go('exportCode', { id: input });
   }
 })

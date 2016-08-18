@@ -30,6 +30,10 @@ app.factory('ProjectFactory', function($http) {
     })
   }
 
+  project.deleteAllElements = function(projectId) {
+    return $http.delete('/api/elements/' + projectId)
+  }
+
   project.updateName = function (projectId, name) {
     return $http.put('/api/projects/' + projectId, {name: name})
     .then(function (res) {

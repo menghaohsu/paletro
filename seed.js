@@ -72,7 +72,7 @@ var seedElements = function(){
             type: 'navbar',
             color: 'red',
             shade: 'lighten-1',
-            projectId: '1'
+            projectId: '4'
         },
         {
             type: 'logo',
@@ -80,7 +80,7 @@ var seedElements = function(){
             left: '300',
             width: '50',
             height: '50',
-            projectId: '1'
+            projectId: '4'
         },
         {
             type: 'div',
@@ -88,7 +88,7 @@ var seedElements = function(){
             left: '100',
             width: '200',
             height: '200',
-            projectId: '1'
+            projectId: '4'
         },
         {
             type: 'button',
@@ -98,7 +98,7 @@ var seedElements = function(){
             height: '50',
             color: 'green',
             shade: 'darken-1',
-            projectId: '1'
+            projectId: '4'
         },
         {
             type: 'image',
@@ -107,7 +107,7 @@ var seedElements = function(){
             width: '150',
             height: '150',
             url: 'https://pbs.twimg.com/profile_images/682333466218774529/R6xUsIqq.jpg',
-            projectId: '1'
+            projectId: '4'
         },
 
     ]
