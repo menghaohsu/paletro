@@ -16,6 +16,10 @@ app.directive('header', function () {
             stop: function (event, obj) {
               scope.$parent.elements[ind].top = scope.initialTop + obj.position.top;
               scope.$parent.elements[ind].left = scope.initialLeft + obj.position.left;
+              if(elemObj.top<-45&&elemObj.left>1070){
+                if(confirm('Are you sure to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';          
+              }
+              scope.$apply();
              }
           });
           angular.element(elem.find('h1')[0]).resizable({
