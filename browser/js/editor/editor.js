@@ -18,7 +18,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject, $state, toaster) {
+app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject, $state) {
   $(".button-collapse").sideNav();
   $('.collapsible').collapsible();
   $scope.elements = theProject.elements;
@@ -148,10 +148,10 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   $scope.changeProjectName = function () {
     ProjectFactory.updateName(theProject.id, $scope.projectName)
     .then(function () {
-      toaster.pop('success', "Success!", "Project name saved.");
+      Materialize.toast('Success! Your project name is updated.', 4000, 'teal darken-3');
     })
     .catch(function () {
-      toaster.pop('error', "Uh oh!", "An error occured.");
+      Materialize.toast('Uh Oh! There was an error.', 4000, 'red darken-4');
     })
   }
 
@@ -167,10 +167,10 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
       $scope.elements.map(element => EditorFactory.createElement(element))
     })
     .then(function () {
-      toaster.pop('success', "Success!", "Project is saved.");
+      Materialize.toast('Success! Your project is saved!', 4000, 'teal darken-3');
     })
     .catch(function () {
-      toaster.pop('error', "Uh oh!", "An error occured.");
+      Materialize.toast('Error. Project could not be saved.', 4000, 'red darken-4');
     })
   }
 

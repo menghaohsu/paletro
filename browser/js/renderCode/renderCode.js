@@ -72,7 +72,7 @@ app.config(function ($compileProvider,$stateProvider) {
     });
 });
 
-app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCode, toaster){
+app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCode){
     $scope.template = templateCode;
 
     //generate html file
@@ -86,12 +86,10 @@ app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCo
     })();
 
     clipboard.on('success', function (e) {
-        toaster.pop('success', "Ctrl+C!", "Paste it anywhere.");
-        $scope.$evalAsync();
+        Materialize.toast('Ctrl+C! Now you can paste your code anywhere.', 4000, 'teal darken-3');
     })
 
     clipboard.on('error', function (e) {
-        toaster.pop('error', "Uh Oh!", "Manual copy needed");
-        $scope.$evalAsync();
+        Materialize.toast("Uh Oh! Copy didn't work. Manual copy is needed.", 4000, 'red darken-4');
     })
 })
