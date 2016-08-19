@@ -14,4 +14,8 @@ app.controller('AboutController', function ($scope) {
       accordion : false
     });
   });
+
+  $(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+  });
 });
