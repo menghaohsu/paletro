@@ -3,6 +3,7 @@ var router = require('express').Router();
 module.exports = router;
 var db = require('../../../db')
 var Project = db.model('project')
+var Page = de.model('page')
 var Element = db.model('element')
 
 router.get('/', function(req,res,next){
@@ -33,7 +34,7 @@ router.get('/:id', function(req,res,next){
 			id: req.params.id,
 			userId: req.user.id
 		},
-		include: [Element]
+		include: [Page]
 	})
 	.then(function(project){
 		res.send(project);

@@ -7,9 +7,10 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/editor/editor.html',
         resolve: {
           theProject: function (ProjectFactory, $stateParams, $state) {
-            return ProjectFactory.getAllElements($stateParams.id)
+            return ProjectFactory.getAllPages($stateParams.id)
             .then(function(res){
               if (!res.length) return $state.go('home'); //redirect if the projectId does not belong to user
+              console.log(res)
               res[0].elements.forEach(function (element) {
                 delete element['id'];
               });

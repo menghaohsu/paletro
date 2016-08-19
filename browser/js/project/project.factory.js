@@ -23,7 +23,7 @@ app.factory('ProjectFactory', function($http) {
     })
   }
 
-  project.getAllElements = function (projectId) {
+  project.getAllPages = function (projectId) {
     return $http.get('/api/projects/' + projectId)
     .then(function(res){
       return res.data;
