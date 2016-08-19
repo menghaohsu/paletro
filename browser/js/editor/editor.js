@@ -114,10 +114,7 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   }
 
   $scope.finished = function () {
-     document.getElementById("shit").contentEditable = true;
-  
-      $state.reload()
-  
+     console.log(document.getElementById("shit"), "SHIT")
    
 
 
