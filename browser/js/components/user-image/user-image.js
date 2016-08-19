@@ -17,15 +17,13 @@ app.directive('userImage', function () {
           })
 
           elem.draggable({
-
-            grid: [scope.$parent.dimension, scope.$parent.dimension],
+                grid: [scope.$parent.dimension, scope.$parent.dimension],
                 stop: function(event, obj) {
                     console.log('Image dragging', ind);
                     elemObj.top = scope.initialTop + obj.position.top - 64;
                     elemObj.left = scope.initialLeft + obj.position.left;
-                    console.log(elemObj.top,elemObj.left)
                     if(elemObj.top<-130&&elemObj.left>600){
-                        if(confirm('Are you sure to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';
+                        if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';
                     }
                     scope.$apply();
                 }
