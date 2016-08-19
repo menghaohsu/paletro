@@ -22,7 +22,27 @@ app.config(function ($stateProvider) {
 
 
 app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject, $state) {
-  
+ 
+
+ $scope.grid = function createGrid(size) {
+    var ratioW = Math.floor($(window).width()/size),
+        ratioH = Math.floor($(window).height()/size);
+
+    var parent = $('<div />', {
+        class: 'grid',
+        width: ratioW  * size,
+        height: ratioH  * size
+    }).addClass('grid').appendTo('body');
+
+    for (var i = 0; i < ratioH; i++) {
+        for(var p = 0; p < ratioW; p++){
+            $('<div />', {
+                width: size - 1,
+                height: size - 1
+            }).appendTo(parent);
+        }
+    }
+} 
 // $( ".selector" ).draggable({
 //   grid: [ 50, 20 ]
 // });

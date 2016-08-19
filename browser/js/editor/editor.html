@@ -90,7 +90,11 @@
 
   <!-- Canvas -->
   <div id="canvas" class= "selector">
-  <button ng-click = "snappy()"> <i class="material-icons right">SNAP</i></button>
+  <form novalidate>
+    <input placeholder="Enter Grid Size" type='text' ng-model='dimention'>
+      <button class="btn btn-submit" type='submit' ng-click='grid(dimention)' required>Add grid <i class="material-icons right">send</i></button>
+  </form>
+  
     <div ng-repeat="element in elements">
       <user-navbar ng-show="element.type === 'navbar'"></user-navbar>
       <fullstack-logo ng-show="element.type === 'logo'"></fullstack-logo>
