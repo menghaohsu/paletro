@@ -6,7 +6,11 @@ app.config(function ($compileProvider,$stateProvider) {
         templateUrl: 'js/renderCode/renderCode.html',
         resolve: {
             templateCode: function(ProjectFactory,$stateParams){
-                var template = `<!DOCTYPE html>
+                var template = '';
+
+                return ProjectFactory.getAllElements($stateParams.id)
+                .then(function(res){
+                    template += `<!DOCTYPE html>
 <html lang="en">
     <head>
         <base href="/" />
@@ -16,9 +20,8 @@ app.config(function ($compileProvider,$stateProvider) {
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     </head>
-    <body>`;
-                return ProjectFactory.getAllElements($stateParams.id)
-                .then(function(res){
+    <body class="${res[0].bgcolor} ${res[0].bgshade}">`;
+
                     res[0].elements.forEach(function(element){
                         renderCode(element);
                     })
