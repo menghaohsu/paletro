@@ -66,7 +66,7 @@ app.config(function ($compileProvider,$stateProvider) {
     });
 });
 
-app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCode){
+app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCode, toaster){
     $scope.template = templateCode;
 
     //generate html file
@@ -74,7 +74,18 @@ app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCo
     var url = $window.URL || $window.webkitURL;
     $scope.fileUrl = url.createObjectURL(blob);
 
+    var clipboard;
     (function(){
-        new Clipboard('#copy-button');
+        clipboard = new Clipboard('#copy-button');
     })();
+
+    clipboard.on('success', function (e) {
+        toaster.pop('success', "Ctrl+C!", "Paste it anywhere.");
+        $scope.$evalAsync();
+    })
+
+    clipboard.on('error', function (e) {
+        toaster.pop('error', "Uh Oh!", "Manual copy needed");
+        $scope.$evalAsync();
+    })
 })
