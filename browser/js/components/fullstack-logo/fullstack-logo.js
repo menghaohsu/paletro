@@ -2,7 +2,6 @@ app.directive('fullstackLogo', function () {
     return {
         restrict: 'E',
         templateUrl: 'js/components/fullstack-logo/fullstack-logo.html',
-
         link: function (scope, elem, attr) {
           let ind = scope.$index;
           let elemObj = scope.$parent.elements[ind];
