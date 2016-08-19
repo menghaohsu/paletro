@@ -26,7 +26,7 @@ app.controller('ProjectController', function ($scope, AllProjects, ProjectFactor
   }
 
 	$scope.deleteProject = function(id){
-    if(confirm('Are you sure to delete this project?')){
+    if(confirm('Are you sure you want to delete this project? This cannot be undone.')){
       ProjectFactory.deleteAllElements(id)
       .then(function () {
         return ProjectFactory.deleteById(id);

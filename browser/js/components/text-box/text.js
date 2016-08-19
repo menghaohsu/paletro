@@ -42,7 +42,6 @@ app.directive('textBox', function () {
           for (var key in children) {
             if (children[key].contentEditable) children[key].contentEditable = false;
           }
-          //textDiv[0].contentEditable = true;
 
           scope.editText = function(){
             textDiv[0].contentEditable = true;

@@ -60,7 +60,8 @@ app.config(function ($compileProvider,$stateProvider) {
             </div>
         </nav>`;
                     } else if(element.type==='header') {
-                        template+=`<div style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px; font-size: ${element.fontsize}px; line-height: ${element.height}px">${element.content}</div>`
+                        template+=`
+        <div style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px; font-size: ${element.fontsize}px; line-height: ${element.height}px">${element.content}</div>`
                     }
                 }
             }
