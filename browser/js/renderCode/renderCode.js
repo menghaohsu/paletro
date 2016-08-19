@@ -86,10 +86,10 @@ app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCo
     })();
 
     clipboard.on('success', function (e) {
-        Materialize.toast('Ctrl+C! Now you can paste your code anywhere.', 4000, 'teal darken-3');
+        Materialize.toast('Ctrl+C! Now you can paste your code anywhere.', 4000, 'teal darken-2');
     })
 
     clipboard.on('error', function (e) {
-        Materialize.toast("Uh Oh! Copy didn't work. Manual copy is needed.", 4000, 'red darken-4');
+        Materialize.toast("Uh Oh! Copy didn't work. Manual copy is needed.", 4000, 'red darken-3');
     })
 })

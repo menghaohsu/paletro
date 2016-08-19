@@ -148,10 +148,10 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   $scope.changeProjectName = function () {
     ProjectFactory.updateName(theProject.id, $scope.projectName)
     .then(function () {
-      Materialize.toast('Success! Your project name is updated.', 4000, 'teal darken-3');
+      Materialize.toast('Success! Your project name is updated.', 4000, 'teal darken-2');
     })
     .catch(function () {
-      Materialize.toast('Uh Oh! There was an error.', 4000, 'red darken-4');
+      Materialize.toast('Uh Oh! There was an error.', 4000, 'red darken-3');
     })
   }
 
@@ -167,10 +167,10 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
       $scope.elements.map(element => EditorFactory.createElement(element))
     })
     .then(function () {
-      Materialize.toast('Success! Your project is saved!', 4000, 'teal darken-3');
+      Materialize.toast('Success! Your project is saved!', 4000, 'teal darken-2');
     })
     .catch(function () {
-      Materialize.toast('Error. Project could not be saved.', 4000, 'red darken-4');
+      Materialize.toast('Error. Project could not be saved.', 4000, 'red darken-3');
     })
   }
 
