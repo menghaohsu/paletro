@@ -51,11 +51,35 @@ router.put('/:id', function(req,res,next){
 })
 
 router.delete('/:id', function(req,res,next){
-	Project.destroy({
-		where: { id: req.params.id }
+	return Project.findById(req.params.id)
+	.then(function(project){
+		Page.findAll({
+			where:{
+				projectId: project.id
+			}
+		})
+		.then(function(pages){
+			pages.map(function(page){
+				Element.findAll({
+					where: {
+						pageId: page.id
+					}
+				})
+				.then(function(elements){
+					elements.forEach(function(element){
+						element.destroy();
+					})
+				})
+				.then(function(){
+					page.destroy();
+				})
+			})
+		})
+		.then(function(){
+			project.destroy();
+		})
 	})
 	.then(function(){
 		res.sendStatus(200);
 	})
-	.catch(next)
 })

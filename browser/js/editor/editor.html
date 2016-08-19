@@ -4,16 +4,16 @@
   <toaster-container></toaster-container>
 
   <!-- Project Name Model -->
-  <div id="myModal" class="modal float_center">
+  <div id="myModal1" class="modal float_center">
     <div class="modal-content">
-      <span class="close">x</span>
+      <span class="close1">x</span>
 
-      <form name="projectForm" ng-submit="sendProject()">
-        <h3>Name Your Project</h3>
+      <form name="pageForm" ng-submit="sendPage()">
+        <h3>Name Your Page</h3>
         <div class="form-group">
-            <input type="text" ng-model="inputTitle" class="form-control" placeholder="Enter project name">
+            <input type="text" ng-model="inputTitle" class="form-control" placeholder="Enter page name">
         </div>
-        <button class="btn" id="finish-button">Continue to project <i class="material-icons right">arrow_forward</i></button>
+        <button class="btn" id="finish-button">Continue to page <i class="material-icons right">arrow_forward</i></button>
       </form>
 
     </div>
@@ -26,14 +26,14 @@
     <li class="no-padding">
       <ul class="collapsible" data-collapsible="accordion">
 
-        <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">toc</i>Project Details</a>
+        <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">toc</i>Page Details</a>
           <div class="collapsible-body">
             <ul>
               <li>
                 <form class="container">
                 <strong>Enter a new name below:</strong>
-                <input placeholder="Enter Project Name" type='text' ng-model='projectName'>
-                <button class="btn btn-submit" type='submit' ng-click='changeProjectName()' required>Update <i class="material-icons right">send</i></button>
+                <input placeholder="Enter Page Name" type='text' ng-model='pageName'>
+                <button class="btn btn-submit" type='submit' ng-click='changePageName()' required>Update <i class="material-icons right">send</i></button>
               </form></li>
             </ul>
           </div>

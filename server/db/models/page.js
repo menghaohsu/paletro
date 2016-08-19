@@ -4,7 +4,7 @@ var db = require('../_db');
 module.exports = db.define('page',{
     name: {
     	type: Sequelize.STRING,
-      defaultValue: 'Untitled Project'
+      defaultValue: 'Untitled Page'
     },
     bgcolor: {
       type: Sequelize.STRING

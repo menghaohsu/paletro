@@ -12,7 +12,9 @@ var Element = require('./models/element');
 User.hasMany(Project);
 Project.belongsTo(User)
 Project.hasMany(Page);
+Page.belongsTo(Project);
 Page.hasMany(Element);
+Element.belongsTo(Page)
 
 // db.sync()
 // .then(function(){

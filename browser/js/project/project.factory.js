@@ -16,22 +16,20 @@ app.factory('ProjectFactory', function($http) {
     })
   }
 
-  project.create = function(elements){
-    return $http.post('/api/projects/create', elements)
+  project.create = function(project){
+    return $http.post('/api/projects/create', project)
     .then(function(res){
       return res.data;
     })
   }
 
-  project.getAllPages = function (projectId) {
-    return $http.get('/api/projects/' + projectId)
+ 
+
+  project.deleteProject = function(projectId) {
+    return $http.delete('/api/projects/' + projectId)
     .then(function(res){
       return res.data;
     })
-  }
-
-  project.deleteAllElements = function(projectId) {
-    return $http.delete('/api/elements/' + projectId)
   }
 
   project.updateName = function (projectId, name) {
@@ -41,12 +39,7 @@ app.factory('ProjectFactory', function($http) {
     })
   }
 
-  project.updateBgColor = function (projectId, color, shade) {
-    return $http.put('/api/projects/' + projectId, {bgcolor: color, bgshade: shade})
-    .then(function (res) {
-      return res.data;
-    })
-  }
+  
 
   return project;
 })

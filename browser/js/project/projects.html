@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Welcome to Your Project Page</h2>
+  <h2>Welcome to Your Projects Page</h2>
   <button class="btn waves-effect waves-light" ng-click="addProject()"><i class="material-icons right">add_circle_outline</i>New Project</button>
   <br><br>
   <table class="highlight">
@@ -8,7 +8,7 @@
         <th data-field="name">Project Name</th>
         <th data-field="date">Last Updated</th>
         <th data-field="manage">Manage</th>
-        <th data-field="manage">Preview</th>
+        <!-- <th data-field="manage">Preview</th> -->
       </tr>
     </thead>
     <tbody>
@@ -16,12 +16,7 @@
         <td>{{project.name}}</td>
         <td>{{project.lastUpdated}}</td>
         <td><a class="btn-floating" ng-click="loadProject(project.id)"><i class="material-icons">create</i></a><a class="btn-floating red btn-spacing" ng-click="deleteProject(project.id)"><i class="material-icons">delete_forever</i></a><a class="btn-floating btn-spacing" ng-click="exportCode(project.id)"><i class="material-icons">file_upload</i></a></td>
-        <td>
-          <div id="IframeWrapper">
-            <iframe ng-src="{{'editor/'+project.id}}" id='preview'></iframe>
-            <div id="iframeBlocker"></div>
-          </div>
-        </td>
+        
       </tr>
     </tbody>
   </table>
