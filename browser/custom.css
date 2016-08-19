@@ -32,28 +32,32 @@
   margin-left: 30px;
 }
 
-#edit-button {
-  top: 40%;
-  left: 8px;
-  position: fixed;
-}
-
 #description {
   padding-top: 8px;
   line-height: 24px;
 }
 
-/*Color Picker CSS*/
+/*Buttons CSS*/
+#edit-button {
+  top: 40%;
+  left: 8px;
+  position: fixed;
+}
+#save-button {
+  top: 50%;
+  left: 8px;
+  position: fixed;
+}
 #color-picker {
-  top: 20%;
+  top: 35%;
   right: 24px;
 }
 #shade-picker {
-  top: 40%;
+  top: 25%;
   right: 24px;
 }
 #grid-lines {
-  top: 50%;
+  top: 55%;
   right: 24px;
 }
 

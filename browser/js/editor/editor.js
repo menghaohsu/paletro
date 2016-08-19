@@ -155,7 +155,7 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     })
   }
 
-  $scope.finished = function () {
+  $scope.saveProject = function () {
     ProjectFactory.updateBgColor(theProject.id, $scope.currentBgColor, $scope.currentBgShade)
     .then(function () {
      return ProjectFactory.deleteAllElements(theProject.id);
