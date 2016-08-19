@@ -11,6 +11,8 @@ app.directive('textBox', function () {
           scope.renderTop = scope.initialTop + 64;
           scope.initialLeft = elemObj.left;
           scope.content = elemObj.content;
+          scope.currentColor = elemObj.color;
+          scope.currentShade = elemObj.shade;
 
           elem.bind('blur keyup change', function(){
             elemObj.content = elem[0].innerText;
