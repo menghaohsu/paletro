@@ -3,7 +3,7 @@ var router = require('express').Router();
 module.exports = router;
 var db = require('../../../db')
 var Project = db.model('project')
-var Page = de.model('page')
+var Page = db.model('page')
 var Element = db.model('element')
 
 router.get('/', function(req,res,next){
