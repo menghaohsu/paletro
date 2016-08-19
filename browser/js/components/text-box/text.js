@@ -8,7 +8,7 @@ app.directive('textBox', function () {
           scope.initialWidth = elemObj.width;
           scope.initialHeight = elemObj.height;
           scope.initialTop = elemObj.top;
-          scope.renderTop = scope.initialTop + 64;
+          scope.renderTop = scope.initialTop;
           scope.initialLeft = elemObj.left;
           scope.content = elemObj.content;
           scope.currentColor = elemObj.color;
@@ -24,7 +24,7 @@ app.directive('textBox', function () {
             cancel: 'text',
             stop: function (event, obj) {
               console.log('stopped dragging textbox', ind);
-              elemObj.top = obj.position.top - 64;
+              elemObj.top = obj.position.top;
               elemObj.left = obj.position.left;
 
             }
