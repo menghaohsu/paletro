@@ -26,13 +26,15 @@ app.controller('ProjectController', function ($scope, AllProjects, ProjectFactor
   }
 
 	$scope.deleteProject = function(id){
-    ProjectFactory.deleteAllElements(id)
-    .then(function () {
-      return ProjectFactory.deleteById(id);
-    })
-		.then(function () {
-			$state.reload();
-		});
+    if(confirm('Are you sure to delete this project?')){
+      ProjectFactory.deleteAllElements(id)
+      .then(function () {
+        return ProjectFactory.deleteById(id);
+      })
+  		.then(function () {
+  			$state.reload();
+  		});
+    }
 	}
 
   $scope.loadProject = function(input) {

@@ -41,6 +41,29 @@ app.directive('textBox', function () {
             if (children[key].contentEditable) children[key].contentEditable = false;
           }
           textDiv[0].contentEditable = true;
+
+          let isSelected = false;
+          scope.toggleSelected = function(){
+            isSelected = !isSelected;
+          }
+
+          scope.$on('colorChange', function(event,color){
+            if(isSelected) {
+              elemObj.color = color;
+              scope.currentColor = color;
+            }
+          })
+
+          scope.$on('shadeChange', function(event,shade){
+            if(isSelected) {
+              elemObj.shade = shade;
+              scope.currentShade = shade;
+            }
+          })
+
+          scope.getClasses = function () {
+            return `absolute ${scope.currentColor}-text text-${scope.currentShade} ${isSelected ? 'selected' : ''}`;
+          }
         }
     };
 });
