@@ -26,10 +26,20 @@ app.directive('userDiv', function () {
           });
 
           angular.element(elem.find('div')[0]).droppable({
+            // activate: function(event,ui){
+            //   console.log(event)
+            //   console.log('was activate!!')
+            // },
+            out: function(event,ui){
+              console.log('was move out!')
+            },
+            over: function(event,ui){
+              console.log('over',event)
+            },
             drop: function (event, ui) {
-              console.log('in')
+              console.log('in', event)
               //ui.draggable.addClass("dropped");
-              ui.draggable.draggable('disable');
+              //ui.draggable.draggable('disable');
               //$("#sortable1").append(ui.draggable);
             }
           });
