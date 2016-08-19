@@ -1,5 +1,3 @@
-
-
 app.config(function ($stateProvider) {
     $stateProvider.state('editor', {
         url: '/editor/:id',
@@ -20,53 +18,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-
-
 app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject, $state, toaster) {
-
-$scope.dimention = 1 
-
-$scope.ActivateGrid = function(){
-  removeGrid()
-  createGrid()
-  $rootScope.$broadcast('changeGrid', 50)
-  
-}
-
-$scope.removeGrid = function (){
-  $rootScope.$broadcast('changeGrid', 1)
-  removeGrid()
-
-}
-
-var removeGrid = function(){
-  $('.grid').remove()
-}
- 
-var createGrid = function() {
-  $scope.dimention = 50;
-
-
-    var ratioW = Math.floor($(window).width()/50),
-        ratioH = Math.floor($(window).height()/50);
-
-    var parent = $('<div />', {
-        class: 'grid', 
-        width: ratioW  * 50,
-        height: ratioH  * 50
-    }).addClass('grid').appendTo('body');
-
-    for (var i = 0; i < ratioH; i++) {
-        for(var p = 0; p < ratioW; p++){
-            $('<div />', {
-                width: 50 - 1,
-                height: 50 - 1
-            }).appendTo(parent);
-        }
-    }
-
-} 
-
   $(".button-collapse").sideNav();
   $('.collapsible').collapsible();
   $scope.elements = theProject.elements;
@@ -77,6 +29,7 @@ var createGrid = function() {
   $scope.colors = ['black', 'brown', 'red', 'deep-orange', 'yellow', 'light-green', 'light-blue', 'indigo', 'purple', 'white', 'grey', 'pink', 'orange', 'lime', 'green', 'teal', 'blue', 'deep-purple'];
 
   $scope.shades = ['darken-4', 'darken-3', 'darken-2', 'original', 'lighten-1', 'lighten-2', 'lighten-3', 'lighten-4', 'lighten-5'];
+
 
   //MODAL CODE
   var modal = document.getElementById('myModal');
@@ -108,6 +61,51 @@ var createGrid = function() {
     })
   }
   //END MODAL CODE
+
+
+  //GRID CODE
+  $scope.dimension = 1
+
+  var hasGrid = false;
+  $scope.toggleGrid = function () {
+    if (hasGrid) {
+      removeGrid()
+      $rootScope.$broadcast('changeGrid', 1)
+      hasGrid = false;
+    }
+    else {
+      removeGrid()
+      createGrid()
+      $rootScope.$broadcast('changeGrid', 50);
+      hasGrid = true;
+    }
+  }
+
+  var removeGrid = function(){
+    $('.grid').remove();
+  }
+
+  var createGrid = function() {
+    $scope.dimension = 50;
+    var ratioW = Math.floor($(document).width()/50),
+        ratioH = Math.floor($(document).height()/50);
+
+    var parent = $('<div />', {
+        class: 'grid',
+        width: ratioW  * 50,
+        height: ratioH  * 50
+    }).addClass('grid').appendTo('#canvas');
+
+    for (var i = 0; i < ratioH; i++) {
+        for(var p = 0; p < ratioW; p++){
+            $('<div />', {
+                width: 50 - 1,
+                height: 50 - 1
+            }).appendTo(parent);
+        }
+    }
+  }
+  //END GRID CODE
 
 
   //checking if saved project has a navbar already
@@ -176,7 +174,7 @@ var createGrid = function() {
     })
   }
 
-  //background color
+  //for background color
   $scope.getClasses = function () {
     return `${$scope.currentBgColor} ${$scope.currentBgShade}`;
   }
@@ -197,7 +195,5 @@ var createGrid = function() {
     $scope.selectedShade = shade;
     $rootScope.$broadcast('shadeChange', $scope.selectedShade)
   }
-
-
 
 });

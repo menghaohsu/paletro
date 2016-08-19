@@ -12,20 +12,20 @@ app.directive('userImage', function () {
             scope.initialHeight = elemObj.height;
             scope.initialTop = elemObj.top;
             scope.initialLeft = elemObj.left;
-            scope.$on('changeGrid', function(event, dimention){
-            elem.draggable("option", "grid", [dimention,dimention])
+            scope.$on('changeGrid', function(event, dimension){
+            elem.draggable("option", "grid", [dimension,dimension])
           })
-         
+
           elem.draggable({
-            
-            grid: [scope.$parent.dimention, scope.$parent.dimention],
+
+            grid: [scope.$parent.dimension, scope.$parent.dimension],
                 stop: function(event, obj) {
                     console.log('Image dragging', ind);
                     elemObj.top = scope.initialTop + obj.position.top - 64;
                     elemObj.left = scope.initialLeft + obj.position.left;
                     console.log(elemObj.top,elemObj.left)
                     if(elemObj.top<-130&&elemObj.left>600){
-                        if(confirm('Are you sure to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';          
+                        if(confirm('Are you sure to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';
                     }
                     scope.$apply();
                 }

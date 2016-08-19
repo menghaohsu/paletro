@@ -39,7 +39,7 @@
 
 /*Editor Page CSS*/
 #editor {
-  height: 100vh;
+  height: 500vh;
 }
 
 #finish-button {
@@ -64,6 +64,10 @@
 }
 #shade-picker {
   top: 40%;
+  right: 24px;
+}
+#grid-lines {
+  top: 50%;
   right: 24px;
 }
 

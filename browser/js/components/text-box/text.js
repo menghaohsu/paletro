@@ -21,20 +21,20 @@ app.directive('textBox', function () {
           let textDiv = angular.element(elem.find('div')[0]);
 
 
-          scope.$on('changeGrid', function(event, dimention){
-            textDiv.draggable("option", "grid", [dimention,dimention])
+          scope.$on('changeGrid', function(event, dimension){
+            textDiv.draggable("option", "grid", [dimension,dimension])
           })
- 
+
 
           textDiv.draggable({
-            grid: [scope.$parent.dimention, scope.$parent.dimention],
+            grid: [scope.$parent.dimension, scope.$parent.dimension],
             cancel: 'text',
             stop: function (event, obj) {
               console.log('stopped dragging textbox', ind);
               elemObj.top = obj.position.top;
               elemObj.left = obj.position.left;
               if(elemObj.top<-45&&elemObj.left>1070){
-                if(confirm('Are you sure to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';          
+                if(confirm('Are you sure to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';
               }
               scope.$apply();
 
