@@ -12,8 +12,9 @@ app.directive('header', function () {
           scope.initialLeft = elemObj.left;
           scope.initialFontsize = (elemObj.height/1.2) + 'px';
           scope.initialLineHeight = elemObj.height + 'px';
-          if(elemObj.content) scope.content = elemObj.content;
-          else scope.content = 'Header'
+          scope.content = elemObj.content;
+          scope.currentColor = elemObj.color;
+          scope.currentShade = elemObj.shade;
 
           elem.bind('blur keyup change', function(){
             elemObj.content = elem[0].innerText;
@@ -30,6 +31,10 @@ app.directive('header', function () {
             stop: function (event, obj) {
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
+              if(elemObj.top<-45&&elemObj.left>1070){
+                if(confirm('Are you sure to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';          
+              }
+              scope.$apply();
              }
           });
 
@@ -58,6 +63,29 @@ app.directive('header', function () {
 
           scope.focus = function () {
             headerDiv.focus();
+          }
+
+          let isSelected = false;
+          scope.toggleSelected = function(){
+            isSelected = !isSelected;
+          }
+
+          scope.$on('colorChange', function(event,color){
+            if(isSelected) {
+              elemObj.color = color;
+              scope.currentColor = color;
+            }
+          })
+
+          scope.$on('shadeChange', function(event,shade){
+            if(isSelected) {
+              elemObj.shade = shade;
+              scope.currentShade = shade;
+            }
+          })
+
+          scope.getClasses = function () {
+            return `absolute ${scope.currentColor}-text text-${scope.currentShade} ${isSelected ? 'selected' : ''}`;
           }
         }
     };

@@ -6,7 +6,11 @@ app.config(function ($compileProvider,$stateProvider) {
         templateUrl: 'js/renderCode/renderCode.html',
         resolve: {
             templateCode: function(ProjectFactory,$stateParams){
-                var template = `<!DOCTYPE html>
+                var template = '';
+
+                return ProjectFactory.getAllElements($stateParams.id)
+                .then(function(res){
+                    template += `<!DOCTYPE html>
 <html lang="en">
     <head>
         <base href="/" />
@@ -16,9 +20,8 @@ app.config(function ($compileProvider,$stateProvider) {
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     </head>
-    <body>`;
-                return ProjectFactory.getAllElements($stateParams.id)
-                .then(function(res){
+    <body class="${res[0].bgcolor} ${res[0].bgshade}">`;
+
                     res[0].elements.forEach(function(element){
                         renderCode(element);
                     })
@@ -36,7 +39,7 @@ app.config(function ($compileProvider,$stateProvider) {
         <button class="btn ${element.color} ${element.shade}" style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px;">button</button>`;
                     } else if (element.type==='textbox') {
                         template+=`
-        <textarea readonly style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px; resize: none; border-color: white">${element.content}</textarea>`;
+        <div class="${element.color}-text text-${element.shade}" style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px;">${element.content}</div>`;
                     } else if (element.type==='div') {
                         template+=`
         <div style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px; border: 1px solid black"></div>`;
@@ -59,6 +62,9 @@ app.config(function ($compileProvider,$stateProvider) {
                 </ul>
             </div>
         </nav>`;
+                    } else if(element.type==='header') {
+                        template+=`
+        <div class="${element.color}-text text-${element.shade}" style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px; font-size: ${element.fontsize}px; line-height: ${element.height}px">${element.content}</div>`
                     }
                 }
             }
@@ -66,7 +72,7 @@ app.config(function ($compileProvider,$stateProvider) {
     });
 });
 
-app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCode){
+app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCode, toaster){
     $scope.template = templateCode;
 
     //generate html file
@@ -74,7 +80,18 @@ app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCo
     var url = $window.URL || $window.webkitURL;
     $scope.fileUrl = url.createObjectURL(blob);
 
+    var clipboard;
     (function(){
-        new Clipboard('#copy-button');
+        clipboard = new Clipboard('#copy-button');
     })();
+
+    clipboard.on('success', function (e) {
+        toaster.pop('success', "Ctrl+C!", "Paste it anywhere.");
+        $scope.$evalAsync();
+    })
+
+    clipboard.on('error', function (e) {
+        toaster.pop('error', "Uh Oh!", "Manual copy needed");
+        $scope.$evalAsync();
+    })
 })

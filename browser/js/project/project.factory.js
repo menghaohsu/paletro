@@ -41,5 +41,12 @@ app.factory('ProjectFactory', function($http) {
     })
   }
 
+  project.updateBgColor = function (projectId, color, shade) {
+    return $http.put('/api/projects/' + projectId, {bgcolor: color, bgshade: shade})
+    .then(function (res) {
+      return res.data;
+    })
+  }
+
   return project;
 })

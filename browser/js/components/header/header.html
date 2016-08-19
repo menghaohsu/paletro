@@ -1,1 +1,1 @@
-<div class="absolute user-header" id="my-header" ng-click="focus()" ng-style="{'top': renderTop, 'left': initialLeft, 'width': initialWidth, 'height': initialHeight, 'font-size': initialFontsize, 'line-height': initialLineHeight}">{{content}}</div>
+<div id="my-header" ng-style="{'top': initialTop, 'left': initialLeft, 'width': initialWidth, 'height': initialHeight, 'font-size': initialFontsize, 'line-height': initialLineHeight}" ng-class="getClasses()" ng-click="toggleSelected()" ng-dblclick="focus()">{{content}}</div>

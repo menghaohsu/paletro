@@ -31,7 +31,7 @@ module.exports = db.define('element', {
         type: Sequelize.STRING
     },
     content: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
     }
 
 

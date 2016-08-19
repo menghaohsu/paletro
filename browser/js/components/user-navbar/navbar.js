@@ -29,8 +29,21 @@ app.directive('userNavbar', function () {
             }
           });
 
+          scope.$on('deleteNavbar', function(event, shade){
+            if (isSelected&&confirm('Are you sure to delete navbar?')) {
+              elemObj.type = 'deleted';
+            }
+          });
+
           scope.getClasses = function () {
             return `${scope.currentColor} ${scope.currentShade} ${isSelected ? 'selected' : ''}`;
+          }
+          scope.delete = function(){
+            if(confirm('Are you sure to delete navbar?')) {
+              elemObj.type = 'deleted';
+              console.log(scope.$parent.$parent)
+              scope.$parent.$parent.duplicateNavbar = false;
+            }
           }
         }
     };
