@@ -22,6 +22,16 @@ app.config(function ($stateProvider) {
 
 
 app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject, $state) {
+  
+// $( ".selector" ).draggable({
+//   grid: [ 50, 20 ]
+// });
+// // Getter
+// var grid = $( ".selector" ).draggable( "option", "grid" );
+ 
+// // Setter
+// $( ".selector" ).draggable( "option", "grid", [ 1050, 200 ] );
+
   var modal = document.getElementById('myModal');
 
   // Get the button that opens the modal

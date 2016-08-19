@@ -89,7 +89,8 @@
   </div>
 
   <!-- Canvas -->
-  <div id="canvas">
+  <div id="canvas" class= "selector">
+  <button ng-click = "snappy()"> <i class="material-icons right">SNAP</i></button>
     <div ng-repeat="element in elements">
       <user-navbar ng-show="element.type === 'navbar'"></user-navbar>
       <fullstack-logo ng-show="element.type === 'logo'"></fullstack-logo>

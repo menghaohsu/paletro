@@ -10,6 +10,7 @@ app.directive('fullstackLogo', function () {
           scope.initialTop = elemObj.top;
           scope.initialLeft = elemObj.left;
           elem.draggable({
+            snap: true,
             stop: function(event, obj) {
               console.log('stopped dragging logo', ind);
               elemObj.top = scope.initialTop + obj.position.top;
