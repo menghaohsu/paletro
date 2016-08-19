@@ -13,8 +13,14 @@ app.directive('newButton', function () {
           scope.initialLeft = elemObj.left;
           scope.currentColor = elemObj.color;
           scope.currentShade = elemObj.shade;
-
+          
+          scope.$on('changeGrid', function(event, dimention){
+            elem.draggable("option", "grid", [dimention,dimention])
+          })
+         
           elem.draggable({
+            
+            grid: [scope.$parent.dimention, scope.$parent.dimention],
             stop: function (event, obj) {
               console.log('stopped dragging button', ind);
               elemObj.top = scope.initialTop + obj.position.top;

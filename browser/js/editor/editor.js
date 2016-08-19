@@ -25,43 +25,41 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
 
 $scope.dimention = 1 
 
-$scope.ActivateGrid = function(dimention){
- removeGrid()
- $rootScope.$broadcast('changeGrid', dimention)
-  createGrid(dimention)
+$scope.ActivateGrid = function(){
+  removeGrid()
+  createGrid()
+  $rootScope.$broadcast('changeGrid', 50)
   
 }
 
 $scope.removeGrid = function (){
-
-  $scope.dimention = 1 
+  $rootScope.$broadcast('changeGrid', 1)
   removeGrid()
 
 }
 
 var removeGrid = function(){
-
- $('.grid').remove()
+  $('.grid').remove()
 }
  
-var createGrid = function(size) {
-  $scope.size = size;
+var createGrid = function() {
+  $scope.dimention = 50;
 
 
-    var ratioW = Math.floor($(window).width()/size),
-        ratioH = Math.floor($(window).height()/size);
+    var ratioW = Math.floor($(window).width()/50),
+        ratioH = Math.floor($(window).height()/50);
 
     var parent = $('<div />', {
         class: 'grid', 
-        width: ratioW  * size,
-        height: ratioH  * size
+        width: ratioW  * 50,
+        height: ratioH  * 50
     }).addClass('grid').appendTo('body');
 
     for (var i = 0; i < ratioH; i++) {
         for(var p = 0; p < ratioW; p++){
             $('<div />', {
-                width: size - 1,
-                height: size - 1
+                width: 50 - 1,
+                height: 50 - 1
             }).appendTo(parent);
         }
     }

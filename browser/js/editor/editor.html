@@ -90,11 +90,10 @@
 
   <!-- Canvas -->
   <div id="canvas" class= "selector">
-  <form novalidate>
-    <input placeholder="Enter Grid Size" type='text' ng-model='dimention'>
-      <button class="btn btn-submit" type='submit' ng-click='ActivateGrid(dimention)' required>Add grid <i class="material-icons right">send</i></button>
-      <button class="btn btn-submit" type='submit' ng-click='removeGrid()' required>Remove grid <i class="material-icons right">send</i></button>
-  </form>
+ 
+      <button class="btn btn-submit" id= "griddle" type='submit' ng-click='ActivateGrid()' required>Add grid <i class="material-icons right">send</i></button>
+      <button class="btn btn-submit" id= "griddle" type='submit' ng-click='removeGrid()' required>Remove grid <i class="material-icons right">send</i></button>
+  
   
     <div ng-repeat="element in elements">
       <user-navbar ng-show="element.type === 'navbar'"></user-navbar>

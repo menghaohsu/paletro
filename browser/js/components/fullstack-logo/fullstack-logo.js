@@ -13,9 +13,7 @@ app.directive('fullstackLogo', function () {
           scope.initialHeight = elemObj.height;
           scope.initialTop = elemObj.top;
           scope.initialLeft = elemObj.left;
-          scope.dimens = scope.$parent.size
           scope.$on('changeGrid', function(event, dimention){
-          console.log(dimention, "THEDIMEN")
             elem.draggable("option", "grid", [dimention,dimention])
           })
          
@@ -23,8 +21,6 @@ app.directive('fullstackLogo', function () {
             
             grid: [scope.$parent.dimention, scope.$parent.dimention],
             stop: function(event, obj) {
-              console.log(scope.$parent.dimention, "parent")
-              console.log('stopped dragging logo', ind);
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
             }

@@ -20,7 +20,14 @@ app.directive('textBox', function () {
 
           let textDiv = angular.element(elem.find('div')[0]);
 
+
+          scope.$on('changeGrid', function(event, dimention){
+            textDiv.draggable("option", "grid", [dimention,dimention])
+          })
+ 
+
           textDiv.draggable({
+            grid: [scope.$parent.dimention, scope.$parent.dimention],
             cancel: 'text',
             stop: function (event, obj) {
               console.log('stopped dragging textbox', ind);

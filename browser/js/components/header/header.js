@@ -19,7 +19,14 @@ app.directive('header', function () {
             elemObj.content = elem[0].innerText;
           });
 
+          
+          scope.$on('changeGrid', function(event, dimention){
+            elem.draggable("option", "grid", [dimention,dimention])
+          })
+         
           elem.draggable({
+            
+            grid: [scope.$parent.dimention, scope.$parent.dimention],
             stop: function (event, obj) {
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;

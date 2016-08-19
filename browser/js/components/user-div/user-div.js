@@ -10,7 +10,13 @@ app.directive('userDiv', function () {
           scope.initialTop = elemObj.top;
           scope.initialLeft = elemObj.left;
 
+          scope.$on('changeGrid', function(event, dimention){
+            elem.draggable("option", "grid", [dimention,dimention])
+          })
+         
           elem.draggable({
+            
+            grid: [scope.$parent.dimention, scope.$parent.dimention],
             stop: function(event, obj) {
               console.log("stopped dragging div", ind);
               elemObj.top = scope.initialTop + obj.position.top;

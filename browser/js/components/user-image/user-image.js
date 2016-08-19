@@ -12,8 +12,13 @@ app.directive('userImage', function () {
             scope.initialHeight = elemObj.height;
             scope.initialTop = elemObj.top;
             scope.initialLeft = elemObj.left;
-
-            elem.draggable({
+            scope.$on('changeGrid', function(event, dimention){
+            elem.draggable("option", "grid", [dimention,dimention])
+          })
+         
+          elem.draggable({
+            
+            grid: [scope.$parent.dimention, scope.$parent.dimention],
                 stop: function(event, obj) {
                     console.log('Image dragging', ind);
                     elemObj.top = scope.initialTop + obj.position.top - 64;
