@@ -1,4 +1,4 @@
-<section id="editor">
+<section id="editor" ng-class="getClasses()">
 
   <!-- Toaster Notifications -->
   <toaster-container></toaster-container>
@@ -31,10 +31,21 @@
             <ul>
               <li>
                 <form class="container">
-                <strong>Name:</strong> {{projectName}}
+                <strong>Enter a new name below:</strong>
                 <input placeholder="Enter Project Name" type='text' ng-model='projectName'>
                 <button class="btn btn-submit" type='submit' ng-click='changeProjectName()' required>Update <i class="material-icons right">send</i></button>
               </form></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="bold"><a class="collapsible-header  waves-effect waves-teal"><i class="material-icons">format_color_fill</i>Background Color</a>
+          <div class="collapsible-body">
+            <ul class="{{selectedColor}} {{selectedShade}}">
+              <li class="container">
+                <div id="description">Use the Color and Shade Palettes to choose a background color for your site. When the background of this box looks good to you, click the button below.</div>
+                <button class="btn waves-effect waves-teal" ng-click="changeBgColor()">Update<i class="material-icons right">looks</i></button>
+              </li>
             </ul>
           </div>
         </li>
@@ -63,7 +74,7 @@
           </div>
         </li>
 
-        <li><button class="btn" id="finish-button" ng-click="finished()">Save Project <i class="material-icons right">send</i></button></li>
+        <li><button class="btn waves-effect waves-teal" id="finish-button" ng-click="finished()">Save Project <i class="material-icons right">send</i></button></li>
 
       </ul>
     </li>

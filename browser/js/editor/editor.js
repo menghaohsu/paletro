@@ -22,6 +22,20 @@ app.config(function ($stateProvider) {
 
 
 app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject, $state, toaster) {
+  $(".button-collapse").sideNav();
+  $('.collapsible').collapsible();
+  $scope.elements = theProject.elements;
+  $scope.projectName = theProject.name;/*
+  $scope.currentBgColor = null;
+  $scope.currentBgShade = null;*/
+  $scope.currentBgColor = theProject.bgcolor;
+  $scope.currentBgShade = theProject.bgshade;
+
+  $scope.colors = ['black', 'brown', 'red', 'deep-orange', 'yellow', 'light-green', 'light-blue', 'indigo', 'purple', 'white', 'grey', 'pink', 'orange', 'lime', 'green', 'teal', 'blue', 'deep-purple'];
+
+  $scope.shades = ['darken-4', 'darken-3', 'darken-2', 'original', 'lighten-1', 'lighten-2', 'lighten-3', 'lighten-4', 'lighten-5'];
+
+  //MODAL CODE
   var modal = document.getElementById('myModal');
   // Get the button that opens the modal
   var btn = document.getElementById("myBtn");
@@ -39,7 +53,7 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   ProjectFactory.getProjects()
   .then(function(projects){
     for(var i =0; i<projects.length; i++){
-      if(projects[i].id === theProject.id && projects[i].name === "Untitled Project") displayModal()
+      if(projects[i].id === theProject.id && projects[i].name === "Untitled Project") displayModal();
     }
   })
 
@@ -50,20 +64,14 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
       modal.style.display = "none";
     })
   }
+  //END MODAL CODE
 
-  $(".button-collapse").sideNav();
-  $('.collapsible').collapsible();
-  $scope.elements = theProject.elements;
-  $scope.projectName = theProject.name;
 
+  //checking if saved project has a navbar already
   $scope.duplicateNavbar = false;
   theProject.elements.forEach(function (element) {
     if (element.type === 'navbar')  $scope.duplicateNavbar = true;
   })
-
-  $scope.colors = ['black', 'brown', 'red', 'deep-orange', 'yellow', 'light-green', 'light-blue', 'indigo', 'purple', 'white', 'grey', 'pink', 'orange', 'lime', 'green', 'teal', 'blue', 'deep-purple'];
-
-  $scope.shades = ['darken-4', 'darken-3', 'darken-2', 'original', 'lighten-1', 'lighten-2', 'lighten-3', 'lighten-4', 'lighten-5'];
 
 
   $scope.addComponent = function (type) {
@@ -107,8 +115,11 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   }
 
   $scope.finished = function () {
-    ProjectFactory.deleteAllElements(theProject.id)
-    .then(function(){
+    ProjectFactory.updateBgColor(theProject.id, $scope.currentBgColor, $scope.currentBgShade)
+    .then(function () {
+     return ProjectFactory.deleteAllElements(theProject.id);
+    })
+    .then(function () {
       $scope.elements= $scope.elements.filter(function(element){
         return element.type!=='deleted';
       })
@@ -122,12 +133,23 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     })
   }
 
+  //background color
+  $scope.getClasses = function () {
+    return `${$scope.currentBgColor} ${$scope.currentBgShade}`;
+  }
+  $scope.changeBgColor = function () {
+    $scope.currentBgColor = $scope.selectedColor;
+    $scope.currentBgShade = $scope.selectedShade;
+  }
+
+
   $scope.selectedColor = 'blue';
   $scope.setColor = function (color) {
     $scope.selectedColor = color;
     $rootScope.$broadcast('colorChange', $scope.selectedColor)
   }
 
+  $scope.selectedShade = 'original'
   $scope.setShade = function (shade) {
     $scope.selectedShade = shade;
     $rootScope.$broadcast('shadeChange', $scope.selectedShade)

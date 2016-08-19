@@ -52,7 +52,9 @@ var seedProjects = function(){
     var projects = [
         {
             userId: '2',
-            name: 'Obama\'s 1st Project'
+            name: 'Obama\'s 1st Project',
+            bgcolor: 'light-blue',
+            bgshade: 'lighten-4'
         },
         {
             userId: '2',

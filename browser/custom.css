@@ -25,6 +25,10 @@
 }
 
 /*Editor Page CSS*/
+#editor {
+  height: 100vh;
+}
+
 #finish-button {
   margin-left: 30px;
 }
@@ -33,6 +37,11 @@
   top: 40%;
   left: 8px;
   position: fixed;
+}
+
+#description {
+  padding-top: 8px;
+  line-height: 24px;
 }
 
 /*Color Picker CSS*/
@@ -145,6 +154,7 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    max-height: none;
 }
 
 /* Modal Content/Box */
