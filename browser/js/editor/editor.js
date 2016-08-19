@@ -123,12 +123,14 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     $scope.selectedShade = shade;
     $rootScope.$broadcast('shadeChange', $scope.selectedShade)
   }
-
-     $('#trash').droppable({
-        drop: function(ev, ui) {
-          console.log(ui)
-          ui.draggable.remove();
-      }
-    });
+  
+  // $("#sortable1").droppable({
+  //   drop: function (event, ui) {
+  //     console.log('in')
+  //     ui.draggable.addClass("dropped");
+  //     ui.draggable.remove();
+  //     $("#sortable1").append(ui.draggable);
+  //   }
+  // });
 
 });

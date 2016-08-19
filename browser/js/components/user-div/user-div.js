@@ -24,6 +24,15 @@ app.directive('userDiv', function () {
               elemObj.height = obj.size.height;
             }
           });
+
+          angular.element(elem.find('div')[0]).droppable({
+            drop: function (event, ui) {
+              console.log('in')
+              //ui.draggable.addClass("dropped");
+              ui.draggable.draggable('disable');
+              //$("#sortable1").append(ui.draggable);
+            }
+          });
         }
     };
 });
