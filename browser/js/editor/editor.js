@@ -22,14 +22,37 @@ app.config(function ($stateProvider) {
 
 
 app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject, $state) {
- 
 
- $scope.grid = function createGrid(size) {
+$scope.dimention = 1 
+
+$scope.ActivateGrid = function(dimention){
+ removeGrid()
+ $rootScope.$broadcast('changeGrid', dimention)
+  createGrid(dimention)
+  
+}
+
+$scope.removeGrid = function (){
+
+  $scope.dimention = 1 
+  removeGrid()
+
+}
+
+var removeGrid = function(){
+
+ $('.grid').remove()
+}
+ 
+var createGrid = function(size) {
+  $scope.size = size;
+
+
     var ratioW = Math.floor($(window).width()/size),
         ratioH = Math.floor($(window).height()/size);
 
     var parent = $('<div />', {
-        class: 'grid',
+        class: 'grid', 
         width: ratioW  * size,
         height: ratioH  * size
     }).addClass('grid').appendTo('body');
@@ -42,6 +65,7 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
             }).appendTo(parent);
         }
     }
+
 } 
 // $( ".selector" ).draggable({
 //   grid: [ 50, 20 ]
