@@ -36,7 +36,7 @@ app.config(function ($compileProvider,$stateProvider) {
         <button class="btn ${element.color} ${element.shade}" style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px;">button</button>`;
                     } else if (element.type==='textbox') {
                         template+=`
-        <textarea readonly style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px; resize: none; border-color: white">${element.content}</textarea>`;
+        <textarea readonly class="${element.color}-text text-${element.shade}" style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px; resize: none; border:none;">${element.content}</textarea>`;
                     } else if (element.type==='div') {
                         template+=`
         <div style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px; border: 1px solid black"></div>`;
@@ -59,6 +59,9 @@ app.config(function ($compileProvider,$stateProvider) {
                 </ul>
             </div>
         </nav>`;
+                    } else if(element.type==='header') {
+                        template+=`
+        <div class="${element.color}-text text-${element.shade}" style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px; font-size: ${element.fontsize}px; line-height: ${element.height}px">${element.content}</div>`
                     }
                 }
             }
