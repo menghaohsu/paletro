@@ -1,2 +1,2 @@
-<div class="absolute" ng-style="{'top': renderTop, 'left': initialLeft, 'width': initialWidth, 'height': initialHeight}">{{ content }}</div>
+<div ng-style="{'top': renderTop, 'left': initialLeft, 'width': initialWidth, 'height': initialHeight}" ng-class="getClasses()" ng-click="toggleSelected()" ng-dblclick="editText()" ng-blur='uneditable()'>{{ content }}</div>
 
