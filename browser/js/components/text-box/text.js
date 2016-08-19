@@ -42,7 +42,15 @@ app.directive('textBox', function () {
           for (var key in children) {
             if (children[key].contentEditable) children[key].contentEditable = false;
           }
-          textDiv[0].contentEditable = true;
+          //textDiv[0].contentEditable = true;
+
+          scope.editText = function(){
+            textDiv[0].contentEditable = true;
+          }
+
+          scope.uneditable = function(){
+            textDiv[0].contentEditable = false;
+          }
 
           let isSelected = false;
           scope.toggleSelected = function(){
