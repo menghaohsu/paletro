@@ -1,3 +1,7 @@
+.navbar-fixed {
+  z-index: 0 !important;
+}
+
 /*Homepage CSS*/
 .block {
   height: 91.5vh;
