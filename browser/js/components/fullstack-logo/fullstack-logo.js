@@ -9,42 +9,8 @@ app.directive('fullstackLogo', function () {
           scope.initialHeight = elemObj.height;
           scope.initialTop = elemObj.top;
           scope.initialLeft = elemObj.left;
-          scope.flameon= false
 
-                                      function animatePoof() {
-    var bgTop = 100,
-        frame = 0,
-        frames = 50,
-        frameSize = 32,
-        frameRate = 180,
-        puff = $('#puff');
-    var animate = function(){
-        if(frame < frames){
-            puff.css({
-                backgroundPosition: "0 "+bgTop+"px"
-            });
-            bgTop = bgTop - frameSize;
-            frame++;
-            setTimeout(animate, frameRate);
-        }
-    };
-    
-    animate();
-    setTimeout("$('#puff').hide()", frames * frameRate);
-}
-$(function() {
-    $('img').mouseup(function(e) {
-        var xOffset = 24;
-        var yOffset = 24;
-        
-        var chemX= $('#puff').css({
-            left: e.pageX - xOffset + 'px',
-            top: e.pageY - yOffset + 'px'
-        })
-          animatePoof();
-        chemX.show()
-    });
-});
+
 
           scope.$on('changeGrid', function(event, dimension){
             elem.draggable("option", "grid", [dimension,dimension]) 
