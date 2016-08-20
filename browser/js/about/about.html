@@ -1,7 +1,10 @@
 <div class="container">
   <div>
     <h3 class="teal-text">About Us</h3>
-    <p>Here at BPS our goal is to help you make fun, exciting, colorful HTML pages without you needing to touch HTML or CSS code at all. Our editor is an easy drag and drop interface with many tools to help you make any website that you want. The projects you build will be styled with Materalize CSS, making your webpages look more modern without any extra work.</p>
+    <p>Here at Paletro our goal is to help you make fun, exciting, colorful HTML pages without you needing to touch HTML or CSS code at all. Our editor is an easy drag and drop interface with many tools to help you make any website that you want. The projects you build will be styled with Materalize CSS, making your webpages look more modern without any extra work.
+    <br><br>
+    <em>Paletro</em> means 'palette' in Esperanto, which was created to be an easy-to-understand language for communicating between people from all over the world. We hope that Paletro will be as easy to use, helping you create the wonderful webpages you always wanted.
+    </p>
   </div>
   <br><br>
 
@@ -11,25 +14,50 @@
     <ul class="collapsible popout" data-collapsible="accordion">
       <li>
         <div class="collapsible-header"><i class="material-icons">filter_drama</i>Create a new project</div>
-        <div class="collapsible-body"><p> To start a new project, simply go to your Projects page and click the New Project button. It will take you straight to the editor page where you can enter a name for your project.</p></div>
+        <div class="collapsible-body"><p> To start a new project, simply go to your Projects page and click the New Project button.<br>
+        It will take you straight to the editor page where you can enter a name for your project.</p></div>
       </li>
       <li>
         <div class="collapsible-header"><i class="material-icons">create</i>Editor Page</div>
         <div class="collapsible-body">
-          <p>
-            <a class="btn-floating btn-large teal btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Opens the sidebar"><i class="material-icons">label_outline</i></a>
-            <a class="btn-floating btn-large orange darken-1 btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Saves Project"><i class="material-icons">save</i></a>
-            <a class="btn-floating btn-large red btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Choose the color"><i class="material-icons">color_lens</i></a>
-            <a class="btn-floating btn-large blue btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Choose the shade"><i class="material-icons">iso</i></a>
-            <a class="btn-floating btn-large purple btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Add gridlines to help you build neater webpages"><i class="material-icons">border_all</i></a><br>
-            Under Project Details is where you can change your project name anytime.<br>
-            Under New Components, you can add items to your webpage. We currently have: Navbars, Logos, Buttons, Divs, Text Boxes, and Headers <br>
-          </p>
+            <div class="button-info" id="first-button">
+              <a class="btn-floating btn-large teal"><i class="material-icons">label_outline</i></a><br>
+              <span>Opens sidebar</span>
+            </div>
+            <div class="button-info">
+              <a class="btn-floating btn-large orange darken-1"><i class="material-icons">save</i></a><br>
+              <span>Saves Project</span>
+            </div>
+            <div class="button-info">
+              <a class="btn-floating btn-large red"><i class="material-icons">color_lens</i></a><br>
+              <span>Select Color</span>
+            </div>
+            <div class="button-info">
+              <a class="btn-floating btn-large blue"><i class="material-icons">iso</i></a><br>
+              <span>Select Shade</span>
+            </div>
+            <div class="button-info">
+              <a class="btn-floating btn-large purple"><i class="material-icons">border_all</i></a><br>
+              <span>Toggles Grid</span>
+            </div>
+            <p>
+              <strong>Project Details</strong> is where you can change your project name anytime.<br>
+              <strong>Background Color</strong> is where you can change the background color to your page.<br>
+              <strong>New Components</strong> is where you add items to your webpage. We currently have: Navbars, Logos, Buttons, Divs, Text Boxes, and Headers<br>
+              <strong>New Image</strong> is where you can add an image. Simply paste an image url you find online and you can use it on your site.
+              <br><br>
+              Don't forget to save your project!
+            </p>
+
         </div>
       </li>
       <li>
         <div class="collapsible-header"><i class="material-icons">file_upload</i>Exporting your webpage</div>
-        <div class="collapsible-body"><p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p></div>
+        <div class="collapsible-body">
+          <p>After you are finished, you can export your webpage from your project page. From there you have 2 options.<br>
+          1. Download a file with all of your project files<br>
+          2. Copy all of the code to your clipboard and paste it as the HTML for your site</p>
+        </div>
       </li>
     </ul>
   </div>
@@ -40,7 +68,7 @@
     <div class="col s12 m4 l4">
       <div class="card centered">
         <div class="card-content white-text">
-          <img src="http://labs.qnimate.com/portfolio-materialize/images/profile.png" width="64" height="64">
+          <img src="img/beard.png" width="64" height="64">
           <p class="blue-grey-text text-darken-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
         </div>
         <div class="card-action">
@@ -53,12 +81,13 @@
     <div class="col s12 m4 l4">
       <div class="card centered">
         <div class="card-content white-text">
-          <img src="http://labs.qnimate.com/portfolio-materialize/images/profile.png" width="64" height="64">
-          <p class="blue-grey-text text-darken-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+          <img src="img/girl.png" width="64" height="64">
+          <p class="blue-grey-text text-darken-3">
+          Betty Bei<br>
+          New York University '18</p>
         </div>
         <div class="card-action">
-          <a href="#">Link</a>
-          <a href='#'>Link</a>
+          <a href="https://github.com/bettyybei" target="_blank" >Github</a>
         </div>
       </div>
     </div>
@@ -66,7 +95,7 @@
     <div class="col s12 m4 l4">
       <div class="card centered">
         <div class="card-content white-text">
-          <img src="http://labs.qnimate.com/portfolio-materialize/images/profile.png" width="64" height="64">
+          <img src="img/boy.png" width="64" height="64">
           <p class="blue-grey-text text-darken-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
         </div>
         <div class="card-action">
@@ -76,6 +105,8 @@
       </div>
     </div>
   </div>
+
+  <span class="disclaimer">Icons designed by Freepik from <a href="http://www.flaticon.com/authors/freepik" target="_blank">Flaticon</a></span>
 
 
 </div>
