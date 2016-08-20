@@ -24,11 +24,10 @@
   margin: 0 4px;
 }
 
-/*Editor Page CSS*/
-/*#editor {
-  height: 100vh;
+#editor {
+  height: 500vh;
 }
-*/
+
 #finish-button {
   margin-left: 30px;
 }

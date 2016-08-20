@@ -21,6 +21,10 @@ app.factory('PageFactory', function($http){
 	    return $http.delete('/api/project/'+projectId+'/page/'+pageId)
 	}
 
+	PageFactory.deleteAllElements = function(pageId) {
+	    return $http.delete('/api/elements/'+pageId)
+	}
+
 	PageFactory.getAllElements = function (projectId,pageId) {
 	    return $http.get('/api/project/'+projectId+'/page/'+pageId)
 	    .then(function(res){

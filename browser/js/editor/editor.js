@@ -117,13 +117,14 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   $scope.finished = function () {
     PageFactory.updateBgColor($stateParams.projectId, thePage.id, $scope.currentBgColor, $scope.currentBgShade)
     .then(function () {
-     return ProjectFactory.deleteAllElements(thePage.id);
+
+     return PageFactory.deleteAllElements(thePage.id);
     })
     .then(function () {
       $scope.elements= $scope.elements.filter(function(element){
         return element.type!=='deleted';
       })
-      $scope.elements.map(element => EditorFactory.createElement(element))
+      $scope.elements.map(element => EditorFactory.createElement(thePage.id, element))
     })
     .then(function () {
       toaster.pop('success', "Success!", "Project is saved.");
