@@ -9,9 +9,46 @@ app.directive('fullstackLogo', function () {
           scope.initialHeight = elemObj.height;
           scope.initialTop = elemObj.top;
           scope.initialLeft = elemObj.left;
+          scope.flameon= false
+
+                                      function animatePoof() {
+    var bgTop = 100,
+        frame = 0,
+        frames = 50,
+        frameSize = 32,
+        frameRate = 180,
+        puff = $('#puff');
+    var animate = function(){
+        if(frame < frames){
+            puff.css({
+                backgroundPosition: "0 "+bgTop+"px"
+            });
+            bgTop = bgTop - frameSize;
+            frame++;
+            setTimeout(animate, frameRate);
+        }
+    };
+    
+    animate();
+    setTimeout("$('#puff').hide()", frames * frameRate);
+}
+$(function() {
+    $('img').mouseup(function(e) {
+        var xOffset = 24;
+        var yOffset = 24;
+        
+        var chemX= $('#puff').css({
+            left: e.pageX - xOffset + 'px',
+            top: e.pageY - yOffset + 'px'
+        })
+          animatePoof();
+        chemX.show()
+    });
+});
 
           scope.$on('changeGrid', function(event, dimension){
-            elem.draggable("option", "grid", [dimension,dimension])
+            elem.draggable("option", "grid", [dimension,dimension]) 
+
           })
 
           elem.draggable({
@@ -21,7 +58,11 @@ app.directive('fullstackLogo', function () {
               elemObj.left = scope.initialLeft + obj.position.left;
               console.log(elemObj.top,elemObj.left)
               if(elemObj.top<-45&&elemObj.left>1070){
-                if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';
+                if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')) {
+
+                  elemObj.type = 'deleted';
+             
+                }
               }
               scope.$apply();
             }
@@ -33,6 +74,7 @@ app.directive('fullstackLogo', function () {
                 console.log('Logo resizing', ind)
                 elemObj.width = obj.size.width;
                 elemObj.height = obj.size.height;
+            
               }
             });
           });

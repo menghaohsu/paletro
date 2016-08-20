@@ -1,3 +1,15 @@
+#puff {
+    cursor:pointer;
+    display:none;
+    position:absolute;
+    height:32px;
+    width:32px;
+    background: url(http://i.imgur.com/wvPeK.png) no-repeat;
+}
+
+
+
+
 .navbar-fixed {
   z-index: 0 !important;
 }
