@@ -5,12 +5,12 @@ app.config(function ($compileProvider,$stateProvider) {
         controller: 'RenderCodeCtrl',
         templateUrl: 'js/renderCode/renderCode.html',
         resolve: {
-            templateCode: function(ProjectFactory,$stateParams){
-                var template = '';
-
-                return ProjectFactory.getAllElements($stateParams.id)
+            templateCode: function(ProjectFactory,$stateParams,PageFactory){
+                var allTemplates = [];
+                return ProjectFactory.getProject($stateParams.id)
                 .then(function(res){
-                    template += `<!DOCTYPE html>
+                    res[0].pages.map(function(page){
+                var template = `<!DOCTYPE html>
 <html lang="en">
     <head>
         <base href="/" />
@@ -22,35 +22,41 @@ app.config(function ($compileProvider,$stateProvider) {
     </head>
     <body class="${res[0].bgcolor} ${res[0].bgshade}">`;
 
-                    res[0].elements.forEach(function(element){
-                        renderCode(element);
-                    })
-                })
-                .then(function(){
+                        PageFactory.getAllElements(res[0].id,page.id)
+                        .then(function(elements){
+                            elements.forEach(function(element){
+                                template += renderCode(element);
+                            })
                     template+=`
     </body>
 </html>`;
-                    return template
+                            allTemplates.push(template)
+                        })
+                    })
                 })
+                .then(function(){
+                    return allTemplates;
+                })
+                
 
                 function renderCode(element){
                     if (element.type==='button') {
-                        template+=`
+                        return `
         <button class="btn ${element.color} ${element.shade}" style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px;">button</button>`;
                     } else if (element.type==='textbox') {
-                        template+=`
+                        return `
         <div class="${element.color}-text text-${element.shade}" style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px;">${element.content}</div>`;
                     } else if (element.type==='div') {
-                        template+=`
+                        return `
         <div style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px; border: 1px solid black"></div>`;
                     } else if (element.type==='image') {
-                        template+=`
+                        return `
         <img src="${element.url}" style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px;">`;
                     } else if (element.type==='logo') {
-                        template+=`
+                        return `
         <img src="https://jlau-bucket-1.s3.amazonaws.com/uploads/topic/image/42/fullstack.png" style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px;">`;
                     } else if (element.type==='navbar') {
-                        template+=`
+                        return `
         <nav class="${element.color} ${element.shade}">
             <div class="nav-wrapper container">
                 <a class="brand-logo">Sample Navbar</a>
@@ -63,7 +69,7 @@ app.config(function ($compileProvider,$stateProvider) {
             </div>
         </nav>`;
                     } else if(element.type==='header') {
-                        template+=`
+                        return `
         <div class="${element.color}-text text-${element.shade}" style="position: absolute; height: ${element.height}px; width:${element.width}px; top: ${element.top}px; left: ${element.left}px; font-size: ${element.fontsize}px; line-height: ${element.height}px">${element.content}</div>`
                     }
                 }
@@ -74,6 +80,7 @@ app.config(function ($compileProvider,$stateProvider) {
 
 app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCode){
     $scope.template = templateCode;
+    console.log('1231231',$scope.template,$scope.template.length)
 
     //generate html file
     var blob = new Blob([ templateCode ], { type : 'html/HTML' });
