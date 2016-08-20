@@ -19,7 +19,7 @@ app.config(function ($stateProvider) {
 });
 
 
-app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, thePage, $state, toaster,PageFactory,$stateParams) {
+app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, thePage, $state,PageFactory,$stateParams) {
   $(".button-collapse").sideNav();
   $('.collapsible').collapsible();
   $scope.elements = thePage.elements;
