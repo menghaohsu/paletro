@@ -1,5 +1,3 @@
-
-
 app.config(function ($stateProvider) {
     $stateProvider.state('editor', {
         url: '/project/:projectId/page/:pageId',
@@ -25,15 +23,15 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   $(".button-collapse").sideNav();
   $('.collapsible').collapsible();
   $scope.elements = thePage.elements;
-  $scope.pageName = thePage.name;/*
-  $scope.currentBgColor = null;
-  $scope.currentBgShade = null;*/
+  $scope.pageName = thePage.name;
   $scope.currentBgColor = thePage.bgcolor;
   $scope.currentBgShade = thePage.bgshade;
+
 
   $scope.colors = ['black', 'brown', 'red', 'deep-orange', 'yellow', 'light-green', 'light-blue', 'indigo', 'purple', 'white', 'grey', 'pink', 'orange', 'lime', 'green', 'teal', 'blue', 'deep-purple'];
 
   $scope.shades = ['darken-4', 'darken-3', 'darken-2', 'original', 'lighten-1', 'lighten-2', 'lighten-3', 'lighten-4', 'lighten-5'];
+
 
   //MODAL CODE
   var modal = document.getElementById('myModal1');
@@ -65,6 +63,51 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     })
   }
   //END MODAL CODE
+
+
+  //GRID CODE
+  $scope.dimension = 1
+
+  var hasGrid = false;
+  $scope.toggleGrid = function () {
+    if (hasGrid) {
+      removeGrid()
+      $rootScope.$broadcast('changeGrid', 1)
+      hasGrid = false;
+    }
+    else {
+      removeGrid()
+      createGrid()
+      $rootScope.$broadcast('changeGrid', 50);
+      hasGrid = true;
+    }
+  }
+
+  var removeGrid = function(){
+    $('.grid').remove();
+  }
+
+  var createGrid = function() {
+    $scope.dimension = 50;
+    var ratioW = Math.floor($(document).width()/50),
+        ratioH = Math.floor($(document).height()/50);
+
+    var parent = $('<div />', {
+        class: 'grid',
+        width: ratioW  * 50,
+        height: ratioH  * 50
+    }).addClass('grid').appendTo('#canvas');
+
+    for (var i = 0; i < ratioH; i++) {
+        for(var p = 0; p < ratioW; p++){
+            $('<div />', {
+                width: 50 - 1,
+                height: 50 - 1
+            }).appendTo(parent);
+        }
+    }
+  }
+  //END GRID CODE
 
 
   //checking if saved project has a navbar already
@@ -107,10 +150,10 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   $scope.changePageName = function () {
     PageFactory.updateName($stateParams.projectId, thePage.id, $scope.pageName)
     .then(function () {
-      toaster.pop('success', "Success!", "Project name saved.");
+      Materialize.toast('Success! Your project name is updated.', 4000, 'teal darken-2');
     })
     .catch(function () {
-      toaster.pop('error', "Uh oh!", "An error occured.");
+      Materialize.toast('Uh Oh! There was an error.', 4000, 'red darken-3');
     })
   }
 
@@ -127,14 +170,14 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
       $scope.elements.map(element => EditorFactory.createElement(thePage.id, element))
     })
     .then(function () {
-      toaster.pop('success', "Success!", "Project is saved.");
+      Materialize.toast('Success! Your project is saved!', 4000, 'teal darken-2');
     })
     .catch(function () {
-      toaster.pop('error', "Uh oh!", "An error occured.");
+      Materialize.toast('Error. Project could not be saved.', 4000, 'red darken-3');
     })
   }
 
-  //background color
+  //for background color
   $scope.getClasses = function () {
     return `${$scope.currentBgColor} ${$scope.currentBgShade}`;
   }
@@ -155,7 +198,5 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
     $scope.selectedShade = shade;
     $rootScope.$broadcast('shadeChange', $scope.selectedShade)
   }
-
-
 
 });

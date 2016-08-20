@@ -1,4 +1,3 @@
-
 /*Homepage CSS*/
 .block {
   height: 91.5vh;
@@ -52,6 +51,10 @@
   top: 40%;
   right: 24px;
 }
+#grid-lines {
+  top: 50%;
+  right: 24px;
+}
 
 /*Components CSS*/
 #user-navbar {
@@ -91,10 +94,12 @@
   margin-left: 5px;
 }
 
-#header {
-  width: 100px;
+.codeblock {
+  background-color: #e6e6e6;
+  margin-top: 30px;
 }
 
+/*Preview Iframe*/
 #IframeWrapper {
   width: 320px;
   height: 192px;
@@ -132,12 +137,16 @@
   width: 300px;
 }
 
+/*Grid CSS*/
+.grid {
+    border: 1px solid #ccc;
+    border-width: 1px 0 0 1px;
+}
 
-/*Export Code CSS*/
-
-.codeblock {
-  background-color: #e6e6e6;
-  margin-top: 30px;
+.grid div {
+    border: 1px solid #ccc;
+    border-width: 0 1px 1px 0;
+    float: left;
 }
 
 

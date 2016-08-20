@@ -20,12 +20,17 @@ app.directive('header', function () {
             elemObj.content = elem[0].innerText;
           });
 
+          scope.$on('changeGrid', function(event, dimension){
+            elem.draggable("option", "grid", [dimension,dimension])
+          })
+
           elem.draggable({
+            grid: [scope.$parent.dimension, scope.$parent.dimension],
             stop: function (event, obj) {
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
               if(elemObj.top<-45&&elemObj.left>1070){
-                if(confirm('Are you sure to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';          
+                if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';
               }
               scope.$apply();
              }

@@ -1,8 +1,5 @@
 <section id="editor" ng-class="getClasses()">
 
-  <!-- Toaster Notifications -->
-  <toaster-container></toaster-container>
-
   <!-- Project Name Model -->
   <div id="myModal1" class="modal float_center">
     <div class="modal-content">
@@ -101,6 +98,11 @@
       <li ng-repeat="shade in shades"><a ng-click="setShade(shade)" class="btn-floating {{selectedColor}} {{shade}}"><i class="material-icons">crop_square</i></a></li>
     </ul>
   </div>
+  <div class="fixed-action-btn horizontal" id="grid-lines">
+    <a class="btn-floating btn-large purple" ng-click="toggleGrid()">
+      <i class="material-icons">border_all</i>
+    </a>
+  </div>
 
   <!-- Canvas -->
   <div id="canvas">
@@ -113,7 +115,6 @@
       <text-box ng-show="element.type === 'textbox'"></text-box>
       <header ng-show="element.type === 'header'"></header>
     </div>
-
   </div>
 
 
