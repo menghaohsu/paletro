@@ -2,11 +2,15 @@
 app.directive('newButton', function () {
     return {
         restrict: 'E',
-        scope: {},
+         scope: {
+          index: '=',
+          elements: '=',
+          dimension: '='
+          },
         templateUrl: 'js/components/button/button.html',
         link: function(scope, elem, attr) {
-          let ind = scope.$parent.$index;
-          let elemObj = scope.$parent.$parent.elements[ind];
+          let idx = scope.index
+          let elemObj = scope.elements[idx];
           scope.initialWidth = elemObj.width;
           scope.initialHeight = elemObj.height;
           scope.initialTop = elemObj.top;
@@ -19,9 +23,8 @@ app.directive('newButton', function () {
           })
 
           elem.draggable({
-            grid: [scope.$parent.dimension, scope.$parent.dimension],
+            grid: [scope.dimension, scope.dimension],
             stop: function (event, obj) {
-              console.log('stopped dragging button', ind);
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
               if(elemObj.top<-45&&elemObj.left>1070){
@@ -33,7 +36,6 @@ app.directive('newButton', function () {
 
           angular.element(elem.find('div')[0]).resizable({
             stop: function(event, obj) {
-              console.log('stopped resizing button', scope.$parent.$index);
               elemObj.width = obj.size.width;
               elemObj.height = obj.size.height;
             }

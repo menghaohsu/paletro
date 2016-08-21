@@ -108,11 +108,11 @@
     <div ng-repeat="element in elements">
       <user-navbar ng-show="element.type === 'navbar'"></user-navbar>
       <fullstack-logo elements="elements" index="$index" dimension="dimension" ng-show="element.type === 'logo'"></fullstack-logo>
-      <new-button ng-show="element.type === 'button'"></new-button>
-      <user-div ng-show="element.type === 'div'"></user-div>
-      <user-image class="absolute" ng-show="element.type === 'image'" image='element.url'></user-image>
-      <text-box ng-show="element.type === 'textbox'"></text-box>
-      <header ng-show="element.type === 'header'"></header>
+      <new-button elements="elements" index="$index" dimension="dimension" ng-show="element.type === 'button'"></new-button>
+      <user-div elements="elements" index="$index" dimension="dimension" ng-show="element.type === 'div'"></user-div>
+      <user-image elements="elements" index="$index" dimension="dimension" class="absolute" ng-show="element.type === 'image'" image='element.url'></user-image>
+      <text-box elements="elements" index="$index" dimension="dimension" ng-show="element.type === 'textbox'"></text-box>
+      <header elements="elements" index="$index" dimension="dimension" ng-show="element.type === 'header'"></header>
     </div>
   </div>
 
