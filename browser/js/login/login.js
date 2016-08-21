@@ -15,7 +15,6 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state, $rootScope) {
 
     $scope.sendLogin = function (loginInfo) {
         $scope.error = null;
-        console.log(loginInfo)
         AuthService.login(loginInfo).then(function (user) {
             $rootScope.user = user;
             $state.go('projects');

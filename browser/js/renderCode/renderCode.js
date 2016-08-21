@@ -24,13 +24,13 @@ app.config(function ($compileProvider,$stateProvider) {
 
                         PageFactory.getAllElements(res[0].id,page.id)
                         .then(function(elements){
-                            elements.forEach(function(element){
+                            elements[0].elements.forEach(function(element){
                                 template += renderCode(element);
                             })
                     template+=`
     </body>
 </html>`;
-                            allTemplates.push(template)
+                            allTemplates.push(template);
                         })
                     })
                 })
@@ -79,6 +79,7 @@ app.config(function ($compileProvider,$stateProvider) {
 });
 
 app.controller('RenderCodeCtrl', function($scope,$stateParams,$window,templateCode){
+    console.log(templateCode,templateCode[0])
     $scope.template = templateCode;
     console.log('1231231',$scope.template,$scope.template.length)
 

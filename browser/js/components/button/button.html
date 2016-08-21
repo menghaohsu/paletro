@@ -1,3 +1,7 @@
-<div ng-style="{'top': initialTop, 'left': initialLeft, 'width': initialWidth, 'height': initialHeight}" ng-class="getClasses()" ng-click="toggleSelected()">
-  <span class="vertical-align">button</span>
+<div ng-style="{'top': initialTop, 'left': initialLeft, 'width': initialWidth, 'height': initialHeight}" ng-class="getClasses()" ng-click="toggleSelected()" data-activates='dropdown1' ng-dblclick='dropDown()'>
+  <span class="vertical-align">button
+  <select id='dropdown1' class='dropdown-content' ng-option='pages.name as pages.name for page in pages'>
+  </select>  
+  </span>
+  
 </div>

@@ -7,7 +7,6 @@ app.config(function ($stateProvider) {
         	AllProjects: function(ProjectFactory){
         		return ProjectFactory.getProjects()
         		.then(function(projects){
-              console.log(projects)
         			return projects;
         		});
         	}

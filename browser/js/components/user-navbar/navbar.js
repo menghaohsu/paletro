@@ -41,7 +41,6 @@ app.directive('userNavbar', function () {
           scope.delete = function(){
             if(confirm('Are you sure to delete navbar?')) {
               elemObj.type = 'deleted';
-              console.log(scope.$parent.$parent)
               scope.$parent.$parent.duplicateNavbar = false;
             }
           }
