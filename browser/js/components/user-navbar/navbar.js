@@ -1,12 +1,15 @@
 app.directive('userNavbar', function () {
     return {
         restrict: 'E',
-        scope: {},
+          scope: {
+          index: '=',
+          elements: '='
+          },
         controller: 'UserNavbarController',
         templateUrl: 'js/components/user-navbar/navbar.html',
         link: function(scope, elem, attr) {
-          let ind = scope.$parent.$index;
-          let elemObj = scope.$parent.elements[ind];
+          let idx = scope.index
+          let elemObj = scope.elements[idx];
           scope.currentColor = elemObj.color;
           scope.currentShade = elemObj.shade;
 
@@ -41,7 +44,7 @@ app.directive('userNavbar', function () {
           scope.delete = function(){
             if(confirm('Are you sure to delete navbar?')) {
               elemObj.type = 'deleted';
-              console.log(scope.$parent.$parent)
+              
               scope.$parent.$parent.duplicateNavbar = false;
             }
           }
