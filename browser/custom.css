@@ -41,6 +41,20 @@
   line-height: 24px;
 }
 
+#trash {
+  display: block;
+  position: absolute;
+  margin-left: 15%;
+  height: 64px;
+  width: 64px;
+  background-color: green;
+}
+
+#trash img {
+  height: 100%;
+  width: 100%;
+}
+
 /*Buttons CSS*/
 #edit-button {
   top: 40%;
