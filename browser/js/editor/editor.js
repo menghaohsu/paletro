@@ -19,9 +19,12 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('EditorController', function ($scope, $rootScope, EditorFactory, ProjectFactory, theProject, $state) {
+   $scope.elements = theProject.elements;
+  // $scope.allelems = $scope.elements
+
   $(".button-collapse").sideNav();
   $('.collapsible').collapsible();
-  $scope.elements = theProject.elements;
+  // $scope.elements = theProject.elements;
   $scope.projectName = theProject.name;
   $scope.currentBgColor = theProject.bgcolor;
   $scope.currentBgShade = theProject.bgshade;

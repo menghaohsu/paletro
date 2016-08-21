@@ -103,12 +103,11 @@
       <i class="material-icons">border_all</i>
     </a>
   </div>
-
-  <!-- Canvas -->
+<!-- Canvas -->
   <div id="canvas">
     <div ng-repeat="element in elements">
       <user-navbar ng-show="element.type === 'navbar'"></user-navbar>
-      <fullstack-logo ng-show="element.type === 'logo'"></fullstack-logo>
+      <fullstack-logo elements= "elements" index="$index" ng-show="element.type === 'logo'"></fullstack-logo>
       <new-button ng-show="element.type === 'button'"></new-button>
       <user-div ng-show="element.type === 'div'"></user-div>
       <user-image class="absolute" ng-show="element.type === 'image'" image='element.url'></user-image>

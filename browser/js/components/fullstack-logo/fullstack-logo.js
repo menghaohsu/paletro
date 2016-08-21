@@ -1,10 +1,27 @@
 app.directive('fullstackLogo', function () {
     return {
         restrict: 'E',
+         scope: {
+          index: '=',
+          elements: '='
+          },
         templateUrl: 'js/components/fullstack-logo/fullstack-logo.html',
+       
         link: function (scope, elem, attr) {
-          let ind = scope.$index;
-          let elemObj = scope.$parent.elements[ind];
+          
+        
+          console.log(scope.elements, "the array")
+          console.log(scope.index)
+          let idx = scope.index
+          console.log(scope.elements[idx], "the index")
+          console.log(scope.elements[$index], "the element")
+
+          
+          
+          
+          let elemObj = scope.elements[ind];
+          console.log(elemObj)
+
           scope.initialWidth = elemObj.width;
           scope.initialHeight = elemObj.height;
           scope.initialTop = elemObj.top;
