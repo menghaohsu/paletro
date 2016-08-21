@@ -1,10 +1,15 @@
 app.directive('textBox', function () {
     return {
         restrict: 'E',
+         scope: {
+          index: '=',
+          elements: '=',
+          dimension: '='
+          },
         templateUrl: 'js/components/text-box/text.html',
         link: function (scope, elem, attr) {
-          let ind = scope.$index;
-          let elemObj = scope.$parent.elements[ind];
+          let idx = scope.index
+          let elemObj = scope.elements[idx];
           scope.initialWidth = elemObj.width;
           scope.initialHeight = elemObj.height;
           scope.initialTop = elemObj.top;
@@ -25,10 +30,10 @@ app.directive('textBox', function () {
           })
 
           textDiv.draggable({
-            grid: [scope.$parent.dimension, scope.$parent.dimension],
+            grid: [scope.dimension, scope.dimension],
             cancel: 'text',
             stop: function (event, obj) {
-              console.log('stopped dragging textbox', ind);
+            
               elemObj.top = obj.position.top;
               elemObj.left = obj.position.left;
               if(elemObj.top<-45&&elemObj.left>1070){
@@ -40,7 +45,7 @@ app.directive('textBox', function () {
           });
           textDiv.resizable({
             stop: function (event, obj) {
-              console.log('stopped resizing textbox', ind);
+              
               elemObj.width = obj.size.width;
               elemObj.height = obj.size.height;
             }

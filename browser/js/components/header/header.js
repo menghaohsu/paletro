@@ -2,10 +2,15 @@
 app.directive('header', function () {
     return {
         restrict: 'E',
+         scope: {
+          index: '=',
+          elements: '=',
+          dimension: '='
+          },
         templateUrl: 'js/components/header/header.html',
         link: function (scope, elem, attr) {
-          let ind = scope.$index;
-          let elemObj = scope.$parent.elements[ind];
+          let idx = scope.index
+          let elemObj = scope.elements[idx];
           scope.initialWidth = elemObj.width;
           scope.initialHeight = elemObj.height;
           scope.initialTop = elemObj.top;
@@ -25,7 +30,7 @@ app.directive('header', function () {
           })
 
           elem.draggable({
-            grid: [scope.$parent.dimension, scope.$parent.dimension],
+            grid: [scope.dimension, scope.dimension],
             stop: function (event, obj) {
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
