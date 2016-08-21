@@ -1,8 +1,9 @@
 
 
 .navbar-fixed {
-  z-index: 0 !important;
+ /* z-index: 0 !important;
   overflow-y: hidden;
+  position:static !important;*/
 
 }
 

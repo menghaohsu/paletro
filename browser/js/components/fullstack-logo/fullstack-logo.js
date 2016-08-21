@@ -31,6 +31,10 @@ app.directive('fullstackLogo', function () {
                 if(confirm('Are you sure you want to delete this '+ elemObj.type+'?'))elemObj.type = 'deleted';
                 }
                 scope.$apply();
+            },
+            drag: function(event, obj){
+              $('navbar-fixed').css({"z-index": "-10 !important"})
+              console.log($('navbar-fixed'))
             }
           });
 
