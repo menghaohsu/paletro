@@ -16,8 +16,6 @@ app.directive('fullstackLogo', function () {
           scope.initialTop = elemObj.top;
           scope.initialLeft = elemObj.left;
 
-
-
           scope.$on('changeGrid', function(event, dimension){
             elem.draggable("option", "grid", [dimension,dimension]) 
 
@@ -28,7 +26,7 @@ app.directive('fullstackLogo', function () {
             stop: function(event, obj) {
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
-              console.log(elemObj.top,elemObj.left)
+              
               if(elemObj.top<-45&&elemObj.left>1070){
                 if(confirm('Are you sure you want to delete this '+ elemObj.type+'?'))elemObj.type = 'deleted';
                 }
@@ -39,7 +37,7 @@ app.directive('fullstackLogo', function () {
           elem.find('img').on('load', function(event){
             elem.find('img').resizable({
               stop: function(event, obj) {
-                console.log('Logo resizing', ind)
+    
                 elemObj.width = obj.size.width;
                 elemObj.height = obj.size.height;
               }
