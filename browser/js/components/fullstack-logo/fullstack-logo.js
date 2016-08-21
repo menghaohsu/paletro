@@ -3,25 +3,14 @@ app.directive('fullstackLogo', function () {
         restrict: 'E',
          scope: {
           index: '=',
-          elements: '='
+          elements: '=',
+          dimension: '='
           },
         templateUrl: 'js/components/fullstack-logo/fullstack-logo.html',
-       
         link: function (scope, elem, attr) {
-          
-        
-          console.log(scope.elements, "the array")
-          console.log(scope.index)
           let idx = scope.index
-          console.log(scope.elements[idx], "the index")
-          console.log(scope.elements[$index], "the element")
-
-          
-          
-          
-          let elemObj = scope.elements[ind];
-          console.log(elemObj)
-
+          let elemObj = scope.elements[idx];
+         
           scope.initialWidth = elemObj.width;
           scope.initialHeight = elemObj.height;
           scope.initialTop = elemObj.top;
@@ -35,19 +24,15 @@ app.directive('fullstackLogo', function () {
           })
 
           elem.draggable({
-            grid: [scope.$parent.dimension, scope.$parent.dimension],
+            grid: [scope.dimension, scope.dimension],
             stop: function(event, obj) {
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
               console.log(elemObj.top,elemObj.left)
               if(elemObj.top<-45&&elemObj.left>1070){
-                if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')) {
-
-                  elemObj.type = 'deleted';
-             
+                if(confirm('Are you sure you want to delete this '+ elemObj.type+'?'))elemObj.type = 'deleted';
                 }
-              }
-              scope.$apply();
+                scope.$apply();
             }
           });
 
@@ -57,7 +42,6 @@ app.directive('fullstackLogo', function () {
                 console.log('Logo resizing', ind)
                 elemObj.width = obj.size.width;
                 elemObj.height = obj.size.height;
-            
               }
             });
           });
