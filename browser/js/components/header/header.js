@@ -2,11 +2,11 @@
 app.directive('header', function () {
     return {
         restrict: 'E',
-         scope: {
+        scope: {
           index: '=',
           elements: '=',
           dimension: '='
-          },
+        },
         templateUrl: 'js/components/header/header.html',
         link: function (scope, elem, attr) {
           let idx = scope.index
@@ -34,17 +34,17 @@ app.directive('header', function () {
             stop: function(event, obj) {
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
-             
+
               $("#trash-can").unbind("mouseenter").bind("mouseenter", function(){
-    
+
                 if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')){
                   elemObj.type = 'deleted';
                   scope.$apply();
                 }
               })
-                
-               }
-            });
+
+            }
+          });
 
           let headerDiv = angular.element(elem.find('#my-header')[0]);
 

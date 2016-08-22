@@ -1,11 +1,11 @@
 app.directive('textBox', function () {
     return {
         restrict: 'E',
-         scope: {
+        scope: {
           index: '=',
           elements: '=',
           dimension: '='
-          },
+        },
         templateUrl: 'js/components/text-box/text.html',
         link: function (scope, elem, attr) {
           let idx = scope.index
@@ -32,23 +32,23 @@ app.directive('textBox', function () {
           textDiv.draggable({
             grid: [scope.dimension, scope.dimension],
             cancel: 'text',
-           stop: function(event, obj) {
+            stop: function(event, obj) {
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
-             
+
               $("#trash-can").unbind("mouseenter").bind("mouseenter", function(){
-    
+
                 if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')){
                   elemObj.type = 'deleted';
                   scope.$apply();
                 }
               })
-                
-               }
-            });
+
+            }
+          });
+
           textDiv.resizable({
             stop: function (event, obj) {
-              
               elemObj.width = obj.size.width;
               elemObj.height = obj.size.height;
             }
