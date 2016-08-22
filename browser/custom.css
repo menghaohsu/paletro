@@ -57,6 +57,10 @@
   right: 24px;
 }
 
+#trash-can {
+  top: 80%;
+  right: 24px;
+}
 /*Components CSS*/
 #user-navbar {
   top: 65px;

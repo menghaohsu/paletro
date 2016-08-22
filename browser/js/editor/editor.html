@@ -98,22 +98,29 @@
       <li ng-repeat="shade in shades"><a ng-click="setShade(shade)" class="btn-floating {{selectedColor}} {{shade}}"><i class="material-icons">crop_square</i></a></li>
     </ul>
   </div>
+
   <div class="fixed-action-btn horizontal" id="grid-lines">
     <a class="btn-floating btn-large purple" ng-click="toggleGrid()">
       <i class="material-icons">border_all</i>
     </a>
   </div>
 
-  <!-- Canvas -->
+  <div class="fixed-action-btn horizontal" id="trash-can">
+    <a class="btn-floating btn-large green">
+      <i class="material-icons">delete_forever</i>
+    </a>
+  </div>
+
+<!-- Canvas -->
   <div id="canvas">
     <div ng-repeat="element in elements">
-      <user-navbar ng-show="element.type === 'navbar'"></user-navbar>
-      <fullstack-logo ng-show="element.type === 'logo'"></fullstack-logo>
-      <new-button ng-show="element.type === 'button'"></new-button>
-      <user-div ng-show="element.type === 'div'"></user-div>
-      <user-image class="absolute" ng-show="element.type === 'image'" image='element.url'></user-image>
-      <text-box ng-show="element.type === 'textbox'"></text-box>
-      <header ng-show="element.type === 'header'"></header>
+      <user-navbar elements="elements" index="$index" ng-show="element.type === 'navbar'"></user-navbar>
+      <fullstack-logo elements="elements" index="$index" dimension="dimension" ng-show="element.type === 'logo'"></fullstack-logo>
+      <new-button elements="elements" index="$index" dimension="dimension" ng-show="element.type === 'button'"></new-button>
+      <user-div elements="elements" index="$index" dimension="dimension" ng-show="element.type === 'div'"></user-div>
+      <user-image elements="elements" index="$index" dimension="dimension" class="absolute" ng-show="element.type === 'image'" image='element.url'></user-image>
+      <text-box elements="elements" index="$index" dimension="dimension" ng-show="element.type === 'textbox'"></text-box>
+      <header elements="elements" index="$index" dimension="dimension" ng-show="element.type === 'header'"></header>
     </div>
   </div>
 
