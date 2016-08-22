@@ -32,18 +32,18 @@ app.directive('textBox', function () {
           textDiv.draggable({
             grid: [scope.dimension, scope.dimension],
             cancel: 'text',
-            stop: function(event, obj) {
-              elemObj.top = obj.position.top - 64;
-              elemObj.left = obj.position.left;
-
-              $("#trash-can").unbind("mouseenter").bind("mouseenter", function(){
-
+            start: function(event, obj) {
+              $("#trash-can").bind("mouseenter", function(){
                 if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')){
                   elemObj.type = 'deleted';
                   scope.$apply();
                 }
-              })
-
+              });
+            },
+            stop: function(event, obj) {
+              elemObj.top = obj.position.top - 64;
+              elemObj.left = obj.position.left;
+              $("#trash-can").unbind("mouseenter");
             }
           });
 
