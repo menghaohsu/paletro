@@ -27,16 +27,16 @@ app.directive('fullstackLogo', function () {
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
               
-              if(elemObj.top<-45&&elemObj.left>1070){
+              if(elemObj.top>-45&&elemObj.left>1070){
                 if(confirm('Are you sure you want to delete this '+ elemObj.type+'?'))elemObj.type = 'deleted';
                 }
+              $("#trash-can").one("hover", function(){
+                if(confirm('Are you sure you want to delete this '+ elemObj.type+'?'))elemObj.type = 'deleted';
+
+              })
                 scope.$apply();
-            },
-            drag: function(event, obj){
-              $('navbar-fixed').css({"z-index": "-10 !important"})
-              console.log($('navbar-fixed'))
             }
-          });
+            });
 
           elem.find('img').on('load', function(event){
             elem.find('img').resizable({
