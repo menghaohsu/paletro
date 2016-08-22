@@ -59,14 +59,6 @@ app.directive('textBox', function () {
           }
           textDiv[0].contentEditable = true;
 
-/*          scope.editText = function(){
-            textDiv[0].contentEditable = true;
-          }
-
-          scope.uneditable = function(){
-            textDiv[0].contentEditable = false;
-          }*/
-
           scope.focus = function () {
             textDiv.focus();
           }
