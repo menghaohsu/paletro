@@ -1,12 +1,14 @@
 app.directive('userNavbar', function () {
     return {
         restrict: 'E',
-        scope: {},
+          scope: {
+            index: '=',
+            elements: '='
+          },
         controller: 'UserNavbarController',
         templateUrl: 'js/components/user-navbar/navbar.html',
         link: function(scope, elem, attr) {
-          let ind = scope.$parent.$index;
-          let elemObj = scope.$parent.elements[ind];
+          let elemObj = scope.elements[scope.index];
           scope.currentColor = elemObj.color;
           scope.currentShade = elemObj.shade;
 
@@ -29,8 +31,8 @@ app.directive('userNavbar', function () {
             }
           });
 
-          scope.$on('deleteNavbar', function(event, shade){
-            if (isSelected&&confirm('Are you sure to delete navbar?')) {
+          scope.$on('deleteNavbar', function(event){
+            if (isSelected&&confirm('Are you sure to delete the navbar?')) {
               elemObj.type = 'deleted';
             }
           });
@@ -38,17 +40,13 @@ app.directive('userNavbar', function () {
           scope.getClasses = function () {
             return `${scope.currentColor} ${scope.currentShade} ${isSelected ? 'selected' : ''}`;
           }
+
           scope.delete = function(){
             if(confirm('Are you sure to delete navbar?')) {
               elemObj.type = 'deleted';
-              console.log(scope.$parent.$parent)
               scope.$parent.$parent.duplicateNavbar = false;
             }
           }
         }
     };
-});
-
-app.controller('UserNavbarController', function ($scope) {
-
 });
