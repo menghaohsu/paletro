@@ -35,7 +35,7 @@ app.directive('fullstackLogo', function () {
 
               })
                 scope.$apply();
-            }
+               }
             });
 
           elem.find('img').on('load', function(event){
