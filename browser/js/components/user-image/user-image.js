@@ -9,15 +9,15 @@ app.directive('userImage', function () {
         },
         templateUrl: 'js/components/user-image/user-image.html',
         link: function(scope, elem, attr){
-            let idx = scope.index
-            let elemObj = scope.elements[idx];
+            let elemObj = scope.elements[scope.index];
             scope.initialWidth = elemObj.width;
             scope.initialHeight = elemObj.height;
             scope.initialTop = elemObj.top;
             scope.initialLeft = elemObj.left;
-            scope.$on('changeGrid', function(event, dimension){
+
+            scope.$on('changeGrid', function(event, dimension) {
                 elem.draggable("option", "grid", [dimension,dimension])
-            })
+            });
 
             elem.draggable({
                 grid: [scope.dimension, scope.dimension],
@@ -43,7 +43,7 @@ app.directive('userImage', function () {
                         elemObj.height = obj.size.height;
                     }
                 });
-            })
+            });
         }
     };
 });

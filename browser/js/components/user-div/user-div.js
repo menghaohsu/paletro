@@ -8,8 +8,7 @@ app.directive('userDiv', function () {
         },
         templateUrl: 'js/components/user-div/user-div.html',
         link: function (scope, elem, attr) {
-          let idx = scope.index
-          let elemObj = scope.elements[idx];
+          let elemObj = scope.elements[scope.index];
           scope.initialWidth = elemObj.width;
           scope.initialHeight = elemObj.height;
           scope.initialTop = elemObj.top;
