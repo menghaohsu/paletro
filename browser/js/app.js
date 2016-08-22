@@ -58,4 +58,8 @@ app.run(function ($rootScope, AuthService, $state) {
 
     });
 
+    $rootScope.$on('$stateChangeSuccess', function() {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    });
+
 });
