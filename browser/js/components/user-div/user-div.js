@@ -24,12 +24,17 @@ app.directive('userDiv', function () {
             stop: function(event, obj) {
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
-              if(elemObj.top<-45&&elemObj.left>1070){
-                if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';
-              }
-              scope.$apply();
-            }
-          });
+             
+              $("#trash-can").unbind("mouseenter").bind("mouseenter", function(){
+    
+                if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')){
+                  elemObj.type = 'deleted';
+                  scope.$apply();
+                }
+              })
+                
+               }
+            });
           angular.element(elem.find('div')[0]).resizable({
             stop: function(event, obj) {
               elemObj.width = obj.size.width;

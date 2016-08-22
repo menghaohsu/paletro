@@ -20,17 +20,21 @@ app.directive('userImage', function () {
           })
 
           elem.draggable({
-                grid: [scope.dimension, scope.dimension],
-                stop: function(event, obj) {
-                    elemObj.top = scope.initialTop + obj.position.top - 64;
-                    elemObj.left = scope.initialLeft + obj.position.left;
-                    if(elemObj.top<-130&&elemObj.left>600){
-                        if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';
-                    }
-                    scope.$apply();
+            grid: [scope.dimension, scope.dimension],
+            stop: function(event, obj) {
+            elemObj.top = scope.initialTop + obj.position.top;
+            elemObj.left = scope.initialLeft + obj.position.left;
+             
+              $("#trash-can").unbind("mouseenter").bind("mouseenter", function(){
+    
+                if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')){
+                  elemObj.type = 'deleted';
+                  scope.$apply();
                 }
+              })
+                
+               }
             });
-
             elem.find('img').on('load', function(event){
                 elem.find('img').resizable({
                     stop: function(event, obj) {
