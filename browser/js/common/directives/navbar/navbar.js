@@ -33,7 +33,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
 
             var removeUser = function () {
                 scope.user = null;
-            };  
+            };
 
             setUser();
 

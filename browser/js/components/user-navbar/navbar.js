@@ -2,10 +2,9 @@ app.directive('userNavbar', function () {
     return {
         restrict: 'E',
           scope: {
-          index: '=',
-          elements: '='
+            index: '=',
+            elements: '='
           },
-        controller: 'UserNavbarController',
         templateUrl: 'js/components/user-navbar/navbar.html',
         link: function(scope, elem, attr) {
           let elemObj = scope.elements[scope.index];
@@ -31,7 +30,7 @@ app.directive('userNavbar', function () {
             }
           });
 
-          scope.$on('deleteNavbar', function(event, shade){
+          scope.$on('deleteNavbar', function(event){
             if (isSelected&&confirm('Are you sure to delete the navbar?')) {
               elemObj.type = 'deleted';
             }
@@ -49,8 +48,4 @@ app.directive('userNavbar', function () {
           }
         }
     };
-});
-
-app.controller('UserNavbarController', function ($scope) {
-
 });
