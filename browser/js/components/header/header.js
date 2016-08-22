@@ -31,15 +31,20 @@ app.directive('header', function () {
 
           elem.draggable({
             grid: [scope.dimension, scope.dimension],
-            stop: function (event, obj) {
+            stop: function(event, obj) {
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
-              if(elemObj.top<-45&&elemObj.left>1070){
-                if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';
-              }
-              scope.$apply();
-             }
-          });
+             
+              $("#trash-can").unbind("mouseenter").bind("mouseenter", function(){
+    
+                if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')){
+                  elemObj.type = 'deleted';
+                  scope.$apply();
+                }
+              })
+                
+               }
+            });
 
           let headerDiv = angular.element(elem.find('#my-header')[0]);
 
