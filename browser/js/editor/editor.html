@@ -98,8 +98,15 @@
       <li ng-repeat="shade in shades"><a ng-click="setShade(shade)" class="btn-floating {{selectedColor}} {{shade}}"><i class="material-icons">crop_square</i></a></li>
     </ul>
   </div>
+
   <div class="fixed-action-btn horizontal" id="grid-lines">
     <a class="btn-floating btn-large purple" ng-click="toggleGrid()">
+      <i class="material-icons">border_all</i>
+    </a>
+  </div>
+
+  <div class="fixed-action-btn horizontal" id="trash-can">
+    <a class="btn-floating btn-large green">
       <i class="material-icons">border_all</i>
     </a>
   </div>

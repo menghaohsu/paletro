@@ -38,6 +38,7 @@ app.directive('newButton', function () {
             stop: function(event, obj) {
               elemObj.width = obj.size.width;
               elemObj.height = obj.size.height;
+            
             }
           });
 
