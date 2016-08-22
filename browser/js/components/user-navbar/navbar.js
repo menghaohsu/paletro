@@ -5,7 +5,6 @@ app.directive('userNavbar', function () {
             index: '=',
             elements: '='
           },
-        controller: 'UserNavbarController',
         templateUrl: 'js/components/user-navbar/navbar.html',
         link: function(scope, elem, attr) {
           let elemObj = scope.elements[scope.index];

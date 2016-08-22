@@ -117,9 +117,9 @@
 .selected {
   border: 3px dashed blue;
   /* glow*/
-  -webkit-box-shadow: 0px 0px 4px blue;
-     -moz-box-shadow: 0px 0px 4px blue;
-          box-shadow: 0px 0px 4px blue;
+  -webkit-box-shadow: 0px 0px 6px blue;
+     -moz-box-shadow: 0px 0px 6px blue;
+          box-shadow: 0px 0px 6px blue;
 }
 
 .absolute {
