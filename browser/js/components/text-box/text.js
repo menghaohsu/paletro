@@ -12,7 +12,6 @@ app.directive('textBox', function () {
           scope.initialWidth = elemObj.width;
           scope.initialHeight = elemObj.height;
           scope.initialTop = elemObj.top + 64;
-          scope.renderTop = scope.initialTop;
           scope.initialLeft = elemObj.left;
           scope.content = elemObj.content;
           scope.currentColor = elemObj.color;
@@ -28,11 +27,12 @@ app.directive('textBox', function () {
             textDiv.draggable("option", "grid", [dimension,dimension]);
           })
 
+          let trashCan = $("#trash-can");
           textDiv.draggable({
             grid: [scope.dimension, scope.dimension],
             cancel: 'text',
             start: function(event, obj) {
-              $("#trash-can").bind("mouseenter", function(){
+              trashCan.bind("mouseenter", function(){
                 if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')){
                   elemObj.type = 'deleted';
                   scope.$apply();
@@ -42,7 +42,7 @@ app.directive('textBox', function () {
             stop: function(event, obj) {
               elemObj.top = obj.position.top - 64;
               elemObj.left = obj.position.left;
-              $("#trash-can").unbind("mouseenter");
+              trashCan.unbind("mouseenter");
             }
           });
 
@@ -58,13 +58,10 @@ app.directive('textBox', function () {
           for (var key in children) {
             if (children[key].contentEditable) children[key].contentEditable = false;
           }
+          textDiv[0].contentEditable = true;
 
-          scope.editText = function(){
-            textDiv[0].contentEditable = true;
-          }
-
-          scope.uneditable = function(){
-            textDiv[0].contentEditable = false;
+          scope.focus = function () {
+            textDiv.focus();
           }
 
           let isSelected = false;
