@@ -35,7 +35,7 @@ app.directive('newButton', function () {
             stop: function(event, obj) {
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
-              trashCan.unbind("mouseenter").removeClass('animated');;
+              trashCan.unbind("mouseenter");
             }
           });
 
