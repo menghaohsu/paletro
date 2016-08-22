@@ -28,10 +28,11 @@ app.directive('header', function () {
             elem.draggable("option", "grid", [dimension,dimension])
           })
 
+          let trashCan = $("#trash-can");
           elem.draggable({
             grid: [scope.dimension, scope.dimension],
             start: function(event, obj) {
-              $("#trash-can").bind("mouseenter", function(){
+              trashCan.bind("mouseenter", function(){
                 if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')){
                   elemObj.type = 'deleted';
                   scope.$apply();
@@ -41,7 +42,7 @@ app.directive('header', function () {
             stop: function(event, obj) {
               elemObj.top = scope.initialTop + obj.position.top;
               elemObj.left = scope.initialLeft + obj.position.left;
-              $("#trash-can").unbind("mouseenter");
+              trashCan.unbind("mouseenter");
             }
           });
 
