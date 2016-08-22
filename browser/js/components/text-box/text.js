@@ -12,7 +12,7 @@ app.directive('textBox', function () {
           let elemObj = scope.elements[idx];
           scope.initialWidth = elemObj.width;
           scope.initialHeight = elemObj.height;
-          scope.initialTop = elemObj.top;
+          scope.initialTop = elemObj.top + 64;
           scope.renderTop = scope.initialTop;
           scope.initialLeft = elemObj.left;
           scope.content = elemObj.content;
@@ -33,8 +33,8 @@ app.directive('textBox', function () {
             grid: [scope.dimension, scope.dimension],
             cancel: 'text',
             stop: function(event, obj) {
-              elemObj.top = scope.initialTop + obj.position.top;
-              elemObj.left = scope.initialLeft + obj.position.left;
+              elemObj.top = obj.position.top - 64;
+              elemObj.left = obj.position.left;
 
               $("#trash-can").unbind("mouseenter").bind("mouseenter", function(){
 

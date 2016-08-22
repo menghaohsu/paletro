@@ -22,7 +22,7 @@ app.directive('userImage', function () {
             elem.draggable({
                 grid: [scope.dimension, scope.dimension],
                 stop: function(event, obj) {
-                    elemObj.top = scope.initialTop + obj.position.top;
+                    elemObj.top = scope.initialTop + obj.position.top - 64;
                     elemObj.left = scope.initialLeft + obj.position.left;
 
                     $("#trash-can").unbind("mouseenter").bind("mouseenter", function(){
