@@ -1,7 +1,13 @@
-<div ng-style="{'top': initialTop, 'left': initialLeft, 'width': initialWidth, 'height': initialHeight}" ng-class="getClasses()" ng-click="toggleSelected()" data-activates='dropdown1' ng-dblclick='dropDown()'>
-  <span class="vertical-align">button
-  <select id='dropdown1' class='dropdown-content' ng-option='pages.name as pages.name for page in pages'>
+<div ng-style="{'top': initialTop, 'left': initialLeft, 'width': initialWidth, 'height': initialHeight}" ng-class="getClasses()" ng-click="toggleSelected()" data-activates='dropdown1' ng-dblclick='setNextPage()'>
+  <span class="vertical-align">button</span>
+  <!-- <ul id='dropdown1' class='dropdown-content' postion='relative'>
+	<li ng-repeat='page in pages'>{{page.name}}<button>123</button></li>
+  </ul> -->
+  <form>
+  <select ng-model="selected.page" ng-options='page.name for page in pages'>
+  	
   </select>  
-  </span>
+</form>
+  
   
 </div>

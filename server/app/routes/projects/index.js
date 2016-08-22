@@ -5,6 +5,9 @@ var db = require('../../../db')
 var Project = db.model('project')
 var Page = db.model('page')
 var Element = db.model('element')
+var JSZip = require('jszip')
+var Save = require('file-saver')
+
 
 router.get('/', function(req,res,next){
 	Project.findAll({
@@ -26,6 +29,27 @@ router.post('/create', function(req,res,next){
 		res.json(project);
 	})
 	.catch(next);
+})
+
+router.post('/zipfile', function(req,res,next){
+	var zip = new JSZip();
+	// Add a text file with the contents "Hello World\n"
+	zip.file("Hello.txt", req.body[0]);
+
+	// Add a another text file with the contents "Goodbye, cruel world\n"
+	zip.file("Goodbye.txt", req.body[1]);
+
+	// Add a folder named "images"
+	var img = zip.folder("images");
+	console.log('312312')
+	return zip.generateAsync({type:'blob'})
+	.then(function(content){
+		//Save(content,'hello.zip')
+
+		//console.log('content123',content)
+		res.send(content);
+	})
+	
 })
 
 router.get('/:id', function(req,res,next){
