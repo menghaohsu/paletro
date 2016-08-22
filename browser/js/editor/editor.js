@@ -70,7 +70,8 @@ app.controller('EditorController', function ($scope, $rootScope, EditorFactory, 
   $scope.toggleGrid = function () {
     if (hasGrid) {
       removeGrid()
-      $rootScope.$broadcast('changeGrid', 1)
+      $rootScope.$broadcast('changeGrid', 1);
+      $scope.dimension = 1;
       hasGrid = false;
     }
     else {

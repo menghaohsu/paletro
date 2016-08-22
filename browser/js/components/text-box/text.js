@@ -7,7 +7,7 @@ app.directive('textBox', function () {
           let elemObj = scope.$parent.elements[ind];
           scope.initialWidth = elemObj.width;
           scope.initialHeight = elemObj.height;
-          scope.initialTop = elemObj.top;
+          scope.initialTop = elemObj.top + 64;
           scope.renderTop = scope.initialTop;
           scope.initialLeft = elemObj.left;
           scope.content = elemObj.content;
@@ -29,7 +29,7 @@ app.directive('textBox', function () {
             cancel: 'text',
             stop: function (event, obj) {
               console.log('stopped dragging textbox', ind);
-              elemObj.top = obj.position.top;
+              elemObj.top = obj.position.top - 64;
               elemObj.left = obj.position.left;
               if(elemObj.top<-45&&elemObj.left>1070){
                 if(confirm('Are you sure you want to delete this '+ elemObj.type+'?')) elemObj.type = 'deleted';
@@ -51,13 +51,18 @@ app.directive('textBox', function () {
           for (var key in children) {
             if (children[key].contentEditable) children[key].contentEditable = false;
           }
+          textDiv[0].contentEditable = true;
 
-          scope.editText = function(){
+/*          scope.editText = function(){
             textDiv[0].contentEditable = true;
           }
 
           scope.uneditable = function(){
             textDiv[0].contentEditable = false;
+          }*/
+
+          scope.focus = function () {
+            textDiv.focus();
           }
 
           let isSelected = false;

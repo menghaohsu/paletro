@@ -5,6 +5,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
         scope: {},
         templateUrl: 'js/common/directives/navbar/navbar.html',
         link: function (scope) {
+            scope.isEditor = window.location.href.includes('editor');
 
             scope.items = [
                 { label: 'Home', state: 'home' },
@@ -33,7 +34,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
 
             var removeUser = function () {
                 scope.user = null;
-            };  
+            };
 
             setUser();
 
